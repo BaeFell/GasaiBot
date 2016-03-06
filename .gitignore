@@ -6,3 +6,5 @@ target/classes/space/gatt/GattBot/Main.class
 *.class
 target/classes/space/gatt/GattBot/Main.class
 *.xml
+*.xml
+.idea/workspace.xml
