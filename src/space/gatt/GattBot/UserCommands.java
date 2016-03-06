@@ -33,12 +33,6 @@ public class UserCommands implements MessageCreateListener {
                 }
             }
 
-            if (message.getMentions().contains(Main.getApi().getYourself())) {
-                MessageBuilder builder = new MessageBuilder();
-                builder.append(Settings.getMsgStarter()).append(" Yes, ").appendUser(message.getAuthor()).append("?");
-                message.reply(builder.build());
-            }
-
             MessageBuilder builder = new MessageBuilder();
             // Help Command
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "help")) {
