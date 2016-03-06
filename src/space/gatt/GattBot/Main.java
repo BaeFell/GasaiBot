@@ -11,7 +11,13 @@ import de.btobastian.javacord.entities.message.MessageBuilder;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
@@ -38,19 +44,10 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //new Thread(new SocketManager()).start();
+
         adminUsers.add("113462564217683968");
         adminUsers.add("117785797985435652");
-
-        JFrame frame = new JFrame("GattBot");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-        Label label = new Label("GattBot version 1");
-
-        frame.getContentPane().add(label, BorderLayout.LINE_START);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setSize(128, 128);
 
         System.out.println("Enter Password for gatt@gatt.space");
         Scanner in = new Scanner(System.in);
