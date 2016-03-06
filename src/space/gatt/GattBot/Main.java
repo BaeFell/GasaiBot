@@ -49,11 +49,14 @@ public class Main {
         adminUsers.add("113462564217683968");
         adminUsers.add("117785797985435652");
 
-        System.out.println("Enter Password for gatt@gatt.space");
+        System.out.println("Enter Email");
+
         Scanner in = new Scanner(System.in);
+        String email = in.nextLine();
+        System.out.println("Enter Password for " + email);
         String password = in.nextLine();
         System.out.println("Attempting login.");
-        api = Javacord.getApi("gatt@gatt.space", password);
+        api = Javacord.getApi(email, password);
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
