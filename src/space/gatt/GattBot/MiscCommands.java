@@ -1,0 +1,159 @@
+package space.gatt.GattBot;
+
+import de.btobastian.javacord.DiscordAPI;
+import de.btobastian.javacord.entities.User;
+import de.btobastian.javacord.entities.message.Message;
+import de.btobastian.javacord.entities.message.MessageBuilder;
+import de.btobastian.javacord.listener.message.MessageCreateListener;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+/**
+ * Created by Zach on 6/03/2016.
+ */
+public class MiscCommands implements MessageCreateListener {
+
+    @Override
+    public void onMessageCreate(DiscordAPI discordAPI, Message message) {
+
+        if (message.getContent().startsWith(Settings.getCommandStarter())) {
+            String[] args = message.getContent().split(" ");
+            MessageBuilder builder;
+
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "1v1")){
+                if (message.getMentions().size() > 1) {
+                    User u1 = message.getMentions().get(0);
+                    User u2 = message.getMentions().get(1);
+                    ArrayList<User> fiteme = new ArrayList<>();
+                    fiteme.add(u1);
+                    fiteme.add(u2);
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" ").appendUser(u1).append(" VERSUS ").appendUser(u2).append("!").appendNewLine().append("And the winner is... ").appendUser(fiteme.get(new Random().nextInt(fiteme.size())));
+                    message.reply(builder.build());
+                }else{
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Specify two users, please...");
+                    message.reply(builder.build());
+                }
+            }
+
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "fightclub")){
+                if (message.getMentions().size() > 1) {
+                    ArrayList<User> fiteme = new ArrayList<>();
+                    for (User u : message.getMentions()){
+                        fiteme.add(u);
+                    }
+
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" A fight between " + fiteme.size() + " people has started!!").appendNewLine().append("And the winner is... ").appendUser(fiteme.get(new Random().nextInt(fiteme.size())));
+                    message.reply(builder.build());
+                }else{
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Specify more than two users, please...");
+                    message.reply(builder.build());
+                }
+            }
+
+
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "mindblown")){
+                builder = new MessageBuilder();
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append("'s mind blew up!").appendNewLine().append("https://godofall.files.wordpress.com/2014/06/mind-blown.gif");
+                message.reply(builder.build());
+            }
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "hype")){
+                builder = new MessageBuilder();
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Let the hype train begin!");
+                message.reply(builder.build());
+            }
+
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lenny")){
+                builder = new MessageBuilder();
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" ( ͡° ͜ʖ ͡°)");
+                message.reply(builder.build());
+            }
+
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "roll")){
+                if (args.length == 1){
+                    Integer maxNo = 100;
+                    Random random = new Random();
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You rolled a " + random.nextInt(maxNo) + "! (1-100)");
+                    message.reply(builder.build());
+                }else{
+                    Integer maxNo = Integer.valueOf(args[1]);
+                    if (maxNo == null){
+                        builder = new MessageBuilder();
+                        builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You did not supply a valid integer!");
+                        message.reply(builder.build());
+                        return;
+                    }
+                    Random random = new Random();
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You rolled a " + random.nextInt(maxNo) + "! (1-" + maxNo + ")");
+                    message.reply(builder.build());
+                }
+            }
+
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "8ball")){
+                if (args.length == 1){
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" :8ball: You did not supply a question!");
+                    message.reply(builder.build());
+                }else{
+                    String question = "";
+                    args[0] = "";
+                    for (String s : args) {
+                        if (s != "") {
+                            question = question + s + " ";
+                        }
+                    }
+                    ArrayList<String> responses = new ArrayList<>();
+                    responses.add("It is certain.");
+                    responses.add("It is decidedly so.");
+                    responses.add("Without a doubt.");
+                    responses.add("Yes, definitely.");
+                    responses.add("You may rely on it.");
+                    responses.add("As I see it, yes.");
+                    responses.add("Most likely.");
+                    responses.add("Outlook good.");
+                    responses.add("Yes.");
+                    responses.add("The stars point to Yes.");
+                    responses.add("Reply is hazy... try again.");
+                    responses.add("Ask again later.");
+                    responses.add("Better not tell you now.");
+                    responses.add("Cannot predict now.");
+                    responses.add("Concentrate and ask again.");
+                    responses.add("Don't count on it.");
+                    responses.add("My reply is no.");
+                    responses.add("My sources say no.");
+                    responses.add("Outlook not so good.");
+                    responses.add("Very doubtful.");
+                    Random random = new Random();
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" :8ball: Hmm... " + responses.get(random.nextInt(responses.size())));
+                    message.reply(builder.build());
+                }
+            }
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "decide")){
+                if (args.length == 1){
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" :8ball: You did not supply decisions!");
+                    message.reply(builder.build());
+                }else{
+                    ArrayList<String> responses = new ArrayList<>();
+                    args[0] = "";
+                    for (String s : args) {
+                        if (s != "") {
+                            responses.add(s.replace("_", " "));
+                        }
+                    }
+                    Random random = new Random();
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" :8ball: Hmm... I'm going with " + responses.get(random.nextInt(responses.size())));
+                    message.reply(builder.build());
+                }
+            }
+        }
+    }
+}
