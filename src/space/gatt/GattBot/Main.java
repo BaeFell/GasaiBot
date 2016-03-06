@@ -44,18 +44,21 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //new Thread(new SocketManager()).start();
+        new Thread(new SocketManager()).start();
 
         adminUsers.add("113462564217683968");
         adminUsers.add("117785797985435652");
 
         System.out.println("Enter Email");
-
         Scanner in = new Scanner(System.in);
         String email = in.nextLine();
         System.out.println("Enter Password for " + email);
         String password = in.nextLine();
-        System.out.println("Attempting login with email " + email + " and password " + password);
+        String p2s = "";
+        for (int x = 0; x < password.length(); x++){
+            p2s = p2s + "*";
+        }
+        System.out.println("Attempting login with email " + email + " and password " + p2s);
         api = Javacord.getApi(email, password);
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
