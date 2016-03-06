@@ -55,7 +55,7 @@ public class Main {
         String email = in.nextLine();
         System.out.println("Enter Password for " + email);
         String password = in.nextLine();
-        System.out.println("Attempting login.");
+        System.out.println("Attempting login with email " + email + " and password " + password);
         api = Javacord.getApi(email, password);
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
