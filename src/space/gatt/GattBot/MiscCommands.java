@@ -8,6 +8,7 @@ import de.btobastian.javacord.listener.message.MessageCreateListener;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Zach on 6/03/2016.
@@ -55,6 +56,53 @@ public class MiscCommands implements MessageCreateListener {
                 }
             }
 
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "timer")){
+                if (args.length >= 4){
+                    Integer delay = Integer.valueOf(args[2]);
+                    if (delay == null){
+                        builder = new MessageBuilder();
+                        builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Arg 2 must be an integer!");
+                        message.reply(builder.build());
+                        return;
+                    }
+                    TimeUnit unit = null;
+                    if (args[1].equalsIgnoreCase("seconds")){
+                        unit = TimeUnit.SECONDS;
+                    }
+                    if (args[1].equalsIgnoreCase("minutes")){
+                        unit = TimeUnit.MINUTES;
+                    }
+                    if (args[1].equalsIgnoreCase("hours")){
+                        unit = TimeUnit.HOURS;
+                    }
+
+                    if (unit == null){
+                        builder = new MessageBuilder();
+                        builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Arg 1 must be either MINUTES HOURS or SECONDS");
+                        message.reply(builder.build());
+                        return;
+                    }
+                    String msg = "";
+                    args[0] = "";
+                    args[1] = "";
+                    args[2] = "";
+                    for (String s : args) {
+                        if (s != "") {
+                            msg = msg + s + " ";
+                        }
+                    }
+                    new Thread(new Delay(unit, delay, message.getAuthor(), msg)).start();
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You got it!");
+                    message.reply(builder.build());
+                    return;
+                }else{
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Not enough arguments!");
+                    message.reply(builder.build());
+                    return;
+                }
+            }
 
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "mindblown")){
                 builder = new MessageBuilder();

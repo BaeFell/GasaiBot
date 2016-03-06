@@ -114,6 +114,7 @@ public class Main {
                 commands.add("uptime - Sends the Uptime for GattBot. [Todo]");
 
                 commands.add("**~ ~ ~ Misc ~ ~ ~**");
+                commands.add("timer [seconds|minutes|hours] [amount] [message] - Will PM in [amount] of [seconds|minutes|hours] the [message] you specify privately.");
                 commands.add("roll - Rolls a random number between 1 and 100");
                 commands.add("roll [number] - Rolls a random number between 1 and [number]");
                 commands.add("8ball [question] - Ask the Magic-8-Ball something!");
