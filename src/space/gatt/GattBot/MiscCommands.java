@@ -4,6 +4,7 @@ import de.btobastian.javacord.DiscordAPI;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.Message;
 import de.btobastian.javacord.entities.message.MessageBuilder;
+import de.btobastian.javacord.entities.message.MessageDecoration;
 import de.btobastian.javacord.listener.message.MessageCreateListener;
 
 import java.util.ArrayList;
@@ -35,6 +36,28 @@ public class MiscCommands implements MessageCreateListener {
                 }else{
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Specify two users, please...");
+                    message.reply(builder.build());
+                }
+            }
+
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lmgtfy")){
+                if (message.getMentions().size() > 0) {
+                    User u = message.getMentions().get(0);
+                    String question = "";
+                    args[0] = "";
+                    args[1] = "";
+                    for (String s : args) {
+                        if (s != "") {
+                            question = question + s + "+";
+                        }
+                    }
+                    String url = "http://lmgtfy.com/?q=" + question;
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(u).append("! ").appendUser(message.getAuthor()).append(" thinks this might help!").appendNewLine().appendDecoration(MessageDecoration.BOLD, url);
+                    message.reply(builder.build());
+                }else{
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Specify a user please.");
                     message.reply(builder.build());
                 }
             }
