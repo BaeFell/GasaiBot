@@ -40,12 +40,19 @@ public class Main {
 
         adminUsers.add("113462564217683968");
         adminUsers.add("117785797985435652");
-
-        System.out.println("Enter Email");
+        String email = "";
         Scanner in = new Scanner(System.in);
-        String email = in.nextLine();
-        System.out.println("Enter Password for " + email);
-        String password = in.nextLine();
+        while (email == ""){
+            System.out.println("Enter Email");
+            email = in.nextLine();
+        }
+
+        String password = "";
+        while (password == ""){
+            System.out.println("Enter Password for " + email);
+            password = in.nextLine();
+        }
+
         String p2s = "";
         for (int x = 0; x < password.length(); x++){
             p2s = p2s + "*";
