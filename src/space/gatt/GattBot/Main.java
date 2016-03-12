@@ -40,6 +40,7 @@ public class Main {
 
         adminUsers.add("113462564217683968");
         adminUsers.add("117785797985435652");
+        adminUsers.add("80972065296887808");
         String email = args[0];
         String password = args[1];
         System.out.println("Attempting login with email " + email);

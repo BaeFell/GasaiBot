@@ -36,6 +36,7 @@ public class UserCommands implements MessageCreateListener {
             MessageBuilder builder = new MessageBuilder();
             // Help Command
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "help")) {
+                message.delete();
                 User u = message.getAuthor();
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter() + "I've PM'd you my command list, ").appendUser(message.getAuthor());
@@ -52,6 +53,7 @@ public class UserCommands implements MessageCreateListener {
 
             // Is AFK?
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "isafk")) {
+                message.delete();
                 builder = new MessageBuilder();
                 User u = message.getMentions().get(0);
                 if (Main.afk.contains(u)) {
@@ -66,6 +68,7 @@ public class UserCommands implements MessageCreateListener {
             }
             // Help Command
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "version")) {
+                message.delete();
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" GattBot Version " + Settings.getVersion());
                 message.reply(builder.build());
@@ -75,6 +78,7 @@ public class UserCommands implements MessageCreateListener {
 
             // Set AFK
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "setafk")) {
+                message.delete();
                 if (args[1].equalsIgnoreCase("false")) {
                     Main.afk.remove(message.getAuthor());
                     builder = new MessageBuilder();
@@ -98,23 +102,19 @@ public class UserCommands implements MessageCreateListener {
 
             // Log
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "log")) {
+                message.delete();
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendDecoration(MessageDecoration.BOLD, "https://discord.gg/0rtPRWdswScMri25").appendNewLine().append("There you go, for whatever reason you wanted it.");
                 message.getAuthor().sendMessage(builder.build());
                 return;
             }
 
-            // Nope
-            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "nope")) {
-                builder = new MessageBuilder();
-                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Nope").appendNewLine().append("http://orig09.deviantart.net/ac32/f/2011/356/f/1/nope_avi_high_resolution_by_wango911-d4jv1vx.png");
-                message.reply(builder.build());
-                return;
-            }
+
 
 
             // Get Infomation
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "getinfo")) {
+                message.delete();
                 User u = message.getMentions().get(0);
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendDecoration(MessageDecoration.BOLD, " Info for " + u.getName()).appendNewLine()
@@ -137,6 +137,7 @@ public class UserCommands implements MessageCreateListener {
 
             // Meme Command
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "meme")) {
+                message.delete();
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter() + "I has no memes, ").appendUser(message.getAuthor());
                 message.reply(builder.build());
@@ -145,6 +146,7 @@ public class UserCommands implements MessageCreateListener {
 
             // Ping Command
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "ping")) {
+                message.delete();
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter() + "Pong! ").appendUser(message.getAuthor());
                 message.reply(builder.build());
@@ -164,6 +166,7 @@ public class UserCommands implements MessageCreateListener {
 
             // Notice me Senpai
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "noticeme")) {
+                message.delete();
                 if (Main.adminUsers.contains(message.getAuthor().getId())) {
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" S-s-s-s-s-senPAIII?!?!?!?! NOTICE ME SENPAI!").appendNewLine().append("http://pre14.deviantart.net/7397/th/pre/i/2013/153/5/5/yukki__i_ll_protect_you__by_saihina4ever-d67lec1.jpg");
@@ -179,6 +182,7 @@ public class UserCommands implements MessageCreateListener {
 
             // Falcon Punch
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "falconpunch")) {
+                message.delete();
                 if (message.getMentions().get(0) != null) {
                     builder = new MessageBuilder();
                     User u = message.getMentions().get(0);
@@ -195,6 +199,7 @@ public class UserCommands implements MessageCreateListener {
 
             // Slap
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "slap")) {
+                message.delete();
                 if (message.getMentions().get(0) != null) {
                     builder = new MessageBuilder();
                     User u = message.getMentions().get(0);
@@ -211,6 +216,7 @@ public class UserCommands implements MessageCreateListener {
 
             // 'DDOS'
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "ddos")) {
+                message.delete();
                 if (message.getMentions().get(0) != null) {
                     builder = new MessageBuilder();
                     User u = message.getMentions().get(0);
@@ -227,6 +233,7 @@ public class UserCommands implements MessageCreateListener {
 
             // Math Expression
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "math")) {
+                message.delete();
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter() + "Disabled for now, ").appendUser(message.getAuthor());
                 message.reply(builder.build());

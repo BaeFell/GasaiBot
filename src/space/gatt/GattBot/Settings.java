@@ -74,16 +74,7 @@ public class Settings {
         version = str;
     }
 
-    public static String getProfilePicture() {
-        return profilePicture;
-    }
-
-    public static void setProfilePicture(String str) {
-        profilePicture = str;
-    }
-
     public static String getDefaultGroup() {
-
         return defaultGroup;
     }
 

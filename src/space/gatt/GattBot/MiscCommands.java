@@ -24,6 +24,7 @@ public class MiscCommands implements MessageCreateListener {
             MessageBuilder builder;
 
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "1v1")){
+                message.delete();
                 if (message.getMentions().size() > 1) {
                     User u1 = message.getMentions().get(0);
                     User u2 = message.getMentions().get(1);
@@ -40,7 +41,10 @@ public class MiscCommands implements MessageCreateListener {
                 }
             }
 
+
+
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lmgtfy")){
+                message.delete();
                 if (message.getMentions().size() > 0) {
                     User u = message.getMentions().get(0);
                     String question = "";
@@ -63,6 +67,7 @@ public class MiscCommands implements MessageCreateListener {
             }
 
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "fightclub")){
+                message.delete();
                 if (message.getMentions().size() > 1) {
                     ArrayList<User> fiteme = new ArrayList<User>();
                     for (User u : message.getMentions()){
@@ -80,6 +85,7 @@ public class MiscCommands implements MessageCreateListener {
             }
 
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "timer")){
+                message.delete();
                 if (args.length >= 4){
                     Integer delay = Integer.valueOf(args[2]);
                     if (delay == null){
@@ -127,33 +133,47 @@ public class MiscCommands implements MessageCreateListener {
                 }
             }
 
+            // Nope
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "nope")) {
+                message.delete();
+                builder = new MessageBuilder();
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Nope").appendNewLine().append("http://orig09.deviantart.net/ac32/f/2011/356/f/1/nope_avi_high_resolution_by_wango911-d4jv1vx.png");
+                message.reply(builder.build());
+                return;
+            }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "wat")){
+                message.delete();
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Wat?").appendNewLine().append("http://i0.kym-cdn.com/photos/images/newsfeed/000/173/576/Wat8.jpg?1315930535");
                 message.reply(builder.build());
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "kappa")){
+                message.delete();
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Kappa!").appendNewLine().append("http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1395991705/gjn81wvxqsq6yzcwubok.png");
                 message.reply(builder.build());
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "mindblown")){
+                message.delete();
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append("'s mind blew up!").appendNewLine().append("https://godofall.files.wordpress.com/2014/06/mind-blown.gif");
                 message.reply(builder.build());
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "hype")){
+                message.delete();
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Let the hype train begin!");
                 message.reply(builder.build());
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lenny")){
+                message.delete();
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" ( ͡° ͜ʖ ͡°)");
                 message.reply(builder.build());
             }
 
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "roll")){
+                message.delete();
                 if (args.length == 1){
                     Integer maxNo = 100;
                     Random random = new Random();
@@ -176,6 +196,7 @@ public class MiscCommands implements MessageCreateListener {
             }
 
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "8ball")){
+                message.delete();
                 if (args.length == 1){
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" :8ball: You did not supply a question!");
@@ -216,6 +237,7 @@ public class MiscCommands implements MessageCreateListener {
                 }
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "decide")){
+                message.delete();
                 if (args.length == 1){
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" :8ball: You did not supply decisions!");

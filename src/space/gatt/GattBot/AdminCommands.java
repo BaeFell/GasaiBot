@@ -35,6 +35,7 @@ public class AdminCommands implements MessageCreateListener {
 
                 // Join Server Command
             if (args[0].equalsIgnoreCase("joinserver")) {
+                message.delete();
                 if (message.isPrivateMessage()) {
                     String msg = message.getContent();
                     String invite = msg.replace(Settings.getCommandStarter() + "joinserver ", "");
@@ -69,6 +70,7 @@ public class AdminCommands implements MessageCreateListener {
             }
 
             if (args[0].equalsIgnoreCase("startupmessage")) {
+                message.delete();
                 if (message.isPrivateMessage()) {
                     if (Main.adminUsers.contains(message.getAuthor().getId())) {
                         builder = new MessageBuilder();
@@ -105,6 +107,7 @@ public class AdminCommands implements MessageCreateListener {
             }
 
             if (args[0].equalsIgnoreCase("listservers")) {
+                message.delete();
                 if (message.isPrivateMessage()) {
                     if (Main.adminUsers.contains(message.getAuthor().getId())) {
                         for (Server s : api.getServers()) {
@@ -123,6 +126,7 @@ public class AdminCommands implements MessageCreateListener {
 
             // Join Server Command
             if (args[0].equalsIgnoreCase("leaveall")) {
+                message.delete();
                 if (message.isPrivateMessage()) {
                     if (Main.adminUsers.contains(message.getAuthor().getId())) {
                         for (Server s : api.getServers()) {
@@ -166,6 +170,7 @@ public class AdminCommands implements MessageCreateListener {
 
             // Set Game
             if (args[0].equalsIgnoreCase("setsetting")) {
+                message.delete();
                 if (Main.adminUsers.contains(message.getAuthor().getId())) {
                     if (args[1].equalsIgnoreCase("game")) {
                         String game = "";
@@ -376,6 +381,7 @@ public class AdminCommands implements MessageCreateListener {
             // Add Channel
 
             if (args[0].equalsIgnoreCase("addchannel")) {
+                message.delete();
                 if (Main.adminUsers.contains(message.getAuthor().getId())) {
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Added Channel " + message.getChannelReceiver().getName() + " on Server " + message.getChannelReceiver().getServer().getName() + " to Start Up Msg receivers...");
@@ -422,8 +428,7 @@ public class AdminCommands implements MessageCreateListener {
                     for (Channel c : Settings.getJoinMsgChannels()) {
                         c.sendMessage(builder.build());
                     }
-
-
+                    message.delete();
                     try {
                         TimeUnit.SECONDS.sleep(2);
                         System.exit(0);
