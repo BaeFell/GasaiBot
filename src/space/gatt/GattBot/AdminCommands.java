@@ -395,21 +395,23 @@ public class AdminCommands implements MessageCreateListener {
                 if (Main.adminUsers.contains(message.getAuthor().getId())) {
                     Settings.addChannelToStartup(message.getChannelReceiver());
                     builder = new MessageBuilder();
-                    if (args[1].equalsIgnoreCase("-restart")){
-
-
-                        ProcessBuilder pb = new ProcessBuilder("startgattbot.sh");
-                        try {
-                            //Runtime.getRuntime().exec("echo ./startgattbot.sh");
-                            Process p = pb.start();
-                            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                            String line = null;
-                            while ((line = reader.readLine()) != null) {
-                                System.out.println(line);
+                    if (args.length > 0) {
+                        if (args[1].equalsIgnoreCase("-restart")) {
+                            ProcessBuilder pb = new ProcessBuilder("startgattbot.sh");
+                            try {
+                                //Runtime.getRuntime().exec("echo ./startgattbot.sh");
+                                Process p = pb.start();
+                                BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                                String line = null;
+                                while ((line = reader.readLine()) != null) {
+                                    System.out.println(line);
+                                }
+                            } catch (IOException e) {
                             }
-                        }catch (IOException e){
+                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down and Restarting, Senpai");
+                        }else{
+                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai (unknown argument)");
                         }
-                        builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down and Restarting, Senpai");
                     }
                     else{
                         builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai");
