@@ -10,6 +10,7 @@ import de.btobastian.javacord.entities.message.MessageBuilder;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
@@ -34,6 +35,8 @@ public class Main {
         return api;
     }
 
+    public static long startupTime;
+
     public static void main(String[] args) {
 
         //new Thread(new SocketManager()).start();
@@ -44,6 +47,8 @@ public class Main {
         String email = args[0];
         String password = args[1];
         System.out.println("Attempting login with email " + email);
+        Date date = new Date();
+        startupTime = date.getTime();
         api = Javacord.getApi(email, password);
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
