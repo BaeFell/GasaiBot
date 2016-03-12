@@ -7,6 +7,12 @@ import de.btobastian.javacord.entities.message.MessageBuilder;
 import de.btobastian.javacord.entities.message.MessageDecoration;
 import de.btobastian.javacord.listener.message.MessageCreateListener;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -137,26 +143,66 @@ public class MiscCommands implements MessageCreateListener {
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "nope")) {
                 message.delete();
                 builder = new MessageBuilder();
-                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Nope").appendNewLine().append("http://orig09.deviantart.net/ac32/f/2011/356/f/1/nope_avi_high_resolution_by_wango911-d4jv1vx.png");
-                message.reply(builder.build());
+                String url = "http://orig09.deviantart.net/ac32/f/2011/356/f/1/nope_avi_high_resolution_by_wango911-d4jv1vx.png";
+                try {
+                    BufferedImage img = ImageIO.read(new URL(url));
+                    File imgf = new File("nope.png");
+                    ImageIO.write(img, "png", imgf);
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Nope").appendNewLine();
+                    message.reply(builder.build());
+                    message.replyFile(imgf);
+                }catch (IOException e){
+
+                }
                 return;
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "wat")){
                 message.delete();
                 builder = new MessageBuilder();
-                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Wat?").appendNewLine().append("http://i0.kym-cdn.com/photos/images/newsfeed/000/173/576/Wat8.jpg?1315930535");
+                String url = "http://i0.kym-cdn.com/photos/images/newsfeed/000/173/576/Wat8.jpg";
+                try {
+                    BufferedImage img = ImageIO.read(new URL(url));
+                    File imgf = new File("wat.jpg");
+                    ImageIO.write(img, "jpg", imgf);
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " wat?").appendNewLine();
+                    message.reply(builder.build());
+                    message.replyFile(imgf);
+                }catch (IOException e){
+
+                }
                 message.reply(builder.build());
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "kappa")){
                 message.delete();
                 builder = new MessageBuilder();
-                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Kappa!").appendNewLine().append("http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1395991705/gjn81wvxqsq6yzcwubok.png");
+                String url = "http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1395991705/gjn81wvxqsq6yzcwubok.png";
+                try {
+                    BufferedImage img = ImageIO.read(new URL(url));
+                    File imgf = new File("kappa.png");
+                    ImageIO.write(img, "png", imgf);
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Kappa!").appendNewLine();
+                    message.reply(builder.build());
+                    message.replyFile(imgf);
+                }catch (IOException e){
+
+                }
                 message.reply(builder.build());
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "mindblown")){
+
                 message.delete();
                 builder = new MessageBuilder();
-                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append("'s mind blew up!").appendNewLine().append("https://godofall.files.wordpress.com/2014/06/mind-blown.gif");
+                String url = "https://godofall.files.wordpress.com/2014/06/mind-blown.gif";
+                try {
+                    BufferedImage img = ImageIO.read(new URL(url));
+                    File imgf = new File("mindblown.gif");
+                    ImageIO.write(img, "gif", imgf);
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, "'s mind blew up!").appendNewLine();
+                    message.reply(builder.build());
+                    message.replyFile(imgf);
+                }catch (IOException e){
+
+                }
                 message.reply(builder.build());
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "hype")){
