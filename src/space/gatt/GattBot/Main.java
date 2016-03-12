@@ -40,24 +40,9 @@ public class Main {
 
         adminUsers.add("113462564217683968");
         adminUsers.add("117785797985435652");
-        String email = "";
-        Scanner in = new Scanner(System.in);
-        while (email == ""){
-            System.out.println("Enter Email");
-            email = in.nextLine();
-        }
-
-        String password = "";
-        while (password == ""){
-            System.out.println("Enter Password for " + email);
-            password = in.nextLine();
-        }
-
-        String p2s = "";
-        for (int x = 0; x < password.length(); x++){
-            p2s = p2s + "*";
-        }
-        System.out.println("Attempting login with email " + email + " and password " + p2s);
+        String email = args[0];
+        String password = args[1];
+        System.out.println("Attempting login with email " + email);
         api = Javacord.getApi(email, password);
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
