@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +22,30 @@ import java.util.concurrent.TimeUnit;
  * Created by Zach on 6/03/2016.
  */
 public class MiscCommands implements MessageCreateListener {
+
+    private HashMap<String, File> imageCache = new HashMap<>();
+
+    private void cacheImage(String url, String extension, String name){
+        try {
+            BufferedImage img = ImageIO.read(new URL(url));
+            File imgf = new File(name + "." + extension);
+            ImageIO.write(img, extension, imgf);
+            imageCache.put(name, imgf);
+        }catch (IOException e){
+
+        }
+    }
+
+    private void cacheImages(){
+        cacheImage("http://orig09.deviantart.net/ac32/f/2011/356/f/1/nope_avi_high_resolution_by_wango911-d4jv1vx.png", "png", "nope");
+        cacheImage("http://i0.kym-cdn.com/photos/images/newsfeed/000/173/576/Wat8.jpg", "jpg", "wat");
+        cacheImage("http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1395991705/gjn81wvxqsq6yzcwubok.png", "png", "kappa");
+        cacheImage("https://godofall.files.wordpress.com/2014/06/mind-blown.gif", "gif", "mindblown");
+        cacheImage("https://i.gyazo.com/7049114840ae0333041f2138cccee63f.gif", "gif", "lolis");
+        cacheImage("http://atomix.vg/wp-content/uploads/2014/10/falcon-punch-anime.gif", "gif", "falconpunch");
+        cacheImage("http://pre14.deviantart.net/7397/th/pre/i/2013/153/5/5/yukki__i_ll_protect_you__by_saihina4ever-d67lec1.jpg", "jpg", "noticeme");
+    }
+
 
     @Override
     public void onMessageCreate(DiscordAPI discordAPI, Message message) {
@@ -139,71 +164,82 @@ public class MiscCommands implements MessageCreateListener {
                 }
             }
 
+            // Lolis
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lolis")) {
+                builder = new MessageBuilder();
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You want a loli?").appendNewLine();
+                message.reply(builder.build());
+                message.replyFile(imageCache.get("lolis"));
+                return;
+            }
+
+
+            // Notice me Senpai
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "noticeme")) {
+                message.delete();
+                if (Main.adminUsers.contains(message.getAuthor().getId())) {
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" S-s-s-s-s-senPAIII?!?!?!?! NOTICE ME SENPAI!").appendNewLine();
+                    message.reply(builder.build());
+                    message.replyFile(imageCache.get("noticeme"));
+                    return;
+                }
+                builder = new MessageBuilder();
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You're not senpai... ");
+                message.reply(builder.build());
+
+                return;
+            }
+
+            // Falcon Punch
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "falconpunch")) {
+                message.delete();
+                if (message.getMentions().get(0) != null) {
+                    builder = new MessageBuilder();
+                    User u = message.getMentions().get(0);
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" FALLLLLLLLCONNNNNNNNNN.... PUNCHHHHHHHHHHHH-ed ").appendUser(u).appendNewLine();
+                    message.reply(builder.build());
+                    message.replyFile(imageCache.get("falconpunch"));
+                } else {
+                    builder = new MessageBuilder();
+                    User u = message.getMentions().get(0);
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Please supply an argument!");
+                    message.reply(builder.build());
+                }
+                return;
+            }
+
             // Nope
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "nope")) {
                 message.delete();
                 builder = new MessageBuilder();
-                String url = "http://orig09.deviantart.net/ac32/f/2011/356/f/1/nope_avi_high_resolution_by_wango911-d4jv1vx.png";
-                try {
-                    BufferedImage img = ImageIO.read(new URL(url));
-                    File imgf = new File("nope.png");
-                    ImageIO.write(img, "png", imgf);
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Nope").appendNewLine();
-                    message.reply(builder.build());
-                    message.replyFile(imgf);
-                }catch (IOException e){
-
-                }
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Nope").appendNewLine();
+                message.reply(builder.build());
+                message.replyFile(imageCache.get("nope"));
                 return;
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "wat")){
                 message.delete();
                 builder = new MessageBuilder();
-                String url = "http://i0.kym-cdn.com/photos/images/newsfeed/000/173/576/Wat8.jpg";
-                try {
-                    BufferedImage img = ImageIO.read(new URL(url));
-                    File imgf = new File("wat.jpg");
-                    ImageIO.write(img, "jpg", imgf);
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " wat?").appendNewLine();
-                    message.reply(builder.build());
-                    message.replyFile(imgf);
-                }catch (IOException e){
 
-                }
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " wat?").appendNewLine();
                 message.reply(builder.build());
+                message.replyFile(imageCache.get("wat"));
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "kappa")){
                 message.delete();
                 builder = new MessageBuilder();
-                String url = "http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1395991705/gjn81wvxqsq6yzcwubok.png";
-                try {
-                    BufferedImage img = ImageIO.read(new URL(url));
-                    File imgf = new File("kappa.png");
-                    ImageIO.write(img, "png", imgf);
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Kappa!").appendNewLine();
-                    message.reply(builder.build());
-                    message.replyFile(imgf);
-                }catch (IOException e){
-
-                }
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Kappa!").appendNewLine();
                 message.reply(builder.build());
+                message.replyFile(imageCache.get("kappa"));
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "mindblown")){
 
                 message.delete();
                 builder = new MessageBuilder();
-                String url = "https://godofall.files.wordpress.com/2014/06/mind-blown.gif";
-                try {
-                    BufferedImage img = ImageIO.read(new URL(url));
-                    File imgf = new File("mindblown.gif");
-                    ImageIO.write(img, "gif", imgf);
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, "'s mind blew up!").appendNewLine();
-                    message.reply(builder.build());
-                    message.replyFile(imgf);
-                }catch (IOException e){
-
-                }
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, "'s mind blew up!").appendNewLine();
                 message.reply(builder.build());
+                message.replyFile(imageCache.get("mindblown"));
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "hype")){
                 message.delete();

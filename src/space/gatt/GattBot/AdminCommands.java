@@ -7,6 +7,7 @@ import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.Message;
 import de.btobastian.javacord.entities.message.MessageBuilder;
 import de.btobastian.javacord.entities.message.MessageDecoration;
+import de.btobastian.javacord.entities.message.MessageHistory;
 import de.btobastian.javacord.entities.permissions.Role;
 import de.btobastian.javacord.listener.message.MessageCreateListener;
 
@@ -24,6 +25,28 @@ import java.util.concurrent.TimeUnit;
  * Created by Zach on 6/03/2016.
  */
 public class AdminCommands implements MessageCreateListener {
+
+    private Boolean hasRole(User user, Server server, String roleName, Boolean caseSensitive){
+        if (caseSensitive) {
+            for (Role r : user.getRoles(server)) {
+                if (r.getName().equalsIgnoreCase(roleName)) {
+                    return true;
+                }
+            }
+            return false;
+        }else{
+            return hasRole(user, server, roleName);
+        }
+    }
+
+    private Boolean hasRole(User user, Server server, String roleName){
+        for (Role r : user.getRoles(server)){
+            if (r.getName().equals(roleName)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public void onMessageCreate(DiscordAPI api, Message message) {
@@ -103,6 +126,26 @@ public class AdminCommands implements MessageCreateListener {
                         return;
 
                     }
+                }
+            }
+
+            if (args[0].equalsIgnoreCase("clearchat")) {
+                message.delete();
+                if (hasRole(message.getAuthor(), message.getChannelReceiver().getServer(), "Bot Commander")) {
+                    try {
+                        for (Message m : message.getChannelReceiver().getMessageHistory(100).get().getMessagesSorted()){
+                            m.delete();
+                        }
+                    }catch (ExecutionException|InterruptedException e){
+
+                    }
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Attempted to clear up to 100 messages in this channel! (That's all the API will allow at the one time)").appendNewLine().appendDecoration(MessageDecoration.BOLD, "If no messages were removed, that means I don't have the right permissions!");
+                    message.reply(builder.build());
+                } else {
+                    builder = new MessageBuilder();
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You do not have the ").appendDecoration(MessageDecoration.BOLD, "Bot Commander").append(" rank!");
+                    message.reply(builder.build());
                 }
             }
 

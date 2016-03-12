@@ -155,47 +155,7 @@ public class UserCommands implements MessageCreateListener {
 
             //
 
-            // Lolis
-            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lolis")) {
-                builder = new MessageBuilder();
-                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You want a loli?").appendNewLine().append("https://i.gyazo.com/7049114840ae0333041f2138cccee63f.gif");
-                message.reply(builder.build());
-                return;
-            }
 
-
-            // Notice me Senpai
-            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "noticeme")) {
-                message.delete();
-                if (Main.adminUsers.contains(message.getAuthor().getId())) {
-                    builder = new MessageBuilder();
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" S-s-s-s-s-senPAIII?!?!?!?! NOTICE ME SENPAI!").appendNewLine().append("http://pre14.deviantart.net/7397/th/pre/i/2013/153/5/5/yukki__i_ll_protect_you__by_saihina4ever-d67lec1.jpg");
-                    message.reply(builder.build());
-                    return;
-                }
-                builder = new MessageBuilder();
-                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You're not senpai... ");
-                message.reply(builder.build());
-
-                return;
-            }
-
-            // Falcon Punch
-            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "falconpunch")) {
-                message.delete();
-                if (message.getMentions().get(0) != null) {
-                    builder = new MessageBuilder();
-                    User u = message.getMentions().get(0);
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" FALLLLLLLLCONNNNNNNNNN.... PUNCHHHHHHHHHHHH-ed ").appendUser(u).appendNewLine().append("http://atomix.vg/wp-content/uploads/2014/10/falcon-punch-anime.gif");
-                    message.reply(builder.build());
-                } else {
-                    builder = new MessageBuilder();
-                    User u = message.getMentions().get(0);
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Please supply an argument!");
-                    message.reply(builder.build());
-                }
-                return;
-            }
 
             // Slap
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "slap")) {
