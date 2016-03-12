@@ -139,9 +139,11 @@ public class AdminCommands implements MessageCreateListener {
                     }catch (ExecutionException|InterruptedException e){
 
                     }
-                    builder = new MessageBuilder();
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Attempted to clear up to 100 messages in this channel! (That's all the API will allow at the one time)").appendNewLine().appendDecoration(MessageDecoration.BOLD, "If no messages were removed, that means I don't have the right permissions!");
-                    message.reply(builder.build());
+                    if (!args[1].equalsIgnoreCase("-silent")) {
+                        builder = new MessageBuilder();
+                        builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Attempted to clear up to 100 messages in this channel! (That's all the API will allow at the one time)").appendNewLine().appendDecoration(MessageDecoration.BOLD, "If no messages were removed, that means I don't have the right permissions!");
+                        message.reply(builder.build());
+                    }
                 } else {
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You do not have the ").appendDecoration(MessageDecoration.BOLD, "Bot Commander").append(" rank!");

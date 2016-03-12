@@ -43,8 +43,9 @@
         <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/Settings.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="76" column="44" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
+              <caret line="88" column="39" selection-start-line="88" selection-start-column="39" selection-end-line="88" selection-end-column="39" />
               <folding>
+                <element signature="e#1935#1936#0" expanded="true" />
                 <element signature="e#1970#1971#0" expanded="true" />
               </folding>
             </state>
@@ -54,8 +55,8 @@
       <file leaf-file-name="AdminCommands.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/AdminCommands.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5843179">
-              <caret line="159" column="25" selection-start-line="159" selection-start-column="25" selection-end-line="159" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.32867885">
+              <caret line="145" column="21" selection-start-line="145" selection-start-column="21" selection-end-line="145" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -862,12 +863,12 @@
       <workItem from="1457588689666" duration="37000" />
       <workItem from="1457680073921" duration="759000" />
       <workItem from="1457746441976" duration="5555000" />
-      <workItem from="1457774629061" duration="10645000" />
+      <workItem from="1457774629061" duration="10802000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55996000" />
+    <option name="totallyTimeSpent" value="56153000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
@@ -933,6 +934,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding>
+            <element signature="e#1935#1936#0" expanded="true" />
             <element signature="e#1970#1971#0" expanded="true" />
           </folding>
         </state>
@@ -1013,6 +1015,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding>
+            <element signature="e#1935#1936#0" expanded="true" />
             <element signature="e#1970#1971#0" expanded="true" />
           </folding>
         </state>
@@ -1093,6 +1096,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding>
+            <element signature="e#1935#1936#0" expanded="true" />
             <element signature="e#1970#1971#0" expanded="true" />
           </folding>
         </state>
@@ -1165,6 +1169,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding>
+            <element signature="e#1935#1936#0" expanded="true" />
             <element signature="e#1970#1971#0" expanded="true" />
           </folding>
         </state>
@@ -1237,6 +1242,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="37" column="63" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="63" />
           <folding>
+            <element signature="e#1935#1936#0" expanded="true" />
             <element signature="e#1970#1971#0" expanded="true" />
           </folding>
         </state>
@@ -1275,6 +1281,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="52" column="18" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
           <folding>
+            <element signature="e#1935#1936#0" expanded="true" />
             <element signature="e#1970#1971#0" expanded="true" />
           </folding>
         </state>
@@ -1319,16 +1326,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/Settings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="44" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
-          <folding>
-            <element signature="e#1970#1971#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-26.444445">
@@ -1369,10 +1366,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="39" selection-start-line="88" selection-start-column="39" selection-end-line="88" selection-end-column="39" />
+          <folding>
+            <element signature="e#1935#1936#0" expanded="true" />
+            <element signature="e#1970#1971#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/AdminCommands.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5843179">
-          <caret line="159" column="25" selection-start-line="159" selection-start-column="25" selection-end-line="159" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.32867885">
+          <caret line="145" column="21" selection-start-line="145" selection-start-column="21" selection-end-line="145" selection-end-column="21" />
           <folding />
         </state>
       </provider>
