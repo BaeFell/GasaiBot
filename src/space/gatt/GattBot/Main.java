@@ -36,7 +36,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        new Thread(new SocketManager()).start();
+        //new Thread(new SocketManager()).start();
 
         adminUsers.add("113462564217683968");
         adminUsers.add("117785797985435652");
