@@ -29,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-33.384617">
-              <caret line="132" column="21" selection-start-line="132" selection-start-column="21" selection-end-line="132" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.28381374">
+              <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -101,10 +101,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminCommands.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdminCommands.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/AdminCommands.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18867925">
+            <state vertical-scroll-proportion="-6.296296">
               <caret line="38" column="45" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
               <folding />
             </state>
@@ -153,10 +153,10 @@
         <option value="$PROJECT_DIR$/src/space/gatt/GattBot/Delay.java" />
         <option value="$PROJECT_DIR$/src/space/gatt/GattBot/SocketManager.java" />
         <option value="$PROJECT_DIR$/src/space/gatt/GattBot/Main.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/space/gatt/GattBot/MiscCommands.java" />
         <option value="$PROJECT_DIR$/src/space/gatt/GattBot/UserCommands.java" />
         <option value="$PROJECT_DIR$/src/space/gatt/GattBot/AdminCommands.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -845,12 +845,12 @@
       <workItem from="1457588689666" duration="37000" />
       <workItem from="1457680073921" duration="759000" />
       <workItem from="1457746441976" duration="5555000" />
-      <workItem from="1457774629061" duration="1324000" />
+      <workItem from="1457774629061" duration="1627000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46675000" />
+    <option name="totallyTimeSpent" value="46978000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -1296,14 +1296,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-33.384617">
-          <caret line="132" column="21" selection-start-line="132" selection-start-column="21" selection-end-line="132" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/MiscCommands.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-57.296295">
@@ -1326,8 +1318,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/AdminCommands.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18867925">
+        <state vertical-scroll-proportion="-6.296296">
           <caret line="38" column="45" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28381374">
+          <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
           <folding />
         </state>
       </provider>
