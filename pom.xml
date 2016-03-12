@@ -55,10 +55,23 @@
                 <version>3.5.1</version>
                 <executions>
                     <execution>
-                        <id>attach-sources</id>
+                        <id>unpack</id>
+                        <phase>process-sources</phase>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>unpack</goal>
                         </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>GattBot</groupId>
+                                    <artifactId>GattBot</artifactId>
+                                    <version>GattBot.1.0.0</version>
+                                    <classifier>sources</classifier>
+                                    <overWrite>false</overWrite>
+                                    <outputDirectory>${project.build.directory}/GattBot</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
