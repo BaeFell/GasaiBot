@@ -16,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -30,9 +31,10 @@ public class AdminCommands implements MessageCreateListener {
             String[] args = message.getContent().split(" ");
 
             MessageBuilder builder = new MessageBuilder();
+            args[0] = args[0].replaceFirst(Settings.getCommandStarter(), "");
 
                 // Join Server Command
-            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "joinserver")) {
+            if (args[0].equalsIgnoreCase("joinserver")) {
                 if (message.isPrivateMessage()) {
                     String msg = message.getContent();
                     String invite = msg.replace(Settings.getCommandStarter() + "joinserver ", "");
@@ -66,7 +68,7 @@ public class AdminCommands implements MessageCreateListener {
                 return;
             }
 
-            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "startupmessage")) {
+            if (args[0].equalsIgnoreCase("startupmessage")) {
                 if (message.isPrivateMessage()) {
                     if (Main.adminUsers.contains(message.getAuthor().getId())) {
                         builder = new MessageBuilder();
@@ -102,7 +104,7 @@ public class AdminCommands implements MessageCreateListener {
                 }
             }
 
-            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "listservers")) {
+            if (args[0].equalsIgnoreCase("listservers")) {
                 if (message.isPrivateMessage()) {
                     if (Main.adminUsers.contains(message.getAuthor().getId())) {
                         for (Server s : api.getServers()) {
@@ -120,7 +122,7 @@ public class AdminCommands implements MessageCreateListener {
             }
 
             // Join Server Command
-            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "leaveall")) {
+            if (args[0].equalsIgnoreCase("leaveall")) {
                 if (message.isPrivateMessage()) {
                     if (Main.adminUsers.contains(message.getAuthor().getId())) {
                         for (Server s : api.getServers()) {
@@ -163,7 +165,7 @@ public class AdminCommands implements MessageCreateListener {
             }
 
             // Set Game
-            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "setsetting")) {
+            if (args[0].equalsIgnoreCase("setsetting")) {
                 if (Main.adminUsers.contains(message.getAuthor().getId())) {
                     if (args[1].equalsIgnoreCase("game")) {
                         String game = "";
@@ -373,7 +375,7 @@ public class AdminCommands implements MessageCreateListener {
 
             // Add Channel
 
-            if (args[0].equalsIgnoreCase("/addchannel")) {
+            if (args[0].equalsIgnoreCase("addchannel")) {
                 if (Main.adminUsers.contains(message.getAuthor().getId())) {
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Added Channel " + message.getChannelReceiver().getName() + " on Server " + message.getChannelReceiver().getServer().getName() + " to Start Up Msg receivers...");
@@ -389,7 +391,7 @@ public class AdminCommands implements MessageCreateListener {
             }
 
             // Shutdown Command
-            if (args[0].equalsIgnoreCase("/shutdown")) {
+            if (args[0].equalsIgnoreCase("shutdown")) {
                 if (Main.adminUsers.contains(message.getAuthor().getId())) {
                     Settings.addChannelToStartup(message.getChannelReceiver());
                     builder = new MessageBuilder();
@@ -434,11 +436,9 @@ public class AdminCommands implements MessageCreateListener {
             }
 
             if (!message.isPrivateMessage()) {
-                System.out.println(message.getAuthor().getName() + "(" + message.getChannelReceiver().getServer().getName() + ")[" + message.getChannelReceiver().getName() + "] > " + message.getContent());
                 builder.append(message.getAuthor().getName() + "(" + message.getChannelReceiver().getServer().getName() + ")[" + message.getChannelReceiver().getName() + "] > " + message.getContent());
                 Main.GattBotChannel.sendMessage(builder.build());
             } else {
-                System.out.println(message.getAuthor().getName() + "(PM)> " + message.getContent());
                 builder.append(message.getAuthor().getName() + "(PM)> " + message.getContent());
                 Main.GattBotChannel.sendMessage(builder.build());
             }
