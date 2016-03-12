@@ -63,8 +63,8 @@ public class Main {
             @Override
             public void onSuccess(DiscordAPI api) {
                 api.setGame("Loading bot settings...");
-
                 Settings.loadSettings();
+                Settings.setGame(api.getGame());
                 api.setAutoReconnect(true);
                 try{
                     boolean hasServer = false;
@@ -112,7 +112,8 @@ public class Main {
                 commands.add("hype - Hypeeeeeeeeeeeee.");
                 commands.add("mindblown - Boom.");
                 // Todo
-                commands.add("kappa - Kappa. [Todo]");
+                commands.add("kappa - Kappa.");
+                commands.add("wat - wat");
                 commands.add("uptime - Sends the Uptime for GattBot. [Todo]");
 
                 commands.add("**~ ~ ~ Misc ~ ~ ~**");
