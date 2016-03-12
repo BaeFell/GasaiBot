@@ -47,9 +47,10 @@ public class Main {
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
+                Settings.setGame(api.getGame());
                 api.setGame("Loading bot settings...");
                 Settings.loadSettings();
-                Settings.setGame(api.getGame());
+
                 api.setAutoReconnect(true);
                 try{
                     boolean hasServer = false;

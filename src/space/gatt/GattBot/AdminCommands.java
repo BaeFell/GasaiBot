@@ -409,8 +409,10 @@ public class AdminCommands implements MessageCreateListener {
                             } catch (IOException e) {
                             }
                             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down and Restarting, Senpai");
+                        }else if (args[1].equalsIgnoreCase("-shutdown")){
+                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai");
                         }else{
-                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai (unknown argument)");
+                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai (Unknown Argument!)");
                         }
                     }
                     else{
