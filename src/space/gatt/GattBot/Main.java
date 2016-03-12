@@ -8,16 +8,8 @@ import de.btobastian.javacord.entities.Server;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.MessageBuilder;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
