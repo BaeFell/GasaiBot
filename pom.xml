@@ -58,7 +58,7 @@
                         <id>unpack</id>
                         <phase>process-sources</phase>
                         <goals>
-                            <goal>unpack</goal>
+                            <goal>compile</goal>
                         </goals>
                         <configuration>
                             <artifactItems>
