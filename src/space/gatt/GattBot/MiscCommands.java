@@ -36,7 +36,7 @@ public class MiscCommands implements MessageCreateListener {
                 }else{
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Specify two users, please...");
-                    message.reply(builder.build());
+                    message.getAuthor().sendMessage(builder.build());
                 }
             }
 
@@ -58,7 +58,7 @@ public class MiscCommands implements MessageCreateListener {
                 }else{
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Specify a user please.");
-                    message.reply(builder.build());
+                    message.getAuthor().sendMessage(builder.build());
                 }
             }
 
@@ -75,7 +75,7 @@ public class MiscCommands implements MessageCreateListener {
                 }else{
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Specify more than two users, please...");
-                    message.reply(builder.build());
+                    message.getAuthor().sendMessage(builder.build());
                 }
             }
 
@@ -85,7 +85,7 @@ public class MiscCommands implements MessageCreateListener {
                     if (delay == null){
                         builder = new MessageBuilder();
                         builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Arg 2 must be an integer!");
-                        message.reply(builder.build());
+                        message.getAuthor().sendMessage(builder.build());
                         return;
                     }
                     TimeUnit unit = null;
@@ -102,7 +102,7 @@ public class MiscCommands implements MessageCreateListener {
                     if (unit == null){
                         builder = new MessageBuilder();
                         builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Arg 1 must be either MINUTES HOURS or SECONDS");
-                        message.reply(builder.build());
+                        message.getAuthor().sendMessage(builder.build());
                         return;
                     }
                     String msg = "";
@@ -116,13 +116,13 @@ public class MiscCommands implements MessageCreateListener {
                     }
                     new Thread(new Delay(unit, delay, message.getAuthor(), msg)).start();
                     builder = new MessageBuilder();
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You got it!");
-                    message.reply(builder.build());
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" I'll remind you when you requested me to :)");
+                    message.getAuthor().sendMessage(builder.build());
                     return;
                 }else{
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Not enough arguments!");
-                    message.reply(builder.build());
+                    message.getAuthor().sendMessage(builder.build());
                     return;
                 }
             }

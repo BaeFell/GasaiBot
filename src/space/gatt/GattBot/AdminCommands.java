@@ -12,7 +12,9 @@ import de.btobastian.javacord.listener.message.MessageCreateListener;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -339,11 +341,20 @@ public class AdminCommands implements MessageCreateListener {
                     }
 
                     if (args[1].equalsIgnoreCase("cmdstart")) {
-                        System.out.println("setting cmd starter to " + args[2]);
+                        String name = "";
+                        args[0] = "";
+                        args[1] = "";
+                        for (String s : args) {
+                            if (s != "") {
+                                name = name + s + " ";
+                            }
+                        }
+                        name = name.trim();
+                        System.out.println("setting cmd starter to " + name);
                         builder = new MessageBuilder();
-                        if (!args[2].equals("")) {
-                            Settings.setCommandStarter(args[2]);
-                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Set setting 'Command Starter' to " + args[2]);
+                        if (!name.equals("")) {
+                            Settings.setCommandStarter(name);
+                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Set setting 'Command Starter' to " + name);
                             message.reply(builder.build());
                         } else {
                             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" No argument supplied!");
@@ -362,7 +373,7 @@ public class AdminCommands implements MessageCreateListener {
 
             // Add Channel
 
-            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "addchannel")) {
+            if (args[0].equalsIgnoreCase("/addchannel")) {
                 if (Main.adminUsers.contains(message.getAuthor().getId())) {
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Added Channel " + message.getChannelReceiver().getName() + " on Server " + message.getChannelReceiver().getServer().getName() + " to Start Up Msg receivers...");
@@ -378,14 +389,35 @@ public class AdminCommands implements MessageCreateListener {
             }
 
             // Shutdown Command
-            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "shutdown")) {
+            if (args[0].equalsIgnoreCase("/shutdown")) {
                 if (Main.adminUsers.contains(message.getAuthor().getId())) {
                     Settings.addChannelToStartup(message.getChannelReceiver());
                     builder = new MessageBuilder();
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai");
+                    if (args[1].equalsIgnoreCase("-restart")){
+
+
+                        ProcessBuilder pb = new ProcessBuilder("startgattbot.sh");
+                        try {
+                            //Runtime.getRuntime().exec("echo ./startgattbot.sh");
+                            Process p = pb.start();
+                            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                            String line = null;
+                            while ((line = reader.readLine()) != null) {
+                                System.out.println(line);
+                            }
+                        }catch (IOException e){
+                        }
+                        builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down and Restarting, Senpai");
+                    }
+                    else{
+                        builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai");
+                    }
+
                     for (Channel c : Settings.getJoinMsgChannels()) {
                         c.sendMessage(builder.build());
                     }
+
+
                     try {
                         TimeUnit.SECONDS.sleep(2);
                         System.exit(0);
