@@ -36,7 +36,7 @@ public class MiscCommands implements MessageCreateListener {
         }
     }
 
-    private void cacheImages(){
+    public void cacheImages(){
         cacheImage("http://orig09.deviantart.net/ac32/f/2011/356/f/1/nope_avi_high_resolution_by_wango911-d4jv1vx.png", "png", "nope");
         cacheImage("http://i0.kym-cdn.com/photos/images/newsfeed/000/173/576/Wat8.jpg", "jpg", "wat");
         cacheImage("http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1395991705/gjn81wvxqsq6yzcwubok.png", "png", "kappa");

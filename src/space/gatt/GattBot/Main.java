@@ -126,8 +126,10 @@ public class Main {
 
                 api.setGame(Settings.getGame());
                 // register listener
+                MiscCommands miscCommands = new MiscCommands();
+                miscCommands.cacheImages();
                 api.registerListener(new MessageReplier());
-                api.registerListener(new MiscCommands());
+                api.registerListener(miscCommands);
                 api.registerListener(new AdminCommands());
                 api.registerListener(new UserCommands());
                 MessageBuilder builder = new MessageBuilder();
