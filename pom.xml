@@ -7,22 +7,57 @@
     <groupId>GattBot</groupId>
     <artifactId>GattBot</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <src.dir>src</src.dir>
+    </properties>
 
     <build>
+        <sourceDirectory>${src.dir}</sourceDirectory>
         <plugins>
             <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
+            <plugin>
+                <!-- Build an executable JAR -->
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>7</source>
+                    <target>7</target>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>space.gatt.GattBot.Main</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
+
     <repositories>
+        <repository>
+            <id>repo</id>
+            <url>file://${project.basedir}/repo/</url>
+        </repository>
         <repository>
             <id>me.itsghost</id>
             <url>http://itsghost.me/maven/</url>
@@ -38,7 +73,21 @@
         <!-->    <artifactId>jDiscord</artifactId><-->
         <!-->    <version>2.1.2</version><-->
         <!--></dependency><-->
-
+        <dependency>
+            <groupId>commons.codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>lombok</groupId>
+            <artifactId>lombokjar</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <dependency>
             <groupId>de.btobastian.javacord</groupId>
             <artifactId>javacord</artifactId>
@@ -56,5 +105,13 @@
         </dependency>
     </dependencies>
 
-    
+    <profiles>
+        <profile>
+            <id>development</id>
+            <properties>
+                <src.dir>${project.build.directory}/src</src.dir>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>
