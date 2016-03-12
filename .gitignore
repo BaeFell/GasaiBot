@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 *.pub
 openshift
@@ -16,3 +17,6 @@ target/classes/space/gatt/GattBot/Main.class
 target/classes/space/gatt/GattBot/Main.class
 target/classes/space/gatt/GattBot/Main$1.class
 *.class
+=======
+
+>>>>>>> origin/master
