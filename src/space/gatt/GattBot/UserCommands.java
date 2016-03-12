@@ -23,7 +23,7 @@ public class UserCommands implements MessageCreateListener {
                 message.getAuthor().sendMessage("You're no longer AFK since you sent a message!");
             }
 
-            if (!message.getAuthor().isYourself()) {
+            if (message.getAuthor() != discordAPI.getYourself()) {
                 for (User u : Main.afk) {
                     if (message.getMentions().contains(u)) {
                         MessageBuilder builder = new MessageBuilder();

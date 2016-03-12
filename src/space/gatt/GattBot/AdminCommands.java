@@ -36,12 +36,13 @@ public class AdminCommands implements MessageCreateListener {
                     String invite = msg.replace(Settings.getCommandStarter() + "joinserver ", "");
                     Server server = null;
                     String error = "";
+                    api.acceptInvite(invite);
                     try {
                         server = api.acceptInvite(invite).get();
                     } catch (InterruptedException | ExecutionException e) {
                         error = e.getMessage();
                         builder = new MessageBuilder();
-                        builder.append(Settings.getMsgStarter() + "Could not join server from invite " + invite + " Reason: " + error);
+                        builder.append(Settings.getMsgStarter() + "Could not join server from invite ").appendDecoration(MessageDecoration.BOLD_ITALICS, invite).append(" Reason: " + error);
                         message.reply(builder.build());
                         e.printStackTrace();
                     }

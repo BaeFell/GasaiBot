@@ -64,7 +64,7 @@ public class MiscCommands implements MessageCreateListener {
 
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "fightclub")){
                 if (message.getMentions().size() > 1) {
-                    ArrayList<User> fiteme = new ArrayList<>();
+                    ArrayList<User> fiteme = new ArrayList<User>();
                     for (User u : message.getMentions()){
                         fiteme.add(u);
                     }
@@ -127,6 +127,16 @@ public class MiscCommands implements MessageCreateListener {
                 }
             }
 
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "wat")){
+                builder = new MessageBuilder();
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Wat?").appendNewLine().append("http://i0.kym-cdn.com/photos/images/newsfeed/000/173/576/Wat8.jpg?1315930535");
+                message.reply(builder.build());
+            }
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "kappa")){
+                builder = new MessageBuilder();
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Kappa!").appendNewLine().append("http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1395991705/gjn81wvxqsq6yzcwubok.png");
+                message.reply(builder.build());
+            }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "mindblown")){
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append("'s mind blew up!").appendNewLine().append("https://godofall.files.wordpress.com/2014/06/mind-blown.gif");
@@ -137,7 +147,6 @@ public class MiscCommands implements MessageCreateListener {
                 builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Let the hype train begin!");
                 message.reply(builder.build());
             }
-
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lenny")){
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" ( ͡° ͜ʖ ͡°)");
