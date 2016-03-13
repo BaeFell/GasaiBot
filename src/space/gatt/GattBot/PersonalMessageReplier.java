@@ -96,10 +96,11 @@ public class PersonalMessageReplier implements MessageCreateListener {
 			replies.add("ばか!!");
 			replies.add("I've been running for %b(%timerunning) milliseconds!");
 			replies.add("%i(%msg) to you too!");
+			replies.add("Hmmm... Do I know you, %user?");
 			replies.add("Humph!");
 			replies.add("Do you need something?");
 			replies.add("Yes. I'm a Bot. Yes - this is a predefined message. No you cannot add more");
-			replies.add("Hmmm... Do I know you, %user");
+			replies.add("");
 
 			String reply = "";
 			Random random = new Random();
