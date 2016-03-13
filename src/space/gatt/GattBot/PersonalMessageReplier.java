@@ -22,12 +22,14 @@ public class PersonalMessageReplier implements MessageCreateListener {
 	private void reply(Message message, String s){
 		s = s.replaceAll("%msg", message.getContent());
 		s = s.replaceAll("%timerunning", Objects.toString(getTimeRunning(), null));
+		s = s.replaceAll("%user", message.getAuthor().getMentionTag());
 		MessageBuilder builder = new MessageBuilder();
 		Integer id = -1;
 		String[] args = s.split("");
 		String currentAction = "scanning";
 		String addMsg = "";
 		Boolean doAdd = true;
+		builder.append(Settings.getMsgStarter() + " ");
 		for (String s1 : args){
 			id++;
 			// Italics Scanner
@@ -41,7 +43,7 @@ public class PersonalMessageReplier implements MessageCreateListener {
 				}
 			}
 			if (currentAction.equalsIgnoreCase("addingtoitalics")){
-				if (!s1.equalsIgnoreCase("") && s1.equalsIgnoreCase(")")){
+				if (!s1.equalsIgnoreCase(")")){
 					addMsg = addMsg + s1;
 					doAdd = false;
 				}else{
@@ -60,7 +62,7 @@ public class PersonalMessageReplier implements MessageCreateListener {
 				}
 			}
 			if (currentAction.equalsIgnoreCase("addingtobold")){
-				if (!s1.equalsIgnoreCase("") && s1.equalsIgnoreCase(")")){
+				if (!s1.equalsIgnoreCase(")")){
 					addMsg = addMsg + s1;
 					doAdd = false;
 				}else{
@@ -80,7 +82,7 @@ public class PersonalMessageReplier implements MessageCreateListener {
 	@Override
 	public void onMessageCreate(DiscordAPI discordAPI, Message message) {
 
-		if (message.isPrivateMessage()){
+		if (message.isPrivateMessage() && (message.getAuthor() != discordAPI.getYourself())){
 
 			List<String> replies = new ArrayList<>();
 			replies.add("I'm GattBot!");
@@ -95,6 +97,7 @@ public class PersonalMessageReplier implements MessageCreateListener {
 			replies.add("Humph!");
 			replies.add("Do you need something?");
 			replies.add("Yes. I'm a Bot. Yes - this is a predefined message. No you cannot add more");
+			replies.add("Hmmm... Do I know you, %user");
 
 			String reply = "";
 			Random random = new Random();
