@@ -221,9 +221,8 @@ public class MiscCommands implements MessageCreateListener {
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "git")){
                 message.delete();
                 builder = new MessageBuilder();
-
-                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Here you go!").appendNewLine().append("https://github.com/Funnygatt/GattBot");
-                message.reply(builder.build());
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Here you go!").appendNewLine().append("https://github.com/Funnygatt/GattBot");
+                message.getAuthor().sendMessage(builder.build());
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "wat")){
                 message.delete();
