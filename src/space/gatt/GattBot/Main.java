@@ -110,6 +110,7 @@ public class Main {
                 // Todo
                 commands.add("kappa - Kappa.");
                 commands.add("wat - wat");
+                commands.add("git - Sends you the Git Repo");
                 commands.add("uptime - Sends the Uptime for GattBot. [Todo]");
 
                 commands.add("**~ ~ ~ Misc ~ ~ ~**");
