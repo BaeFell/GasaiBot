@@ -177,7 +177,7 @@ public class MiscCommands implements MessageCreateListener {
             // Notice me Senpai
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "noticeme")) {
                 message.delete();
-                if (Main.adminUsers.contains(message.getAuthor().getId())) {
+                if (Main.senpais.contains(message.getAuthor().getId())) {
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" S-s-s-s-s-senPAIII?!?!?!?! NOTICE ME SENPAI!").appendNewLine();
                     message.reply(builder.build());

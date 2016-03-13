@@ -28,6 +28,7 @@ public class Main {
     public static Channel GattBotChannel;
 
     public static ArrayList<String> adminUsers = new ArrayList<>();
+    public static ArrayList<String> senpais = new ArrayList<>();
 
     private static DiscordAPI api;
 
@@ -43,7 +44,10 @@ public class Main {
 
         adminUsers.add("113462564217683968");
         adminUsers.add("117785797985435652");
-        adminUsers.add("80972065296887808");
+        senpais.add("80972065296887808");
+        senpais.add("113462564217683968");
+        senpais.add("117785797985435652");
+        senpais.add("138481382794985472");
         String email = args[0];
         String password = args[1];
         System.out.println("Attempting login with email " + email);
