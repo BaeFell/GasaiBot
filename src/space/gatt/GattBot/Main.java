@@ -128,6 +128,7 @@ public class Main {
                 // register listener
                 MiscCommands miscCommands = new MiscCommands();
                 miscCommands.cacheImages();
+                api.registerListener(new PersonalMessageReplier());
                 api.registerListener(new MessageReplier());
                 api.registerListener(miscCommands);
                 api.registerListener(new AdminCommands());
