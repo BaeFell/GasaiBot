@@ -232,7 +232,7 @@ public class MiscCommands implements MessageCreateListener {
                 message.reply(builder.build());
                 message.replyFile(imageCache.get("wat"));
             }
-            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "kappa")){
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "kappa") || args[0].equalsIgnoreCase(":kappa:")){
                 message.delete();
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Kappa!").appendNewLine();
