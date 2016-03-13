@@ -37,6 +37,7 @@ public class PersonalMessageReplier implements MessageCreateListener {
 			if (s1.equalsIgnoreCase("%")){
 				if (args[id+1].equalsIgnoreCase("i") && args[id+2].equalsIgnoreCase("(")){
 					 currentAction = "addingToItalics";
+					args[id] = "";
 					args[id+2] = "";
 					args[id+1] = "";
 					doAdd = false;
@@ -56,6 +57,7 @@ public class PersonalMessageReplier implements MessageCreateListener {
 			if (s1.equalsIgnoreCase("%")){
 				if (args[id+1].equalsIgnoreCase("b") && args[id+2].equalsIgnoreCase("(")){
 					currentAction = "addingToBold";
+					args[id] = "";
 					args[id+2] = "";
 					args[id+1] = "";
 					doAdd = false;
@@ -93,7 +95,7 @@ public class PersonalMessageReplier implements MessageCreateListener {
 			replies.add("は?");
 			replies.add("ばか!!");
 			replies.add("I've been running for %b(%timerunning) milliseconds!");
-			replies.add("%i(%msg)!");
+			replies.add("%i(%msg) to you too!");
 			replies.add("Humph!");
 			replies.add("Do you need something?");
 			replies.add("Yes. I'm a Bot. Yes - this is a predefined message. No you cannot add more");
