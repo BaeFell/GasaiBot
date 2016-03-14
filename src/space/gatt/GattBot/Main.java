@@ -49,6 +49,7 @@ public class Main {
         senpais.add("117785797985435652");
         senpais.add("138481382794985472");
         String email = args[0];
+
         String password = args[1];
         System.out.println("Attempting login with email " + email);
         Date date = new Date();
@@ -58,6 +59,7 @@ public class Main {
             @Override
             public void onSuccess(DiscordAPI api) {
                 api.setAutoReconnect(true);
+                api.createBot(api.getYourself().getName());
                 try{
                     boolean hasServer = false;
                     for (Server s : api.getServers()){
