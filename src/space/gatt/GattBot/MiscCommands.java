@@ -44,6 +44,7 @@ public class MiscCommands implements MessageCreateListener {
         cacheImage("https://i.gyazo.com/7049114840ae0333041f2138cccee63f.gif", "gif", "lolis");
         cacheImage("http://atomix.vg/wp-content/uploads/2014/10/falcon-punch-anime.gif", "gif", "falconpunch");
         cacheImage("http://pre14.deviantart.net/7397/th/pre/i/2013/153/5/5/yukki__i_ll_protect_you__by_saihina4ever-d67lec1.jpg", "jpg", "noticeme");
+        cacheImage("https://i.ytimg.com/vi/fGl4LOAgW50/maxresdefault.jpg", "jpg", "awwyeah");
     }
 
 
@@ -223,6 +224,14 @@ public class MiscCommands implements MessageCreateListener {
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Here you go!").appendNewLine().append("https://github.com/Funnygatt/GattBot");
                 message.getAuthor().sendMessage(builder.build());
+            }
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "awwyeah")){
+                message.delete();
+                builder = new MessageBuilder();
+
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Awwww, Yeahhhh!").appendNewLine();
+                message.reply(builder.build());
+                message.replyFile(imageCache.get("awwyeah"));
             }
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "wat")){
                 message.delete();
