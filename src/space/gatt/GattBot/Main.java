@@ -172,9 +172,9 @@ public class Main {
                 GattBotChannel.sendMessage(builder.build());
                 api.registerListener(new PersonalMessageReplier());
                 api.registerListener(new MessageReplier());
-                api.registerListener(miscCommands);
                 api.registerListener(new AdminCommands());
                 api.registerListener(new UserCommands());
+                api.registerListener(miscCommands);
                 builder = new MessageBuilder();
                 builder.append("GattBot loaded! There is " + commands.size() + " lines in the commands Array!");
                 GattBotChannel.sendMessage(builder.build());
