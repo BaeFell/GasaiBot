@@ -55,18 +55,18 @@ public class Main {
         System.out.println("Attempting login with email " + email);
         Date date = new Date();
         startupTime = date.getTime();
-        FutureCallback<DiscordAPI> futureAPI = new FutureCallback<DiscordAPI>() {
-            @Override
-            public void onSuccess(DiscordAPI result) {
-                Main.token = result.getToken();
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-
-            }
-        };
-        Javacord.getApi(email, password).connect(futureAPI);
+        //FutureCallback<DiscordAPI> futureAPI = new FutureCallback<DiscordAPI>() {
+        //    @Override
+        //    public void onSuccess(DiscordAPI result) {
+        //        Main.token = result.getToken();
+        //    }
+//
+        //    @Override
+        //    public void onFailure(Throwable t) {
+//
+        //    }
+        //};
+        //Javacord.getApi(email, password).connect(futureAPI);
         api = Javacord.getApi(email, password);
 //        api.createApplication("GattBot", new FutureCallback<Application>() {
 //            @Override
@@ -79,7 +79,7 @@ public class Main {
 //
 //            }
 //        });
-        api.convertToBotAccount(Main.token);
+        api.convertToBotAccount(api.getToken());
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
