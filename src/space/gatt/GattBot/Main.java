@@ -68,7 +68,7 @@ public class Main {
             }
         };
         Javacord.getApi(email, password).connect(futureAPI);
-        api = Javacord.getApi(Main.token, true);
+        api = Javacord.getApi(email, password);
 //        api.createApplication("GattBot", new FutureCallback<Application>() {
 //            @Override
 //            public void onSuccess(Application result) {
@@ -83,6 +83,7 @@ public class Main {
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
+                api.convertToBotAccount(Main.token);
                 api.setAutoReconnect(true);
                 try{
                     boolean hasServer = false;
