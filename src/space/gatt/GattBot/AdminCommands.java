@@ -56,7 +56,7 @@ public class AdminCommands implements MessageCreateListener {
             MessageBuilder builder = new MessageBuilder();
             args[0] = args[0].replaceFirst(Settings.getCommandStarter(), "");
 
-                // Join Server Command
+            // Join Server Command
             if (args[0].equalsIgnoreCase("joinserver")) {
                 message.delete();
                 if (message.isPrivateMessage()) {
@@ -73,7 +73,7 @@ public class AdminCommands implements MessageCreateListener {
                             builder = new MessageBuilder();
                             builder.append(Settings.getMsgStarter() + "Found server from invite " + invite + "... " + server.getName());
                             message.reply(builder.build());
-                        }else{
+                        } else {
                             builder = new MessageBuilder();
                             builder.append(Settings.getMsgStarter() + "Could not join server from invite " + invite);
                             message.reply(builder.build());
@@ -143,7 +143,7 @@ public class AdminCommands implements MessageCreateListener {
                             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Attempted to clear up to 100 messages in this channel! (That's all the API will allow at the one time)").appendNewLine().appendDecoration(MessageDecoration.BOLD, "If no messages were removed, that means I don't have the right permissions!");
                             message.reply(builder.build());
                         }
-                    }else{
+                    } else {
                         builder = new MessageBuilder();
                         builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Attempted to clear up to 100 messages in this channel! (That's all the API will allow at the one time)").appendNewLine().appendDecoration(MessageDecoration.BOLD, "If no messages were removed, that means I don't have the right permissions!");
                         message.reply(builder.build());
@@ -452,29 +452,12 @@ public class AdminCommands implements MessageCreateListener {
                     Settings.addChannelToStartup(message.getChannelReceiver());
                     builder = new MessageBuilder();
                     if (args.length > 0) {
-                        if (args[1].equalsIgnoreCase("-restart")) {
-                            ProcessBuilder pb = new ProcessBuilder("startgattbot.sh");
-                            try {
-                                //Runtime.getRuntime().exec("echo ./startgattbot.sh");
-                                Process p = pb.start();
-                                BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                                String line = null;
-                                while ((line = reader.readLine()) != null) {
-                                    System.out.println(line);
-                                }
-                            } catch (IOException e) {
-                            }
-                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down and Restarting, Senpai");
-                        }else if (args[1].equalsIgnoreCase("-shutdown")){
-                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai");
-                        }else{
-                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai (Unknown Argument!)");
-                        }
                     }
-                    else{
+                    if (args[1].equalsIgnoreCase("-shutdown")) {
                         builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai");
+                    } else {
+                        builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai (Unknown Argument!)");
                     }
-
                     for (Channel c : Settings.getJoinMsgChannels()) {
                         c.sendMessage(builder.build());
                     }
@@ -485,7 +468,6 @@ public class AdminCommands implements MessageCreateListener {
                     } catch (InterruptedException e) {
 
                     }
-
                 } else {
                     builder = new MessageBuilder();
                     builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You are not senpai!");
@@ -493,7 +475,6 @@ public class AdminCommands implements MessageCreateListener {
                 }
                 return;
             }
-
             if (!message.isPrivateMessage()) {
                 builder.append(message.getAuthor().getName() + "(" + message.getChannelReceiver().getServer().getName() + ")[" + message.getChannelReceiver().getName() + "] > " + message.getContent());
                 Main.GattBotChannel.sendMessage(builder.build());
@@ -502,7 +483,6 @@ public class AdminCommands implements MessageCreateListener {
                 Main.GattBotChannel.sendMessage(builder.build());
             }
         }
-
     }
 }
 

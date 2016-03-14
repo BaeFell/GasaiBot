@@ -143,6 +143,10 @@ public class Main {
                 commands.add("math [Expression] - Does Math. May not work with all mathematical expressions [disabled for now]");
 
                 // register listener
+                api.registerListener(new PersonalMessageReplier());
+                api.registerListener(new MessageReplier());
+                api.registerListener(new AdminCommands());
+                api.registerListener(new UserCommands());
                 MiscCommands miscCommands = new MiscCommands();
                 MessageBuilder builder = new MessageBuilder();
                 builder.append("Caching meme images");
@@ -151,10 +155,6 @@ public class Main {
                 builder = new MessageBuilder();
                 builder.append("Cached meme` images");
                 GattBotChannel.sendMessage(builder.build());
-                api.registerListener(new PersonalMessageReplier());
-                api.registerListener(new MessageReplier());
-                api.registerListener(new AdminCommands());
-                api.registerListener(new UserCommands());
                 api.registerListener(miscCommands);
                 builder = new MessageBuilder();
                 builder.append("GattBot loaded! There is " + commands.size() + " lines in the commands Array!");
