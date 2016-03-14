@@ -1,12 +1,18 @@
 package space.gatt.GattBot;
 
 import de.btobastian.javacord.DiscordAPI;
+import de.btobastian.javacord.entities.Server;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.Message;
 import de.btobastian.javacord.entities.message.MessageBuilder;
 import de.btobastian.javacord.entities.message.MessageDecoration;
 import de.btobastian.javacord.entities.permissions.Role;
 import de.btobastian.javacord.listener.message.MessageCreateListener;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Zach on 6/03/2016.
@@ -110,7 +116,37 @@ public class UserCommands implements MessageCreateListener {
             }
 
 
+            // Bot Info
+            if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "botinfo")) {
+                message.delete();
+                builder = new MessageBuilder();
 
+                builder.appendCode("null", Settings.getMsgStarter() + " My current name: " + discordAPI.getYourself().getName()).appendNewLine();
+                builder.appendCode("null", Settings.getMsgStarter() + " My current game: " + discordAPI.getYourself().getGame()).appendNewLine();
+                try {
+                    builder.appendCode("null", Settings.getMsgStarter() + " My current profile picture: " + discordAPI.getYourself().getAvatar().get()).appendNewLine();
+                }catch (InterruptedException|ExecutionException e){
+
+                }
+                builder.appendCode("null", Settings.getMsgStarter() + " Admin Rank Name: Bot Commander").appendNewLine();
+                builder.appendCode("null", Settings.getMsgStarter() + " Servers joined: " + discordAPI.getServers().size()).appendNewLine();
+                builder.appendCode("null", Settings.getMsgStarter() + " Names of servers joined: ").appendNewLine();
+                for (Server s : discordAPI.getServers()){
+                    builder.appendCode("null", Settings.getMsgStarter() + Settings.getMsgStarter() + " Name: " + s.getName()).appendNewLine();
+                    builder.appendCode("null", Settings.getMsgStarter() + Settings.getMsgStarter() + " Member Count: " + s.getMemberCount()).appendNewLine();
+                }
+                builder.appendCode("null", Settings.getMsgStarter() + " Users in Cache: " + Main.userCache.keySet().size()).appendNewLine();
+                try {
+                    builder.appendCode("null", Settings.getMsgStarter() + " My current IP (may not be exact): " + InetAddress.getLocalHost().getHostAddress()).appendNewLine();
+                }catch (UnknownHostException e){
+                    builder.appendCode("null", Settings.getMsgStarter() + " My current IP (may not be exact): Oops! Couldn't get it").appendNewLine();
+                }
+                message.getAuthor().sendMessage(builder.build());
+                builder = new MessageBuilder();
+                builder.append(Settings.getMsgStarter() + "I've PM'd you my information, ").appendUser(message.getAuthor());
+                message.reply(builder.build());
+                return;
+            }
 
             // Get Infomation
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "getinfo")) {
@@ -152,11 +188,7 @@ public class UserCommands implements MessageCreateListener {
                 message.reply(builder.build());
                 return;
             }
-
             //
-
-
-
             // Slap
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "slap")) {
                 message.delete();

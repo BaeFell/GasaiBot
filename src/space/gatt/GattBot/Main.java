@@ -121,6 +121,7 @@ public class Main {
 
                 commands.add("**~ ~ ~ Useful ~ ~ ~**");
                 commands.add("getinfo [@User] - Gets data about the @User");
+                commands.add("botinfo - Shows you information about GattBot like IP and random junk");
                 commands.add("log - Gives you the link to join the log channel");
                 commands.add("setafk [True/False] - Sets your AFK Status");
                 commands.add("isafk [@User] - Is @User afk?");
