@@ -66,12 +66,10 @@ public class Main {
 
             }
         });
-
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
                 api.setAutoReconnect(true);
-                api.convertToBotAccount(email, password);
                 try{
                     boolean hasServer = false;
                     for (Server s : api.getServers()){

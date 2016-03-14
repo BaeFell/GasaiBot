@@ -98,14 +98,14 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.03773585">
-              <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.49056605">
+              <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1967#1968#0" expanded="true" />
                 <element signature="e#2060#2061#0" expanded="true" />
-                <element signature="e#7582#7583#0" expanded="true" />
-                <element signature="e#7633#7634#0" expanded="true" />
+                <element signature="e#7523#7524#0" expanded="true" />
+                <element signature="e#7574#7575#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -888,12 +888,12 @@
       <workItem from="1457746441976" duration="5555000" />
       <workItem from="1457774629061" duration="11301000" />
       <workItem from="1457847124923" duration="4610000" />
-      <workItem from="1457920669330" duration="6315000" />
+      <workItem from="1457920669330" duration="6414000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67577000" />
+    <option name="totallyTimeSpent" value="67676000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -996,8 +996,8 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1967#1968#0" expanded="true" />
             <element signature="e#2060#2061#0" expanded="true" />
-            <element signature="e#7582#7583#0" expanded="true" />
-            <element signature="e#7633#7634#0" expanded="true" />
+            <element signature="e#7523#7524#0" expanded="true" />
+            <element signature="e#7574#7575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1102,8 +1102,8 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1967#1968#0" expanded="true" />
             <element signature="e#2060#2061#0" expanded="true" />
-            <element signature="e#7582#7583#0" expanded="true" />
-            <element signature="e#7633#7634#0" expanded="true" />
+            <element signature="e#7523#7524#0" expanded="true" />
+            <element signature="e#7574#7575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1208,8 +1208,8 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1967#1968#0" expanded="true" />
             <element signature="e#2060#2061#0" expanded="true" />
-            <element signature="e#7582#7583#0" expanded="true" />
-            <element signature="e#7633#7634#0" expanded="true" />
+            <element signature="e#7523#7524#0" expanded="true" />
+            <element signature="e#7574#7575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1306,8 +1306,8 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1967#1968#0" expanded="true" />
             <element signature="e#2060#2061#0" expanded="true" />
-            <element signature="e#7582#7583#0" expanded="true" />
-            <element signature="e#7633#7634#0" expanded="true" />
+            <element signature="e#7523#7524#0" expanded="true" />
+            <element signature="e#7574#7575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1404,8 +1404,8 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1967#1968#0" expanded="true" />
             <element signature="e#2060#2061#0" expanded="true" />
-            <element signature="e#7582#7583#0" expanded="true" />
-            <element signature="e#7633#7634#0" expanded="true" />
+            <element signature="e#7523#7524#0" expanded="true" />
+            <element signature="e#7574#7575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1426,8 +1426,8 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1967#1968#0" expanded="true" />
             <element signature="e#2060#2061#0" expanded="true" />
-            <element signature="e#7582#7583#0" expanded="true" />
-            <element signature="e#7633#7634#0" expanded="true" />
+            <element signature="e#7523#7524#0" expanded="true" />
+            <element signature="e#7574#7575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1575,14 +1575,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03773585">
-          <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.49056605">
+          <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1967#1968#0" expanded="true" />
             <element signature="e#2060#2061#0" expanded="true" />
-            <element signature="e#7582#7583#0" expanded="true" />
-            <element signature="e#7633#7634#0" expanded="true" />
+            <element signature="e#7523#7524#0" expanded="true" />
+            <element signature="e#7574#7575#0" expanded="true" />
           </folding>
         </state>
       </provider>
