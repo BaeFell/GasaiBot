@@ -79,11 +79,11 @@ public class Main {
 //
 //            }
 //        });
-        api.convertToBotAccount(api.getToken());
+
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
-
+                api.convertToBotAccount(api.getToken());
                 api.setAutoReconnect(true);
                 System.out.println("Updating user cache");
                 for (Server s : api.getServers()){
