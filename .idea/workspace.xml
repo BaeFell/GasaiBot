@@ -98,10 +98,12 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33962265">
-              <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.28301886">
+              <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#7234#7235#0" expanded="true" />
+                <element signature="e#7285#7286#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -884,12 +886,12 @@
       <workItem from="1457746441976" duration="5555000" />
       <workItem from="1457774629061" duration="11301000" />
       <workItem from="1457847124923" duration="4610000" />
-      <workItem from="1457920669330" duration="4567000" />
+      <workItem from="1457920669330" duration="4934000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65829000" />
+    <option name="totallyTimeSpent" value="66196000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -990,6 +992,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#7234#7235#0" expanded="true" />
+            <element signature="e#7285#7286#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1092,6 +1096,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#7234#7235#0" expanded="true" />
+            <element signature="e#7285#7286#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1194,6 +1200,8 @@
           <caret line="60" column="21" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#7234#7235#0" expanded="true" />
+            <element signature="e#7285#7286#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1288,6 +1296,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#7234#7235#0" expanded="true" />
+            <element signature="e#7285#7286#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1382,6 +1392,8 @@
           <caret line="115" column="53" selection-start-line="115" selection-start-column="53" selection-end-line="115" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#7234#7235#0" expanded="true" />
+            <element signature="e#7285#7286#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1400,6 +1412,8 @@
           <caret line="22" column="84" selection-start-line="22" selection-start-column="84" selection-end-line="22" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#7234#7235#0" expanded="true" />
+            <element signature="e#7285#7286#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1547,10 +1561,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33962265">
-          <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.28301886">
+          <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#7234#7235#0" expanded="true" />
+            <element signature="e#7285#7286#0" expanded="true" />
           </folding>
         </state>
       </provider>
