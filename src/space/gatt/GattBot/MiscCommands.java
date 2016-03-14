@@ -51,7 +51,6 @@ public class MiscCommands implements MessageCreateListener {
     @Override
     public void onMessageCreate(DiscordAPI discordAPI, Message message) {
 
-        if (message.getContent().startsWith(Settings.getCommandStarter())) {
             String[] args = message.getContent().split(" ");
             MessageBuilder builder;
 
@@ -354,5 +353,5 @@ public class MiscCommands implements MessageCreateListener {
                 }
             }
         }
-    }
+
 }
