@@ -54,12 +54,12 @@ public class Main {
         System.out.println("Attempting login with email " + email);
         Date date = new Date();
         startupTime = date.getTime();
-        api = Javacord.getApi(email, password);
+        String token = Javacord.getApi(email, password).getToken();
+        api = Javacord.getApi(token, true);
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
                 api.setAutoReconnect(true);
-                api.convertToBotAccount(email, password);
                 try{
                     boolean hasServer = false;
                     for (Server s : api.getServers()){
