@@ -121,25 +121,21 @@ public class UserCommands implements MessageCreateListener {
                 message.delete();
                 builder = new MessageBuilder();
 
-                builder.appendCode("null", Settings.getMsgStarter() + " My current name: " + discordAPI.getYourself().getName()).appendNewLine();
-                builder.appendCode("null", Settings.getMsgStarter() + " My current game: " + discordAPI.getYourself().getGame()).appendNewLine();
-                try {
-                    builder.appendCode("null", Settings.getMsgStarter() + " My current profile picture: " + discordAPI.getYourself().getAvatar().get()).appendNewLine();
-                }catch (InterruptedException|ExecutionException e){
-
-                }
-                builder.appendCode("null", Settings.getMsgStarter() + " Admin Rank Name: Bot Commander").appendNewLine();
-                builder.appendCode("null", Settings.getMsgStarter() + " Servers joined: " + discordAPI.getServers().size()).appendNewLine();
-                builder.appendCode("null", Settings.getMsgStarter() + " Names of servers joined: ").appendNewLine();
+                builder.append(Settings.getMsgStarter() + " My current name: " + discordAPI.getYourself().getName()).appendNewLine();
+                builder.append(Settings.getMsgStarter() + " My current game: " + discordAPI.getYourself().getGame()).appendNewLine();
+                builder.append(Settings.getMsgStarter() + " My current profile picture: " + discordAPI.getYourself().getAvatarUrl()).appendNewLine();
+                builder.append(Settings.getMsgStarter() + " Admin Rank Name: Bot Commander").appendNewLine();
+                builder.append(Settings.getMsgStarter() + " Servers joined: " + discordAPI.getServers().size()).appendNewLine();
+                builder.append(Settings.getMsgStarter() + " Names of servers joined: ").appendNewLine();
                 for (Server s : discordAPI.getServers()){
-                    builder.appendCode("null", Settings.getMsgStarter() + Settings.getMsgStarter() + " Name: " + s.getName()).appendNewLine();
-                    builder.appendCode("null", Settings.getMsgStarter() + Settings.getMsgStarter() + " Member Count: " + s.getMemberCount()).appendNewLine();
+                    builder.append(Settings.getMsgStarter() + Settings.getMsgStarter() + " Name: " + s.getName()).appendNewLine();
+                    builder.append(Settings.getMsgStarter() + Settings.getMsgStarter() + " Member Count: " + s.getMemberCount()).appendNewLine();
                 }
-                builder.appendCode("null", Settings.getMsgStarter() + " Users in Cache: " + Main.userCache.keySet().size()).appendNewLine();
+                builder.append( Settings.getMsgStarter() + " Users in Cache: " + Main.userCache.keySet().size()).appendNewLine();
                 try {
-                    builder.appendCode("null", Settings.getMsgStarter() + " My current IP (may not be exact): " + InetAddress.getLocalHost().getHostAddress()).appendNewLine();
+                    builder.append(Settings.getMsgStarter() + " My current IP (may not be exact): " + InetAddress.getLocalHost().getHostAddress()).appendNewLine();
                 }catch (UnknownHostException e){
-                    builder.appendCode("null", Settings.getMsgStarter() + " My current IP (may not be exact): Oops! Couldn't get it").appendNewLine();
+                    builder.append(Settings.getMsgStarter() + " My current IP (may not be exact): Oops! Couldn't get it").appendNewLine();
                 }
                 message.getAuthor().sendMessage(builder.build());
                 builder = new MessageBuilder();
