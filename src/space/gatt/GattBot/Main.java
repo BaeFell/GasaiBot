@@ -68,29 +68,21 @@ public class Main {
         //};
         //Javacord.getApi(email, password).connect(futureAPI);
         api = Javacord.getApi(email, password);
-//        api.createApplication("GattBot", new FutureCallback<Application>() {
-//            @Override
-//            public void onSuccess(Application result) {
-//                api.convertToBotAccount(result.getBotToken(), api.getToken());
-//            }
-//
-//            @Override
-//            public void onFailure(Throwable t) {
-//
-//            }
-//        });
-        String appID = "";
-        try {
-            appID = api.convertToBotAccount(api.getToken()).get();
-        }catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-            return;
-        }
-        api = Javacord.getApi(appID, true);
+
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
+                api.createApplication("GattBot", new FutureCallback<Application>() {
+                    @Override
+                    public void onSuccess(Application result) {
+                        Main.api.convertToBotAccount(result.getBotToken(), Main.api.getToken());
+                    }
 
+                    @Override
+                    public void onFailure(Throwable t) {
+
+                    }
+                });
                 try{
                     boolean hasServer = false;
                     for (Server s : api.getServers()){
