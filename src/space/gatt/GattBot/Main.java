@@ -57,10 +57,6 @@ public class Main {
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
-                Settings.setGame(api.getGame());
-                api.setGame("Loading bot settings...");
-                Settings.loadSettings();
-
                 api.setAutoReconnect(true);
                 try{
                     boolean hasServer = false;
@@ -130,16 +126,21 @@ public class Main {
                 commands.add("isafk [@User] - Is @User afk?");
                 commands.add("math [Expression] - Does Math. May not work with all mathematical expressions [disabled for now]");
 
-                api.setGame(Settings.getGame());
                 // register listener
                 MiscCommands miscCommands = new MiscCommands();
+                MessageBuilder builder = new MessageBuilder();
+                builder.append("Caching meme images");
+                GattBotChannel.sendMessage(builder.build());
                 miscCommands.cacheImages();
+                builder = new MessageBuilder();
+                builder.append("Cached meme` images");
+                GattBotChannel.sendMessage(builder.build());
                 api.registerListener(new PersonalMessageReplier());
                 api.registerListener(new MessageReplier());
                 api.registerListener(miscCommands);
                 api.registerListener(new AdminCommands());
                 api.registerListener(new UserCommands());
-                MessageBuilder builder = new MessageBuilder();
+                builder = new MessageBuilder();
                 builder.append("GattBot loaded! There is " + commands.size() + " lines in the commands Array!");
                 GattBotChannel.sendMessage(builder.build());
             }
