@@ -188,7 +188,6 @@ public class MiscCommands implements MessageCreateListener {
             builder = new MessageBuilder();
             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You're not senpai... ");
             message.reply(builder.build());
-
             return;
         }
 
@@ -283,7 +282,7 @@ public class MiscCommands implements MessageCreateListener {
                 Integer maxNo = 100;
                 Random random = new Random();
                 builder = new MessageBuilder();
-                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You rolled a " + random.nextInt(maxNo) + "! (1-100)");
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You rolled a " + random.nextInt(maxNo) + 1 + "! (1-100)");
                 message.reply(builder.build());
             }else{
                 Integer maxNo = Integer.valueOf(args[1]);
@@ -295,7 +294,7 @@ public class MiscCommands implements MessageCreateListener {
                 }
                 Random random = new Random();
                 builder = new MessageBuilder();
-                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You rolled a " + random.nextInt(maxNo) + "! (1-" + maxNo + ")");
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You rolled a " + random.nextInt(maxNo) + 1 + "! (1-" + maxNo + ")");
                 message.reply(builder.build());
             }
         }
