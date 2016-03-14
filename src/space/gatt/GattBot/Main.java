@@ -68,7 +68,22 @@ public class Main {
         //};
         //Javacord.getApi(email, password).connect(futureAPI);
         api = Javacord.getApi(email, password);
+        api.createApplication("GattBot", new FutureCallback<Application>() {
+            @Override
+            public void onSuccess(Application result) {
+                try {
+                    Main.token = Main.api.convertToBotAccount(result.getBotToken(), Main.api.getToken()).get();
+                }catch (InterruptedException|ExecutionException e){
 
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
+        api = Javacord.getApi(Main.token, true);
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
