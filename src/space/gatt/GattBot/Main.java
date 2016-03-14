@@ -84,6 +84,28 @@ public class Main {
             @Override
             public void onSuccess(DiscordAPI api) {
                 api.convertToBotAccount(api.getToken());
+                try{
+                    boolean hasServer = false;
+                    for (Server s : api.getServers()){
+                        System.out.println("Server = " + s.getName());
+                        if (s.getName().equalsIgnoreCase("GattBotServer")){
+                            hasServer = true;
+                            GattBotChannel = s.getChannels().iterator().next();
+                            break;
+                        }
+                    }
+                    if (!hasServer) {
+                        BufferedImage icon = api.getYourself().getAvatar().get();
+                        Server server = api.createServer("GattBotServer", icon).get();
+                        Channel channel = server.createChannel("GattBotChannel").get();
+                        channel.updateTopic("GattBotChannel");
+                        GattBotChannel = channel;
+                        System.out.println("Created Base Server");
+                    }
+                } catch (InterruptedException | ExecutionException e) {
+                    e.printStackTrace();
+                    return;
+                }
                 api.setAutoReconnect(true);
                 System.out.println("Updating user cache");
                 for (Server s : api.getServers()){
