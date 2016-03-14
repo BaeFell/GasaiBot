@@ -64,9 +64,9 @@ public class AdminCommands implements MessageCreateListener {
                     String invite = msg.replace(Settings.getCommandStarter() + "joinserver ", "");
                     Server server = null;
                     String error = "";
-                    api.acceptInvite(invite);
                     try {
-                        server = api.acceptInvite(invite).get();
+
+                        server = api.parseInvite(invite).get().acceptInvite().get();
                     } catch (InterruptedException | ExecutionException e) {
                         error = e.getMessage();
                         builder = new MessageBuilder();

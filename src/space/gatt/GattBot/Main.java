@@ -38,6 +38,7 @@ public class Main {
     }
 
     public static long startupTime;
+    private static String token;
 
     public static void main(String[] args) {
 
@@ -54,8 +55,20 @@ public class Main {
         System.out.println("Attempting login with email " + email);
         Date date = new Date();
         startupTime = date.getTime();
-        String token = Javacord.getApi(email, password).getToken();
-        api = Javacord.getApi(token, true);
+        FutureCallback<DiscordAPI> futureAPI = new FutureCallback<DiscordAPI>() {
+            public String token;
+            @Override
+            public void onSuccess(DiscordAPI result) {
+                Main.token = result.getToken();
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        };
+        Javacord.getApi(email, password).connect(futureAPI);
+        api = Javacord.getApi(Main.token, true);
 //        api.createApplication("GattBot", new FutureCallback<Application>() {
 //            @Override
 //            public void onSuccess(Application result) {
