@@ -63,24 +63,21 @@ public class AdminCommands implements MessageCreateListener {
                     String msg = message.getContent();
                     String invite = msg.replace(Settings.getCommandStarter() + "joinserver ", "");
                     Server server = null;
-                    String error = "";
                     try {
-
                         server = api.parseInvite(invite).get().acceptInvite().get();
                     } catch (InterruptedException | ExecutionException e) {
-                        error = e.getMessage();
-                        builder = new MessageBuilder();
-                        builder.append(Settings.getMsgStarter() + "Could not join server from invite ").appendDecoration(MessageDecoration.BOLD_ITALICS, invite).append(" Reason: " + error);
-                        message.reply(builder.build());
-                        e.printStackTrace();
-                    }
-                    if (server != null) {
-                        builder = new MessageBuilder();
-                        builder.append(Settings.getMsgStarter() + "Joining server from invite " + invite);
-                        message.reply(builder.build());
-                        builder = new MessageBuilder();
-                        builder.append(Settings.getMsgStarter() + "Found server from invite " + invite + "... " + server.getName());
-                        message.reply(builder.build());
+                        if (api.getServers().contains(server)) {
+                            builder = new MessageBuilder();
+                            builder.append(Settings.getMsgStarter() + "Joining server from invite " + invite);
+                            message.reply(builder.build());
+                            builder = new MessageBuilder();
+                            builder.append(Settings.getMsgStarter() + "Found server from invite " + invite + "... " + server.getName());
+                            message.reply(builder.build());
+                        }else{
+                            builder = new MessageBuilder();
+                            builder.append(Settings.getMsgStarter() + "Could not join server from invite " + invite);
+                            message.reply(builder.build());
+                        }
                     }
                     return;
 
