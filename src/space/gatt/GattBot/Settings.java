@@ -50,7 +50,8 @@ public class Settings {
     }
 
     public static void setGame(String game) {
-        Settings.game = game;Settings.saveSettings();
+        Settings.game = game;
+        Settings.saveSettings();
     }
 
     public static String getMsgStarter() {

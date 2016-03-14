@@ -448,8 +448,11 @@ public class AdminCommands implements MessageCreateListener {
 
             // Shutdown Command
             if (args[0].equalsIgnoreCase("shutdown")) {
+
                 if (Main.adminUsers.contains(message.getAuthor().getId())) {
-                    Settings.addChannelToStartup(message.getChannelReceiver());
+                    if (!message.isPrivateMessage()) {
+                        Settings.addChannelToStartup(message.getChannelReceiver());
+                    }
                     builder = new MessageBuilder();
                     if (args.length > 0) {
                     }
