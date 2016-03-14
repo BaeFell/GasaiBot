@@ -79,11 +79,18 @@ public class Main {
 //
 //            }
 //        });
-
+        String appID = "";
+        try {
+            appID = api.convertToBotAccount(api.getToken()).get();
+        }catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+            return;
+        }
+        api = Javacord.getApi(appID, true);
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
-                api.convertToBotAccount(api.getToken());
+
                 try{
                     boolean hasServer = false;
                     for (Server s : api.getServers()){
