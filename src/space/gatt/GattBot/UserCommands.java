@@ -128,7 +128,7 @@ public class UserCommands implements MessageCreateListener {
                 builder.append(Settings.getMsgStarter() + " Servers joined: " + discordAPI.getServers().size()).appendNewLine();
                 builder.append(Settings.getMsgStarter() + " Names of servers joined: ").appendNewLine();
                 for (Server s : discordAPI.getServers()){
-                    builder.append(Settings.getMsgStarter() + Settings.getMsgStarter() + " Name: " + s.getName()).appendNewLine();
+                    builder.appendDecoration(MessageDecoration.BOLD, Settings.getMsgStarter() + Settings.getMsgStarter() + " Name: " + s.getName()).appendNewLine();
                     builder.append(Settings.getMsgStarter() + Settings.getMsgStarter() + " Member Count: " + s.getMemberCount()).appendNewLine();
                 }
                 builder.append( Settings.getMsgStarter() + " Users in Cache: " + Main.userCache.keySet().size()).appendNewLine();
