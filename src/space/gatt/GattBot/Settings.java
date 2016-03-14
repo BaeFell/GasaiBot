@@ -9,14 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
+import java.util.Properties;
 
 /**
  * Created by Zach on 5/03/2016.
  */
 public class Settings {
 
+    private static Settings sts = new Settings();
+
     private static String defaultGroup = "";
-    private static String version = "Alpha 0.8";
+    private static String version = "";
     private static String profilePicture = null;
     private static String commandStarter = "/";
     private static String msgStarter = "» ";
@@ -47,7 +50,7 @@ public class Settings {
     }
 
     public static void setGame(String game) {
-        Settings.game = game;
+        Settings.game = game;Settings.saveSettings();
     }
 
     public static String getMsgStarter() {
@@ -56,6 +59,7 @@ public class Settings {
 
     public static void setMsgStarter(String msgStarter) {
         Settings.msgStarter = msgStarter;
+        Settings.saveSettings();
     }
 
     public static String getCommandStarter() {
@@ -64,6 +68,7 @@ public class Settings {
 
     public static void setCommandStarter(String str) {
         commandStarter = str;
+        Settings.saveSettings();
     }
 
     public static String getVersion() {
@@ -72,6 +77,7 @@ public class Settings {
 
     public static void setVersion(String str) {
         version = str;
+        Settings.saveSettings();
     }
 
     public static String getDefaultGroup() {
@@ -80,61 +86,54 @@ public class Settings {
 
     public static void setDefaultGroup(String str) {
         defaultGroup = str;
+        Settings.saveSettings();
     }
 
     private static String buildString(){
         return "";
     }
 
-    private static void saveSettings(){
-        /*File settings = new File(System.getProperty("user.dir") + "/gattbotsettings.json");
-        if (!settings.exists()) {
-            try {
-                settings.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+    public static void saveSettings(){
+        Properties properties = new Properties();
+        properties.setProperty("game", getGame());
+        properties.setProperty("msgstarter", getMsgStarter());
+        properties.setProperty("version", getVersion());
+        String sinpis = "";
+        for (String s : Main.senpais){
+            sinpis = sinpis + s + ",";
         }
-        System.out.println("Saving settings to " + settings);
-
-        try (Writer writer = new FileWriter(System.getProperty("user.dir") + "/gattbotsettings.json")) {
-            Gson gson = new GsonBuilder().create();
-            gson.toJson(getJoinMsgChannels(), writer);
-            String json = new Gson().toJson(getJoinMsgChannels());
-            System.out.println(json);
-        }catch (IOException e){
-            e.printStackTrace();
-        }*/
-
-    }
-    public static void loadSettings(){
-        /*File settings = new File(System.getProperty("user.dir") + "/gattbotsettings.json");
-        if (!settings.exists()){
-            try {
-                settings.createNewFile();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
+        properties.setProperty("senpais", sinpis);
+        String admoons = "";
+        for (String s : Main.adminUsers){
+            admoons = admoons + s + ",";
         }
-        boolean fileExists = true;
+        properties.setProperty("adminusers", sinpis);
         try {
-            BufferedReader br = new BufferedReader(new FileReader(settings));
-            if (br.readLine() == null) {
-                fileExists = false;
-            }
+            properties.store(System.out, "properties");
         }catch (IOException e){
 
         }
-        if (fileExists) {
-            try (Reader reader = new FileReader(System.getProperty("user.dir") + "/gattbotsettings.json")) {
-                Gson gson = new GsonBuilder().create();
-                Type type = new TypeToken<List<Channel>>(){}.getType();
-                Settings.joinMsgChannels = gson.fromJson(reader, type);
-                System.out.println(getJoinMsgChannels().size());
-            } catch (IOException e) {
-                e.printStackTrace();
+    }
+
+    public static void loadSettings(){
+        Properties properties = new Properties();
+        InputStream inputStream = System.in;
+        if (inputStream != null){
+            try {
+                properties.load(inputStream);
+            }catch (IOException e){
             }
-        }*/
+        }
+        setGame(properties.getProperty("game"));
+        setMsgStarter(properties.getProperty("msgStarter"));
+        setVersion(properties.getProperty("version"));
+        String[] senpais = properties.getProperty("senpais").split(",");
+        for (String s : senpais){
+            Main.senpais.add(s);
+        }
+        String[] admins = properties.getProperty("adminusers").split(",");
+        for (String s : admins){
+            Main.adminUsers.add(s);
+        }
     }
 }

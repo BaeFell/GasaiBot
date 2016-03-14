@@ -3,17 +3,13 @@ package space.gatt.GattBot;
 import com.google.common.util.concurrent.FutureCallback;
 import de.btobastian.javacord.DiscordAPI;
 import de.btobastian.javacord.Javacord;
-import de.btobastian.javacord.entities.Application;
 import de.btobastian.javacord.entities.Channel;
 import de.btobastian.javacord.entities.Server;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.MessageBuilder;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -42,14 +38,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //new Thread(new SocketManager()).start();
 
-        adminUsers.add("113462564217683968");
-        adminUsers.add("117785797985435652");
-        senpais.add("80972065296887808");
-        senpais.add("113462564217683968");
-        senpais.add("117785797985435652");
-        senpais.add("138481382794985472");
+        //new Thread(new SocketManager()).start();
         final String email = args[0];
         final String password = args[1];
         System.out.println("Attempting login with email " + email);
@@ -71,7 +61,10 @@ public class Main {
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
+
                 api.convertToBotAccount(api.getToken());
+                api.setGame("with Yuki.");
+                Settings.loadSettings();
                 try{
                     boolean hasServer = false;
                     for (Server s : api.getServers()){
@@ -159,6 +152,7 @@ public class Main {
                 builder = new MessageBuilder();
                 builder.append("GattBot loaded! There is " + commands.size() + " lines in the commands Array!");
                 GattBotChannel.sendMessage(builder.build());
+                api.setGame(Settings.getGame());
             }
 
             @Override
