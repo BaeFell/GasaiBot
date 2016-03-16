@@ -8,7 +8,10 @@ import de.btobastian.javacord.entities.message.MessageDecoration;
 import de.btobastian.javacord.listener.message.MessageCreateListener;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -24,11 +27,16 @@ import java.util.concurrent.TimeUnit;
 public class MiscCommands implements MessageCreateListener {
 
     private HashMap<String, File> imageCache = new HashMap<>();
+    private HashMap<String, String> gifCache = new HashMap<>();
 
     private synchronized void cacheImage(String url, String extension, String name){
         try {
-            BufferedImage img = ImageIO.read(new URL(url));
+            if (extension.equalsIgnoreCase("gif")){
+                gifCache.put(name, url);
+                return;
+            }
             File imgf = new File(name + "." + extension);
+            BufferedImage img = ImageIO.read(new URL(url));
             ImageIO.write(img, extension, imgf);
             imageCache.put(name, imgf);
         }catch (IOException e){
@@ -40,12 +48,13 @@ public class MiscCommands implements MessageCreateListener {
         cacheImage("http://orig09.deviantart.net/ac32/f/2011/356/f/1/nope_avi_high_resolution_by_wango911-d4jv1vx.png", "png", "nope");
         cacheImage("http://i0.kym-cdn.com/photos/images/newsfeed/000/173/576/Wat8.jpg", "jpg", "wat");
         cacheImage("http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1395991705/gjn81wvxqsq6yzcwubok.png", "png", "kappa");
-        cacheImage("https://godofall.files.wordpress.com/2014/06/mind-blown.gif", "gif", "mindblown");
-        cacheImage("https://i.gyazo.com/7049114840ae0333041f2138cccee63f.gif", "gif", "lolis");
-        cacheImage("http://atomix.vg/wp-content/uploads/2014/10/falcon-punch-anime.gif", "gif", "falconpunch");
+        cacheImage("http://gattbot.gatt.space/gifs/mindblown.gif", "gif", "mindblown");
+        cacheImage("http://gattbot.gatt.space/gifs/lolis.gif", "gif", "lolis");
+        cacheImage("http://gattbot.gatt.space/gifs/falconpunch.gif", "gif", "falconpunch");
         cacheImage("http://pre14.deviantart.net/7397/th/pre/i/2013/153/5/5/yukki__i_ll_protect_you__by_saihina4ever-d67lec1.jpg", "jpg", "noticeme");
         cacheImage("https://i.ytimg.com/vi/fGl4LOAgW50/maxresdefault.jpg", "jpg", "awwyeah");
         cacheImage("http://i.imgur.com/Vu0WycI.png", "png", "internetgod");
+        cacheImage("http://ci.memecdn.com/372/5262372.jpg", "jpg", "time");
     }
 
 
@@ -90,6 +99,28 @@ public class MiscCommands implements MessageCreateListener {
                 String url = "http://lmgtfy.com/?q=" + question;
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter()).appendUser(u).append("! ").appendUser(message.getAuthor()).append(" thinks this might help!").appendNewLine().appendDecoration(MessageDecoration.BOLD, url);
+                message.reply(builder.build());
+            }else{
+                builder = new MessageBuilder();
+                builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Specify a user please.");
+                message.getAuthor().sendMessage(builder.build());
+            }
+        }
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lmbtfy")){
+            message.delete();
+            if (message.getMentions().size() > 0) {
+                User u = message.getMentions().get(0);
+                String question = "";
+                args[0] = "";
+                args[1] = "";
+                for (String s : args) {
+                    if (s != "") {
+                        question = question + s + "+";
+                    }
+                }
+                String url = "http://lmbtfy.com/?q=" + question;
+                builder = new MessageBuilder();
+                builder.append(Settings.getMsgStarter()).appendUser(u).append("! ").appendUser(message.getAuthor()).append(" thinks this might help! (But it's Bing, so ya know)").appendNewLine().appendDecoration(MessageDecoration.BOLD, url);
                 message.reply(builder.build());
             }else{
                 builder = new MessageBuilder();
@@ -169,8 +200,8 @@ public class MiscCommands implements MessageCreateListener {
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lolis")) {
             builder = new MessageBuilder();
             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You want a loli?").appendNewLine();
+            builder.append(gifCache.get("lolis"));
             message.reply(builder.build());
-            message.replyFile(imageCache.get("lolis"));
             return;
         }
 
@@ -198,8 +229,8 @@ public class MiscCommands implements MessageCreateListener {
                 builder = new MessageBuilder();
                 User u = message.getMentions().get(0);
                 builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" FALLLLLLLLCONNNNNNNNNN.... PUNCHHHHHHHHHHHH-ed ").appendUser(u).appendNewLine();
+                builder.append(gifCache.get("falconpunch"));
                 message.reply(builder.build());
-                message.replyFile(imageCache.get("falconpunch"));
             } else {
                 builder = new MessageBuilder();
                 User u = message.getMentions().get(0);
@@ -209,7 +240,17 @@ public class MiscCommands implements MessageCreateListener {
             return;
         }
 
+
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "time")) {
+            message.delete();
+            builder = new MessageBuilder();
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Good heavens, would you look at the time!").appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("time"));
+            return;
+        }
         // Nope
+
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "nope")) {
             message.delete();
             builder = new MessageBuilder();
@@ -260,8 +301,8 @@ public class MiscCommands implements MessageCreateListener {
             message.delete();
             builder = new MessageBuilder();
             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, "'s mind blew up!").appendNewLine();
+            builder.append(gifCache.get("mindblown"));
             message.reply(builder.build());
-            message.replyFile(imageCache.get("mindblown"));
         }
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "hype")){
             message.delete();

@@ -107,19 +107,21 @@ public class Main {
                 commands.add("ddos [@User] - DD0S th3m u l337 h4x0r");
                 commands.add("nope - Nope.avi");
                 commands.add("lenny - ( ͡° ͜ʖ ͡°)");
-                commands.add("1v1 [@User1] [@User2] - 1v1 me, scrub");
-                commands.add("fightclub [@User1] [@User2] [@User3] ... - Fight! Infinite number of fighters allowed.");
                 commands.add("hype - Hypeeeeeeeeeeeee.");
                 commands.add("mindblown - Boom.");
-                // Todo
                 commands.add("kappa - Kappa.");
                 commands.add("wat - wat");
                 commands.add("awwyeah - Awwwww Yeahhhh");
                 commands.add("git - Sends you the Git Repo");
-                commands.add("uptime - Sends the Uptime for GattBot. [Todo]");
+                commands.add("time - Good Heavens! Look at the time!");
+                commands.add("uptime - Sends the Uptime for GattBot.");
 
                 commands.add("**~ ~ ~ Misc ~ ~ ~**");
+
+                commands.add("1v1 [@User1] [@User2] - 1v1 me, scrub");
+                commands.add("fightclub [@User1] [@User2] [@User3] ... - Fight! Infinite number of fighters allowed.");
                 commands.add("lmgtfy [@User] [Search] - Let me google that for you ;)");
+                commands.add("lmbtfy [@User] [Search] - Let me bing that for you... for whatever reason?");
                 commands.add("timer [seconds|minutes|hours] [amount] [message] - Will PM in [amount] of [seconds|minutes|hours] the [message] you specify privately.");
                 commands.add("roll - Rolls a random number between 1 and 100");
                 commands.add("roll [number] - Rolls a random number between 1 and [number]");
