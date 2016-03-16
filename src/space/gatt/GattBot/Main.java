@@ -63,7 +63,7 @@ public class Main {
             public void onSuccess(DiscordAPI api) {
                 //api.convertToBotAccount(api.getToken());
                 api.setGame("with Yuki.");
-                Settings.loadSettings();
+                //Settings.loadSettings();
                 try{
                     boolean hasServer = false;
                     for (Server s : api.getServers()){
