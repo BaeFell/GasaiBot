@@ -61,8 +61,7 @@ public class Main {
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
-
-                api.convertToBotAccount(api.getToken());
+                //api.convertToBotAccount(api.getToken());
                 api.setGame("with Yuki.");
                 Settings.loadSettings();
                 try{
