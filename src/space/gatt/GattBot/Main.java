@@ -58,12 +58,12 @@ public class Main {
         //};
         //Javacord.getApi(email, password).connect(futureAPI);
         api = Javacord.getApi(email, password);
+        Settings.loadSettings();
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
                 //api.convertToBotAccount(api.getToken());
                 api.setGame("with Yuki.");
-                //Settings.loadSettings();
                 try{
                     boolean hasServer = false;
                     for (Server s : api.getServers()){
