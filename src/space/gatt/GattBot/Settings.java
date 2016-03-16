@@ -19,9 +19,9 @@ public class Settings {
     private static Settings sts = new Settings();
 
     private static String defaultGroup = "";
-    private static String version = "Alpha 0.9";
+    private static String version = "Alpha 1.2";
     private static String profilePicture = null;
-    private static String commandStarter = "/";
+    private static String commandStarter = "gasai";
     private static String msgStarter = "» ";
     private static String game = "Being an awesome Bot";
 
