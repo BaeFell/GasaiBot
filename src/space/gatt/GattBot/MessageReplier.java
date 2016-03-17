@@ -14,7 +14,7 @@ public class MessageReplier implements MessageCreateListener {
     public void onMessageCreate(DiscordAPI discordAPI, Message message) {
         if (message.getMentions().contains(discordAPI.getYourself())){
             MessageBuilder builder = new MessageBuilder();
-            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" I'm GattBot! Use /help to get a list of all my commands!");
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" I'm GattBot! Use "+Settings.getCommandStarter()+"help to get a list of all my commands!");
             message.getAuthor().sendMessage(builder.build());
         }
     }
