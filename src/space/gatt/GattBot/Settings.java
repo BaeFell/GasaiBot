@@ -122,38 +122,42 @@ public class Settings {
         }
     }
 
-    public static void loadSettings(){
+    public static void loadSettings() {
         Properties properties = new Properties();
         System.out.println("new Properties()");
-        InputStream inputStream = Settings.sts.getClass().getResourceAsStream("settings.properties");
         System.out.println("Got InputStream");
         File propertiesFile = new File("settings.properties");
+        Boolean createDefaults = false;
+        try{
+            InputStream inputStream = new FileInputStream(propertiesFile);
 
-        if (inputStream != null){
-            try {
-                Boolean createDefaults = false;
-                if (!propertiesFile.exists()){
-                    propertiesFile.createNewFile();
-                    createDefaults = true;
-                }
+            if (inputStream != null) {
                 System.out.println("Loading Properties via inputStream");
-                InputStream is = new FileInputStream(propertiesFile);
-                properties.load(is);
-                if (!properties.containsKey("version")){
-                    createDefaults = true;
-                }
-                if (createDefaults){
-                    System.out.println("Setting default values!");
-                    properties.setProperty("game", "with Yuki.");
-                    properties.setProperty("msgStarter", "»");
-                    properties.setProperty("adminusers", "113462564217683968,117785797985435652");
-                    properties.setProperty("senpais", "80972065296887808,113462564217683968,117785797985435652,138481382794985472");
-                    properties.setProperty("version", "Alpha 1.2");
-                }
+                properties.load(inputStream);
                 System.out.println("Done!");
-            }catch (IOException e){
-                e.printStackTrace();
+            } else {
+                try {
+                    if (!propertiesFile.exists()) {
+                        propertiesFile.createNewFile();
+                        createDefaults = true;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (!properties.containsKey("version")){
+            createDefaults = true;
+        }
+        if (createDefaults){
+            System.out.println("Setting default values!");
+            properties.setProperty("game", "with Yuki.");
+            properties.setProperty("msgStarter", "»");
+            properties.setProperty("adminusers", "113462564217683968,117785797985435652");
+            properties.setProperty("senpais", "80972065296887808,113462564217683968,117785797985435652,138481382794985472");
+            properties.setProperty("version", "Alpha 1.2");
         }
         System.out.println("Saving Properties to Cache.");
         setGame(properties.getProperty("game"));
