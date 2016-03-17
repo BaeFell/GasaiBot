@@ -113,7 +113,9 @@ public class Settings {
             }
             properties.setProperty("adminusers", sinpis);
             try {
-                properties.store(System.out, "properties");
+                File propertiesFile = new File("settings.properties");
+                OutputStream is = new FileOutputStream(propertiesFile);
+                properties.store(is, "properties");
             } catch (IOException e) {
 
             }
@@ -123,11 +125,28 @@ public class Settings {
     public static void loadSettings(){
         Properties properties = new Properties();
         System.out.println("new Properties()");
-        InputStream inputStream = System.in;
+        InputStream inputStream = Settings.sts.getClass().getResourceAsStream("settings.properties");
         System.out.println("Got InputStream");
+        File propertiesFile = new File("settings.properties");
+
         if (inputStream != null){
             try {
-                properties.load(inputStream);
+                Boolean createDefaults = false;
+                if (!propertiesFile.exists()){
+                    propertiesFile.createNewFile();
+                    createDefaults = true;
+                }
+                System.out.println("Loading Properties via inputStream");
+                InputStream is = new FileInputStream(propertiesFile);
+                properties.load(is);
+                if (createDefaults){
+                    properties.setProperty("game", "with Yuki.");
+                    properties.setProperty("msgStarter", "»");
+                    properties.setProperty("adminusers", "113462564217683968,117785797985435652");
+                    properties.setProperty("senpais", "80972065296887808,113462564217683968,117785797985435652,138481382794985472");
+                    properties.setProperty("version", "Alpha 1.2");
+                }
+                System.out.println("Done!");
             }catch (IOException e){
                 e.printStackTrace();
             }
