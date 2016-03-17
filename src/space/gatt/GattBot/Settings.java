@@ -129,6 +129,7 @@ public class Settings {
             try {
                 properties.load(inputStream);
             }catch (IOException e){
+                e.printStackTrace();
             }
         }
         System.out.println("Saving Properties to Cache.");
