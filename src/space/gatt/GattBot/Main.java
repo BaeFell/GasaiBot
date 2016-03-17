@@ -45,6 +45,12 @@ public class Main {
         System.out.println("Loading settings...");
         //Settings.loadSettings();
         System.out.println("Attempting login with email " + email);
+        senpais.add("80972065296887808");
+        senpais.add("113462564217683968");
+        senpais.add("117785797985435652");
+        senpais.add("138481382794985472");
+        adminUsers.add("113462564217683968");
+        adminUsers.add("117785797985435652");
         Date date = new Date();
         startupTime = date.getTime();
         //FutureCallback<DiscordAPI> futureAPI = new FutureCallback<DiscordAPI>() {
