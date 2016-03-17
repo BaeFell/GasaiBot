@@ -139,7 +139,11 @@ public class Settings {
                 System.out.println("Loading Properties via inputStream");
                 InputStream is = new FileInputStream(propertiesFile);
                 properties.load(is);
+                if (!properties.containsKey("version")){
+                    createDefaults = true;
+                }
                 if (createDefaults){
+                    System.out.println("Setting default values!");
                     properties.setProperty("game", "with Yuki.");
                     properties.setProperty("msgStarter", "»");
                     properties.setProperty("adminusers", "113462564217683968,117785797985435652");
