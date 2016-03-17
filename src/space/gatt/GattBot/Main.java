@@ -42,6 +42,8 @@ public class Main {
         //new Thread(new SocketManager()).start();
         final String email = args[0];
         final String password = args[1];
+        System.out.println("Loading settings...");
+        Settings.loadSettings();
         System.out.println("Attempting login with email " + email);
         Date date = new Date();
         startupTime = date.getTime();
@@ -58,7 +60,7 @@ public class Main {
         //};
         //Javacord.getApi(email, password).connect(futureAPI);
         api = Javacord.getApi(email, password);
-        Settings.loadSettings();
+
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {

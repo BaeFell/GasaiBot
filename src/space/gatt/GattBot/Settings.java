@@ -90,50 +90,61 @@ public class Settings {
         Settings.saveSettings();
     }
 
+    private static Boolean loadedSettings = false;
+
     private static String buildString(){
         return "";
     }
 
     public static void saveSettings(){
-        Properties properties = new Properties();
-        properties.setProperty("game", getGame());
-        properties.setProperty("msgstarter", getMsgStarter());
-        properties.setProperty("version", getVersion());
-        String sinpis = "";
-        for (String s : Main.senpais){
-            sinpis = sinpis + s + ",";
-        }
-        properties.setProperty("senpais", sinpis);
-        String admoons = "";
-        for (String s : Main.adminUsers){
-            admoons = admoons + s + ",";
-        }
-        properties.setProperty("adminusers", sinpis);
-        try {
-            properties.store(System.out, "properties");
-        }catch (IOException e){
+        if (loadedSettings) {
+            Properties properties = new Properties();
+            properties.setProperty("game", getGame());
+            properties.setProperty("msgstarter", getMsgStarter());
+            properties.setProperty("version", getVersion());
+            String sinpis = "";
+            for (String s : Main.senpais) {
+                sinpis = sinpis + s + ",";
+            }
+            properties.setProperty("senpais", sinpis);
+            String admoons = "";
+            for (String s : Main.adminUsers) {
+                admoons = admoons + s + ",";
+            }
+            properties.setProperty("adminusers", sinpis);
+            try {
+                properties.store(System.out, "properties");
+            } catch (IOException e) {
 
+            }
         }
     }
 
     public static void loadSettings(){
         Properties properties = new Properties();
+        System.out.println("new Properties()");
         InputStream inputStream = System.in;
+        System.out.println("Got InputStream");
         if (inputStream != null){
             try {
                 properties.load(inputStream);
             }catch (IOException e){
             }
         }
+        System.out.println("Saving Properties to Cache.");
         setGame(properties.getProperty("game"));
         setMsgStarter(properties.getProperty("msgStarter"));
         String[] senpais = properties.getProperty("senpais").split(",");
         for (String s : senpais){
             Main.senpais.add(s);
         }
+        System.out.println("Saved Senpais");
         String[] admins = properties.getProperty("adminusers").split(",");
         for (String s : admins){
             Main.adminUsers.add(s);
         }
+        System.out.println("Saved Admins");
+        System.out.println("Done!");
+        loadedSettings = true;
     }
 }
