@@ -43,7 +43,7 @@ public class Main {
         final String email = args[0];
         final String password = args[1];
         System.out.println("Loading settings...");
-        Settings.loadSettings();
+        //Settings.loadSettings();
         System.out.println("Attempting login with email " + email);
         Date date = new Date();
         startupTime = date.getTime();

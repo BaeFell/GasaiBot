@@ -23,7 +23,7 @@ public class Settings {
     private static String profilePicture = null;
     private static String commandStarter = "/!";
     private static String msgStarter = "» ";
-    private static String game = "Being an awesome Bot";
+    private static String game = "with Yuki.";
 
     private static List<Channel> joinMsgChannels = new ArrayList<>();
 
