@@ -39,7 +39,7 @@ public class UserCommands implements MessageCreateListener {
                 }
             }
 
-            MessageBuilder builder = new MessageBuilder();
+            MessageBuilder builder;
             // Help Command
             if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "help")) {
                 message.delete();

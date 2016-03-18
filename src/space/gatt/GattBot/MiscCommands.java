@@ -54,7 +54,7 @@ public class MiscCommands implements MessageCreateListener {
         cacheImage("http://pre14.deviantart.net/7397/th/pre/i/2013/153/5/5/yukki__i_ll_protect_you__by_saihina4ever-d67lec1.jpg", "jpg", "noticeme");
         cacheImage("https://i.ytimg.com/vi/fGl4LOAgW50/maxresdefault.jpg", "jpg", "awwyeah");
         cacheImage("http://i.imgur.com/Vu0WycI.png", "png", "internetgod");
-        cacheImage("http://ci.memecdn.com/372/5262372.jpg", "jpg", "time");
+        cacheImage("http://gattbot.gatt.space/gifs/time.jpg", "jpg", "time");
     }
 
 
@@ -198,6 +198,7 @@ public class MiscCommands implements MessageCreateListener {
 
         // Lolis
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lolis")) {
+            message.delete();
             builder = new MessageBuilder();
             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You want a loli?").appendNewLine();
             builder.append(gifCache.get("lolis"));

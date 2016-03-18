@@ -91,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MiscCommands.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MiscCommands.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/MiscCommands.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-179.13792">
-              <caret line="337" column="142" selection-start-line="337" selection-start-column="142" selection-end-line="337" selection-end-column="142" />
+            <state vertical-scroll-proportion="0.4988532">
+              <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -104,18 +104,18 @@
       <file leaf-file-name="UserCommands.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/UserCommands.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.678571">
-              <caret line="54" column="38" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
+            <state vertical-scroll-proportion="-8.678572">
+              <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageReplier.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MessageReplier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/MessageReplier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23814656">
-              <caret line="16" column="157" selection-start-line="16" selection-start-column="157" selection-end-line="16" selection-end-column="157" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="13" column="73" selection-start-line="13" selection-start-column="73" selection-end-line="13" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -153,11 +153,11 @@
         <option value="$PROJECT_DIR$/resources/settings.properties" />
         <option value="$PROJECT_DIR$/src/space/gatt/GattBot/Settings.java" />
         <option value="$PROJECT_DIR$/src/space/gatt/GattBot/Main.java" />
-        <option value="$PROJECT_DIR$/src/space/gatt/GattBot/MiscCommands.java" />
-        <option value="$PROJECT_DIR$/src/space/gatt/GattBot/UserCommands.java" />
         <option value="$PROJECT_DIR$/src/space/gatt/GattBot/AdminCommands.java" />
         <option value="$PROJECT_DIR$/src/space/gatt/GattBot/PersonalMessageReplier.java" />
         <option value="$PROJECT_DIR$/src/space/gatt/GattBot/MessageReplier.java" />
+        <option value="$PROJECT_DIR$/src/space/gatt/GattBot/UserCommands.java" />
+        <option value="$PROJECT_DIR$/src/space/gatt/GattBot/MiscCommands.java" />
       </list>
     </option>
   </component>
@@ -868,12 +868,12 @@
       <workItem from="1457920669330" duration="11513000" />
       <workItem from="1458109522300" duration="5807000" />
       <workItem from="1458204536099" duration="3187000" />
-      <workItem from="1458278926339" duration="948000" />
+      <workItem from="1458278926339" duration="1276000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82717000" />
+    <option name="totallyTimeSpent" value="83045000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -1318,22 +1318,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/MiscCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-179.13792">
-          <caret line="337" column="142" selection-start-line="337" selection-start-column="142" selection-end-line="337" selection-end-column="142" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/UserCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.678571">
-          <caret line="54" column="38" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/AdminCommands.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1352,8 +1336,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/MessageReplier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23814656">
-          <caret line="16" column="157" selection-start-line="16" selection-start-column="157" selection-end-line="16" selection-end-column="157" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="73" selection-start-line="13" selection-start-column="73" selection-end-line="13" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/UserCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.678572">
+          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/space/gatt/GattBot/MiscCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4988532">
+          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
           <folding />
         </state>
       </provider>
