@@ -48,9 +48,11 @@ public class UserCommands implements MessageCreateListener {
                 builder.append(Settings.getMsgStarter() + "I've PM'd you my command list, ").appendUser(message.getAuthor());
                 message.reply(builder.build());
                 builder = new MessageBuilder();
+                builder.append("```");
                 for (String command : Main.commands) {
                     builder.append(Settings.getMsgStarter() + command).appendNewLine();
                 }
+                builder.append("```");
                 u.sendMessage(builder.build());
                 return;
             }
