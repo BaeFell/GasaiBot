@@ -28,7 +28,7 @@ public class PersonalMessageReplier implements MessageCreateListener {
 		String[] args = s.split("");
 		String currentAction = "scanning";
 		String addMsg = "";
-		Boolean doAdd;
+		boolean doAdd;
 		builder.append(Settings.getMsgStarter() + " ");
 		for (String s1 : args){
 			id++;

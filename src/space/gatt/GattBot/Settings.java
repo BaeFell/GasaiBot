@@ -90,7 +90,7 @@ public class Settings {
         Settings.saveSettings();
     }
 
-    private static Boolean loadedSettings = false;
+    private static boolean loadedSettings = false;
 
     private static String buildString(){
         return "";
@@ -127,7 +127,7 @@ public class Settings {
         System.out.println("new Properties()");
         System.out.println("Got InputStream");
         File propertiesFile = new File("settings.properties");
-        Boolean createDefaults = false;
+        boolean createDefaults = false;
         try{
             InputStream inputStream = new FileInputStream(propertiesFile);
 
