@@ -54,7 +54,7 @@ public class MiscCommands implements MessageCreateListener {
         cacheImage("http://i.imgur.com/Vu0WycI.png", "png", "internetgod");
         cacheImage("http://gattbot.gatt.space/gifs/time.jpg", "jpg", "time");
         cacheImage("http://i.imgur.com/urSk0Ki.jpg", "jpg", "ohwhale");
-        cacheImage("https://i.ytimg.com/vi/jUy9_0M3bVk/maxresdefault.jpg", "jpg", "wow");
+        cacheImage("https://cdn.shopify.com/s/files/1/0358/2273/products/dogewow_grande.jpg", "jpg", "wow");
         cacheImage("http://vignette1.wikia.nocookie.net/ums/images/5/59/Seal-of-approval-meme.jpg", "jpg", "sealofapproval");
         cacheImage("http://memesvault.com/wp-content/uploads/Facepalm-Meme-04.png", "png", "facepalm");
         cacheImage("http://memesvault.com/wp-content/uploads/Facepalm-Meme-08.png", "png", "triplefacepalm");
