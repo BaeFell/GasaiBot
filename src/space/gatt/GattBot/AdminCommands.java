@@ -78,6 +78,10 @@ public class AdminCommands implements MessageCreateListener {
                             builder.append(Settings.getMsgStarter() + "Could not join server from invite " + invite);
                             message.reply(builder.build());
                         }
+
+                        builder = new MessageBuilder();
+                        builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
+                        Main.GattBotChannel.sendMessage(builder.build());
                     }
                     if (api.getServers().contains(server)) {
                         builder = new MessageBuilder();
@@ -131,6 +135,9 @@ public class AdminCommands implements MessageCreateListener {
                             }
                         } catch (InterruptedException e) {
 
+                            builder = new MessageBuilder();
+                            builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
+                            Main.GattBotChannel.sendMessage(builder.build());
                         }
                         return;
 
@@ -147,6 +154,9 @@ public class AdminCommands implements MessageCreateListener {
                         }
                     } catch (ExecutionException | InterruptedException e) {
 
+                        builder = new MessageBuilder();
+                        builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
+                        Main.GattBotChannel.sendMessage(builder.build());
                     }
                     if (args.length > 1) {
                         if (args[1].equalsIgnoreCase("-silent")) {
@@ -218,7 +228,9 @@ public class AdminCommands implements MessageCreateListener {
                                 channel.updateTopic("GattBotChannel");
                             }
                         } catch (InterruptedException | ExecutionException e) {
-                            e.printStackTrace();
+                            builder = new MessageBuilder();
+                            builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
+                            Main.GattBotChannel.sendMessage(builder.build());
                             return;
                         }
                     } else {
@@ -279,6 +291,9 @@ public class AdminCommands implements MessageCreateListener {
                             } catch (IOException e) {
                                 api.setGame(Settings.getGame());
                                 e.printStackTrace();
+                                builder = new MessageBuilder();
+                                builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
+                                Main.GattBotChannel.sendMessage(builder.build());
                             }
                         } else if (args[3].equalsIgnoreCase("file")) {
                             System.out.println("Image is Attachment");
@@ -289,6 +304,9 @@ public class AdminCommands implements MessageCreateListener {
                                 } catch (IOException e) {
                                     api.setGame(Settings.getGame());
                                     e.printStackTrace();
+                                    builder = new MessageBuilder();
+                                    builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
+                                    Main.GattBotChannel.sendMessage(builder.build());
                                 }
                             } else {
                                 System.out.println("Could not find image from attachement.");
@@ -308,6 +326,9 @@ public class AdminCommands implements MessageCreateListener {
                                 } catch (InterruptedException | ExecutionException e) {
                                     api.setGame(Settings.getGame());
                                     e.printStackTrace();
+                                    builder = new MessageBuilder();
+                                    builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
+                                    Main.GattBotChannel.sendMessage(builder.build());
                                 }
                             }
 

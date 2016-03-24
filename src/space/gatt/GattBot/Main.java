@@ -160,6 +160,7 @@ public class Main {
             @Override
             public void onFailure(Throwable t) {
                 t.printStackTrace();
+                
             }
         });
         //api.getEventManager().registerListener(new GattBotListener(api));
