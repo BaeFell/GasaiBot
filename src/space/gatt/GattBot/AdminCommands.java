@@ -327,7 +327,7 @@ public class AdminCommands implements MessageCreateListener {
                                     api.setGame(Settings.getGame());
                                     e.printStackTrace();
                                     builder = new MessageBuilder();
-                                    builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
+                                    builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getMessage() + "```");
                                     Main.GattBotChannel.sendMessage(builder.build());
                                 }
                             }

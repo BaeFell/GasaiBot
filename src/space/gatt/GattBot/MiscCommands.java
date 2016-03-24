@@ -42,7 +42,7 @@ public class MiscCommands implements MessageCreateListener {
             imageCache.put(name, imgf);
         }catch (IOException e){
             MessageBuilder builder = new MessageBuilder();
-            builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
+            builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getMessage() + "```");
             Main.GattBotChannel.sendMessage(builder.build());
         }
     }
