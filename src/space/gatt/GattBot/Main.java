@@ -71,32 +71,17 @@ public class Main {
             @Override
             public void onSuccess(DiscordAPI api) {
                 //api.convertToBotAccount(api.getToken());
-                api.setGame("with Yuki.");
-                try{
-                    boolean hasServer = false;
-                    for (Server s : api.getServers()){
-                        System.out.println("Server = " + s.getName());
-                        if (s.getName().equalsIgnoreCase("GattBotServer")){
-                            hasServer = true;
-                            for (Channel c : s.getChannels()){
-                                if (c.getName().equalsIgnoreCase("logchannel")){
-                                    GattBotChannel = c;
-                                }
+                api.setGame("(∩｀-´)⊃━☆ﾟ.*･｡ﾟ with a wezurd");
+                for (Server s : api.getServers()){
+                    System.out.println("Server = " + s.getName());
+                    if (s.getName().equalsIgnoreCase("GattBotServer")){
+                        for (Channel c : s.getChannels()){
+                            if (c.getName().equalsIgnoreCase("logchannel")){
+                                GattBotChannel = c;
                             }
-                            break;
                         }
+                        break;
                     }
-                    if (!hasServer) {
-                        BufferedImage icon = api.getYourself().getAvatar().get();
-                        Server server = api.createServer("GattBotServer", icon).get();
-                        Channel channel = server.createChannel("GattBotChannel").get();
-                        channel.updateTopic("GattBotChannel");
-                        GattBotChannel = channel;
-                        System.out.println("Created Base Server");
-                    }
-                } catch (InterruptedException | ExecutionException e) {
-                    e.printStackTrace();
-                    return;
                 }
                 api.setAutoReconnect(true);
                 System.out.println("Updating user cache");
