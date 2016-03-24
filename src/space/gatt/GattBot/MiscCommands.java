@@ -87,7 +87,7 @@ public class MiscCommands implements MessageCreateListener {
             message.delete();
             builder = new MessageBuilder();
 
-            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendNewLine();
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Oh, Whale!").appendNewLine();
             message.reply(builder.build());
             message.replyFile(imageCache.get("ohwhale"));
         }
