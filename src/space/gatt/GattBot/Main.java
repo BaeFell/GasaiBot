@@ -78,7 +78,11 @@ public class Main {
                         System.out.println("Server = " + s.getName());
                         if (s.getName().equalsIgnoreCase("GattBotServer")){
                             hasServer = true;
-                            GattBotChannel = s.getChannels().iterator().next();
+                            for (Channel c : s.getChannels()){
+                                if (c.getName().equalsIgnoreCase("logchannel")){
+                                    GattBotChannel = c;
+                                }
+                            }
                             break;
                         }
                     }
