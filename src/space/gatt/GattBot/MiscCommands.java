@@ -55,6 +55,7 @@ public class MiscCommands implements MessageCreateListener {
         cacheImage("http://gattbot.gatt.space/gifs/time.jpg", "jpg", "time");
         cacheImage("http://i.imgur.com/urSk0Ki.jpg", "jpg", "ohwhale");
         cacheImage("https://i.ytimg.com/vi/jUy9_0M3bVk/maxresdefault.jpg", "jpg", "wow");
+        cacheImage("http://vignette1.wikia.nocookie.net/ums/images/5/59/Seal-of-approval-meme.jpg", "jpg", "sealofapproval");
         cacheImage("http://memesvault.com/wp-content/uploads/Facepalm-Meme-04.png", "png", "facepalm");
         cacheImage("http://memesvault.com/wp-content/uploads/Facepalm-Meme-08.png", "png", "triplefacepalm");
         cacheImage("http://gattbot.gatt.space/gifs/mindblown.gif", "gif", "mindblown");
@@ -72,7 +73,14 @@ public class MiscCommands implements MessageCreateListener {
 
         String[] args = message.getContent().split(" ");
         MessageBuilder builder;
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "sealofapproval")){
+            message.delete();
+            builder = new MessageBuilder();
 
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" gives his Seal of Approval").appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("ealofapproval"));
+        }
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "ohwhale")){
             message.delete();
             builder = new MessageBuilder();
