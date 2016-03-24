@@ -41,7 +41,9 @@ public class MiscCommands implements MessageCreateListener {
             ImageIO.write(img, extension, imgf);
             imageCache.put(name, imgf);
         }catch (IOException e){
-
+            MessageBuilder builder = new MessageBuilder();
+            builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
+            Main.GattBotChannel.sendMessage(builder.build());
         }
     }
 
