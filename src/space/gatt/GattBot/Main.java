@@ -119,6 +119,10 @@ public class Main {
                 commands.add("kappa - Kappa.");
                 commands.add("wat - wat");
                 commands.add("awwyeah - Awwwww Yeahhhh");
+                commands.add("ohwhale - Oh Whale");
+                commands.add("facepalm - Why?");
+                commands.add("triplefacepalm - Why? Why? Why");
+                commands.add("wow - Wow.");
                 commands.add("git - Sends you the Git Repo");
                 commands.add("time - Good Heavens! Look at the time!");
                 commands.add("uptime - Sends the Uptime for GattBot.");

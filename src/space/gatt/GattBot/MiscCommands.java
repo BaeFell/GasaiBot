@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -48,21 +49,117 @@ public class MiscCommands implements MessageCreateListener {
         cacheImage("http://orig09.deviantart.net/ac32/f/2011/356/f/1/nope_avi_high_resolution_by_wango911-d4jv1vx.png", "png", "nope");
         cacheImage("http://i0.kym-cdn.com/photos/images/newsfeed/000/173/576/Wat8.jpg", "jpg", "wat");
         cacheImage("http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1395991705/gjn81wvxqsq6yzcwubok.png", "png", "kappa");
-        cacheImage("http://gattbot.gatt.space/gifs/mindblown.gif", "gif", "mindblown");
-        cacheImage("http://gattbot.gatt.space/gifs/lolis.gif", "gif", "lolis");
-        cacheImage("http://gattbot.gatt.space/gifs/falconpunch.gif", "gif", "falconpunch");
         cacheImage("http://pre14.deviantart.net/7397/th/pre/i/2013/153/5/5/yukki__i_ll_protect_you__by_saihina4ever-d67lec1.jpg", "jpg", "noticeme");
         cacheImage("https://i.ytimg.com/vi/fGl4LOAgW50/maxresdefault.jpg", "jpg", "awwyeah");
         cacheImage("http://i.imgur.com/Vu0WycI.png", "png", "internetgod");
         cacheImage("http://gattbot.gatt.space/gifs/time.jpg", "jpg", "time");
+        cacheImage("http://i.imgur.com/urSk0Ki.jpg", "jpg", "ohwhale");
+        cacheImage("https://i.ytimg.com/vi/jUy9_0M3bVk/maxresdefault.jpg", "jpg", "wow");
+        cacheImage("http://memesvault.com/wp-content/uploads/Facepalm-Meme-04.png", "png", "facepalm");
+        cacheImage("http://memesvault.com/wp-content/uploads/Facepalm-Meme-08.png", "png", "triplefacepalm");
+        cacheImage("http://gattbot.gatt.space/gifs/mindblown.gif", "gif", "mindblown");
+        cacheImage("http://gattbot.gatt.space/gifs/lolis.gif", "gif", "lolis");
+        cacheImage("http://gattbot.gatt.space/gifs/falconpunch.gif", "gif", "falconpunch");
     }
 
+    private long getTimeRunning(){
+        Date date = new Date();
+        return (date.getTime() - Main.startupTime);
+    }
 
     @Override
     public synchronized void onMessageCreate(DiscordAPI discordAPI, Message message) {
 
         String[] args = message.getContent().split(" ");
         MessageBuilder builder;
+
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "ohwhale")){
+            message.delete();
+            builder = new MessageBuilder();
+
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("ohwhale"));
+        }
+
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "wow")){
+            message.delete();
+            builder = new MessageBuilder();
+
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("wow"));
+        }
+
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "triplefacepalm")){
+            message.delete();
+            builder = new MessageBuilder();
+
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("triplefacepalm"));
+        }
+
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "facepalm")){
+            message.delete();
+            builder = new MessageBuilder();
+
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("facepalm"));
+        }
+
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "awwyeah")){
+            message.delete();
+            builder = new MessageBuilder();
+
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Awwww, Yeahhhh!").appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("awwyeah"));
+        }
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "internetgod")){
+            message.delete();
+            builder = new MessageBuilder();
+
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("internetgod"));
+        }
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "wat")){
+            message.delete();
+            builder = new MessageBuilder();
+
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " wat?").appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("wat"));
+        }
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "kappa") || args[0].equalsIgnoreCase(":kappa:")){
+            message.delete();
+            builder = new MessageBuilder();
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Kappa!").appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("kappa"));
+        }
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "mindblown")){
+
+            message.delete();
+            builder = new MessageBuilder();
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, "'s mind blew up!").appendNewLine();
+            builder.append(gifCache.get("mindblown"));
+            message.reply(builder.build());
+        }
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "hype")){
+            message.delete();
+            builder = new MessageBuilder();
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Let the hype train begin!");
+            message.reply(builder.build());
+        }
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lenny")){
+            message.delete();
+            builder = new MessageBuilder();
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" ( ͡° ͜ʖ ͡°)");
+            message.reply(builder.build());
+        }
 
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "1v1")){
             message.delete();
@@ -81,8 +178,6 @@ public class MiscCommands implements MessageCreateListener {
                 message.getAuthor().sendMessage(builder.build());
             }
         }
-
-
 
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lmgtfy")){
             message.delete();
@@ -241,6 +336,18 @@ public class MiscCommands implements MessageCreateListener {
             return;
         }
 
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "uptime")) {
+            message.delete();
+            long seconds = getTimeRunning() / 1000;
+            long minutes = seconds / 60;
+            long hours = minutes / 60;
+            long days = hours / 24;
+            String time = days + " days, " + hours % 24 + " hours, " + minutes % 60 + " minutes and " + seconds % 60 + " seconds";
+            builder = new MessageBuilder();
+            builder.append("```" + Settings.getMsgStarter() +" I've been online for " + time +"```");
+            message.reply(builder.build());
+            return;
+        }
 
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "time")) {
             message.delete();
@@ -260,64 +367,12 @@ public class MiscCommands implements MessageCreateListener {
             message.replyFile(imageCache.get("nope"));
             return;
         }
-        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "git")){
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "git")) {
             message.delete();
             builder = new MessageBuilder();
             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Here you go!").appendNewLine().append("https://github.com/Funnygatt/GattBot");
             message.getAuthor().sendMessage(builder.build());
         }
-        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "awwyeah")){
-            message.delete();
-            builder = new MessageBuilder();
-
-            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Awwww, Yeahhhh!").appendNewLine();
-            message.reply(builder.build());
-            message.replyFile(imageCache.get("awwyeah"));
-        }
-        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "internetgod")){
-            message.delete();
-            builder = new MessageBuilder();
-
-            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendNewLine();
-            message.reply(builder.build());
-            message.replyFile(imageCache.get("internetgod"));
-        }
-        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "wat")){
-            message.delete();
-            builder = new MessageBuilder();
-
-            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " wat?").appendNewLine();
-            message.reply(builder.build());
-            message.replyFile(imageCache.get("wat"));
-        }
-        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "kappa") || args[0].equalsIgnoreCase(":kappa:")){
-            message.delete();
-            builder = new MessageBuilder();
-            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Kappa!").appendNewLine();
-            message.reply(builder.build());
-            message.replyFile(imageCache.get("kappa"));
-        }
-        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "mindblown")){
-
-            message.delete();
-            builder = new MessageBuilder();
-            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, "'s mind blew up!").appendNewLine();
-            builder.append(gifCache.get("mindblown"));
-            message.reply(builder.build());
-        }
-        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "hype")){
-            message.delete();
-            builder = new MessageBuilder();
-            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Let the hype train begin!");
-            message.reply(builder.build());
-        }
-        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "lenny")){
-            message.delete();
-            builder = new MessageBuilder();
-            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" ( ͡° ͜ʖ ͡°)");
-            message.reply(builder.build());
-        }
-
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "roll")){
             message.delete();
             if (args.length == 1){

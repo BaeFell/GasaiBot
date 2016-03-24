@@ -15,7 +15,6 @@ public class PersonalMessageReplier implements MessageCreateListener {
 
 	private long getTimeRunning(){
 		Date date = new Date();
-
 		return (date.getTime() - Main.startupTime);
 	}
 
@@ -100,7 +99,6 @@ public class PersonalMessageReplier implements MessageCreateListener {
 			replies.add("Humph!");
 			replies.add("Do you need something?");
 			replies.add("Yes. I'm a Bot. Yes - this is a predefined message. No you cannot add more");
-			replies.add("");
 
 			String reply = "";
 			Random random = new Random();
