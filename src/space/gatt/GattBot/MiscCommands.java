@@ -63,6 +63,7 @@ public class MiscCommands implements MessageCreateListener {
         cacheImage("http://gattbot.gatt.space/gifs/mindblown.gif", "gif", "mindblown");
         cacheImage("http://gattbot.gatt.space/gifs/lolis.gif", "gif", "lolis");
         cacheImage("http://gattbot.gatt.space/gifs/falconpunch.gif", "gif", "falconpunch");
+        cacheImage("https://media.giphy.com/media/amaS2ywWuJsXe/giphy.gif", "gif", "konga");
     }
 
     private long getTimeRunning(){
@@ -75,6 +76,10 @@ public class MiscCommands implements MessageCreateListener {
 
         String[] args = message.getContent().split(" ");
         MessageBuilder builder;
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "konga")){
+            message.delete();
+            message.replyFile(imageCache.get("konga"));
+        }
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "sealofapproval")){
             message.delete();
             builder = new MessageBuilder();
