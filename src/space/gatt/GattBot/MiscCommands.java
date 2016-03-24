@@ -367,7 +367,13 @@ public class MiscCommands implements MessageCreateListener {
             message.replyFile(imageCache.get("nope"));
             return;
         }
-        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "git")) {
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "site")){
+            message.delete();
+            builder = new MessageBuilder();
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Here you go!").appendNewLine().append("http://gattbot.gatt.space/");
+            message.getAuthor().sendMessage(builder.build());
+        }
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "git")){
             message.delete();
             builder = new MessageBuilder();
             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Here you go!").appendNewLine().append("https://github.com/Funnygatt/GattBot");

@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class AdminCommands implements MessageCreateListener {
 
-    private Boolean hasRole(User user, Server server, String roleName, Boolean caseSensitive){
+    private boolean hasRole(User user, Server server, String roleName, boolean caseSensitive){
         if (caseSensitive) {
             for (Role r : user.getRoles(server)) {
                 if (r.getName().equalsIgnoreCase(roleName)) {
@@ -39,7 +39,7 @@ public class AdminCommands implements MessageCreateListener {
         }
     }
 
-    private Boolean hasRole(User user, Server server, String roleName){
+    private boolean hasRole(User user, Server server, String roleName){
         for (Role r : user.getRoles(server)){
             if (r.getName().equals(roleName)){
                 return true;
