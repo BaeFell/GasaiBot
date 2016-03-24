@@ -81,7 +81,7 @@ public class MiscCommands implements MessageCreateListener {
 
             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" gives his Seal of Approval").appendNewLine();
             message.reply(builder.build());
-            message.replyFile(imageCache.get("ealofapproval"));
+            message.replyFile(imageCache.get("sealofapproval"));
         }
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "ohwhale")){
             message.delete();
