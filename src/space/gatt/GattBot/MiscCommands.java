@@ -78,7 +78,7 @@ public class MiscCommands implements MessageCreateListener {
         MessageBuilder builder;
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "konga")){
             message.delete();
-            message.replyFile(imageCache.get("konga"));
+            message.reply(gifCache.get("konga"));
         }
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "sealofapproval")){
             message.delete();
