@@ -163,7 +163,7 @@ public class AdminCommands implements MessageCreateListener {
                     return;
                 } else {
                     builder = new MessageBuilder();
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You do not have the ```").appendDecoration(MessageDecoration.BOLD, "Bot Commander").append("``` rank!");
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You do not have the ```Bot Commander``` rank!");
                     message.reply(builder.build());
                 }
             }
@@ -490,6 +490,7 @@ public class AdminCommands implements MessageCreateListener {
                 }
                 return;
             }
+            builder = new MessageBuilder();
             if (!message.isPrivateMessage()) {
                 builder.append(message.getAuthor().getName() + "(" + message.getChannelReceiver().getServer().getName() + ")[" + message.getChannelReceiver().getName() + "] > " + message.getContent());
                 Main.GattBotChannel.sendMessage(builder.build());
