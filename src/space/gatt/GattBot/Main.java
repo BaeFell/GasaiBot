@@ -85,7 +85,7 @@ public class Main {
             @Override
             public void onSuccess(DiscordAPI api) {
                 //api.convertToBotAccount(api.getToken());
-                startConsoleLogger(api);
+                new Thread(new ConsoleLogger()).run();
                 api.setGame("(∩｀-´)⊃━☆ﾟ.*･｡ﾟ with a wezurd");
                 for (Server s : api.getServers()){
                     System.out.println("Server = " + s.getName());
@@ -189,17 +189,6 @@ public class Main {
             }
         });
         //api.getEventManager().registerListener(new GattBotListener(api));
-    }
-
-    private static void startConsoleLogger(DiscordAPI api){
-        String prevLine = "THIS IS THE STARTING LINE OR SOMETHING";
-        while(true){
-            String line = System.console().readLine();
-            if (prevLine != line){
-                adminLogChannel.sendMessage("```" + line + "```");
-                prevLine = line;
-            }
-        }
     }
 
 }
