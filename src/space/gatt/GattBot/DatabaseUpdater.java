@@ -38,7 +38,7 @@ public class DatabaseUpdater implements Runnable {
 			u.openStream().close();
 		}catch (Exception e){
 			MessageBuilder builder = new MessageBuilder();
-			builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getMessage() + "```");
+			builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getCause().getMessage()).appendNewLine().append(e.getMessage() + "```");
 			Main.adminLogChannel.sendMessage(builder.build());
 		}
 	}
