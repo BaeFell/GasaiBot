@@ -9,6 +9,7 @@ import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.MessageBuilder;
 
 import java.awt.image.BufferedImage;
+import java.io.OutputStream;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
@@ -23,18 +24,14 @@ public class Main {
 
     public static ArrayList<String> commands = new ArrayList();
     public static Channel GattBotChannel;
+    public static Channel adminLogChannel;
 
     public static ArrayList<String> adminUsers = new ArrayList<>();
     public static ArrayList<String> senpais = new ArrayList<>();
 
     private static DiscordAPI api;
 
-    public static DiscordAPI getApi() {
-        return api;
-    }
-
     public static long startupTime;
-    private static String token;
 
     private static String email, password;
 
@@ -88,6 +85,7 @@ public class Main {
             @Override
             public void onSuccess(DiscordAPI api) {
                 //api.convertToBotAccount(api.getToken());
+                startConsoleLogger(api);
                 api.setGame("(∩｀-´)⊃━☆ﾟ.*･｡ﾟ with a wezurd");
                 for (Server s : api.getServers()){
                     System.out.println("Server = " + s.getName());
@@ -95,6 +93,9 @@ public class Main {
                         for (Channel c : s.getChannels()){
                             if (c.getName().equalsIgnoreCase("logchannel")){
                                 GattBotChannel = c;
+                            }
+                            if (c.getName().equalsIgnoreCase("admin_log")){
+                                adminLogChannel = c;
                             }
                         }
                         break;
@@ -188,6 +189,17 @@ public class Main {
             }
         });
         //api.getEventManager().registerListener(new GattBotListener(api));
+    }
+
+    private static void startConsoleLogger(DiscordAPI api){
+        String prevLine = "THIS IS THE STARTING LINE OR SOMETHING";
+        while(true){
+            String line = System.console().readLine();
+            if (prevLine != line){
+                adminLogChannel.sendMessage("```" + line + "```");
+                prevLine = line;
+            }
+        }
     }
 
 }
