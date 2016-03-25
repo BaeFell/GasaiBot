@@ -477,6 +477,14 @@ public class AdminCommands implements MessageCreateListener {
                 return;
             }
 
+            if (args[0].equalsIgnoreCase("updatestats")) {
+                message.delete();
+                if (Main.adminUsers.contains(message.getAuthor().getId())) {
+                    Main.getDbu().update();
+                }
+                return;
+            }
+
             // Shutdown Command
             if (args[0].equalsIgnoreCase("shutdown")) {
 

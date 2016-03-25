@@ -49,6 +49,12 @@ public class Main {
         return api;
     }
 
+    private static DatabaseUpdater dbu;
+
+    public static DatabaseUpdater getDbu() {
+        return dbu;
+    }
+
     public static void main(String[] args) {
 
 
@@ -107,7 +113,7 @@ public class Main {
 
                //ConsoleLogger logger = new ConsoleLogger();
                //new Thread(logger).start();
-                DatabaseUpdater dbu = new DatabaseUpdater();
+                dbu = new DatabaseUpdater();
                 dbu.run();
                 dbu.update();
                 api.setAutoReconnect(true);
