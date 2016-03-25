@@ -12,12 +12,7 @@ public class ConsoleLogger implements Runnable {
 
 	@Override
 	public void run() {
-		long seconds =  new Date().getTime() / 1000;
-		long minutes = seconds / 60;
-		long hours = minutes / 60;
-		long days = hours / 24;
-		String time = days + " days, " + hours % 24 + " hours, " + minutes % 60 + " minutes and " + seconds % 60 + " seconds";
-		Main.adminLogChannel.sendMessage("```Starting Console Logger as of " + time + "```");
+		Main.adminLogChannel.sendMessage("```Starting Console Logger as of " + new Date().getTime() + "```");
 		ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 		scheduler.scheduleAtFixedRate(new Runnable() {
 			String prevLine = "THIS IS THE STARTING LINE OR SOMETHING";
