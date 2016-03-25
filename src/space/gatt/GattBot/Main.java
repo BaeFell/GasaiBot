@@ -45,6 +45,10 @@ public class Main {
 
     private static boolean rebooted = false;
 
+    public static DiscordAPI getApi() {
+        return api;
+    }
+
     public static void main(String[] args) {
 
 
@@ -104,6 +108,9 @@ public class Main {
                 ConsoleLogger logger = new ConsoleLogger();
                 new Thread(logger).start();
                 logger.run();
+                DatabaseUpdater dbu = new DatabaseUpdater();
+                dbu.run();
+                dbu.update();
                 api.setAutoReconnect(true);
                 System.out.println("Updating user cache");
                 for (Server s : api.getServers()){

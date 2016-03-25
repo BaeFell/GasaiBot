@@ -23,7 +23,6 @@ public class ConsoleLogger implements Runnable {
 			String prevLine = "THIS IS THE STARTING LINE OR SOMETHING";
 			@Override
 			public void run() {
-
 				String line = System.console().readLine();
 				if (prevLine != line){
 					Main.adminLogChannel.sendMessage("```" + line + "```");
