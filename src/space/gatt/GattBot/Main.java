@@ -84,8 +84,6 @@ public class Main {
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
-                //api.convertToBotAccount(api.getToken());
-                new Thread(new ConsoleLogger()).run();
                 api.setGame("(∩｀-´)⊃━☆ﾟ.*･｡ﾟ with a wezurd");
                 for (Server s : api.getServers()){
                     System.out.println("Server = " + s.getName());
@@ -188,6 +186,7 @@ public class Main {
 
             }
         });
+        new Thread(new ConsoleLogger()).run();
         //api.getEventManager().registerListener(new GattBotListener(api));
     }
 
