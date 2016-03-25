@@ -85,6 +85,7 @@ public class Main {
             @Override
             public void onSuccess(DiscordAPI api) {
                 api.setGame("(∩｀-´)⊃━☆ﾟ.*･｡ﾟ with a wezurd");
+
                 for (Server s : api.getServers()){
                     System.out.println("Server = " + s.getName());
                     if (s.getName().equalsIgnoreCase("GattBotServer")){
@@ -99,6 +100,10 @@ public class Main {
                         break;
                     }
                 }
+
+                ConsoleLogger logger = new ConsoleLogger();
+                new Thread(logger).start();
+                logger.run();
                 api.setAutoReconnect(true);
                 System.out.println("Updating user cache");
                 for (Server s : api.getServers()){
@@ -186,9 +191,6 @@ public class Main {
 
             }
         });
-        ConsoleLogger logger = new ConsoleLogger();
-        new Thread(logger).start();
-        logger.run();
         //api.getEventManager().registerListener(new GattBotListener(api));
     }
 
