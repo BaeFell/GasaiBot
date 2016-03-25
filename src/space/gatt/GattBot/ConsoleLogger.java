@@ -12,7 +12,7 @@ public class ConsoleLogger implements Runnable {
 
 	@Override
 	public void run() {
-		long seconds =  (new Date().getTime() - Main.startupTime) / 1000;
+		long seconds =  new Date().getTime() / 1000;
 		long minutes = seconds / 60;
 		long hours = minutes / 60;
 		long days = hours / 24;
