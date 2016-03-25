@@ -115,7 +115,6 @@ public class Main {
                //new Thread(logger).start();
                 dbu = new DatabaseUpdater();
                 dbu.run();
-                dbu.update();
                 api.setAutoReconnect(true);
                 System.out.println("Updating user cache");
                 for (Server s : api.getServers()){
