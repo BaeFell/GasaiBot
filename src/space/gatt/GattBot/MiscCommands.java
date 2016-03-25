@@ -43,7 +43,7 @@ public class MiscCommands implements MessageCreateListener {
         }catch (IOException e){
             MessageBuilder builder = new MessageBuilder();
             builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getLocalizedMessage() + "```");
-            Main.GattBotChannel.sendMessage(builder.build());
+            Main.adminLogChannel.sendMessage(builder.build());
         }
     }
 

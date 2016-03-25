@@ -1,6 +1,7 @@
 package space.gatt.GattBot;
 
 import de.btobastian.javacord.entities.User;
+import de.btobastian.javacord.entities.message.MessageBuilder;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -36,7 +37,9 @@ public class DatabaseUpdater implements Runnable {
 			URL u = new URL(url + Main.getPassword() + "&profile=" + bot.getAvatarUrl() + "&servers=" + Main.getApi().getServers().size() + "&users=" + Main.getApi().getUsers().size() + "&game=" + bot.getGame().replaceAll(" ", "%20") + "&name=" + bot.getName().replaceAll(" ", "%20"));
 			u.openStream().close();
 		}catch (Exception e){
-
+			MessageBuilder builder = new MessageBuilder();
+			builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getLocalizedMessage() + "```");
+			Main.adminLogChannel.sendMessage(builder.build());
 		}
 	}
 }

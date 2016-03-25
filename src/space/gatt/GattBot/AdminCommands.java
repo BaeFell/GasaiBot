@@ -79,7 +79,7 @@ public class AdminCommands implements MessageCreateListener {
 
                         builder = new MessageBuilder();
                         builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
-                        Main.GattBotChannel.sendMessage(builder.build());
+                        Main.adminLogChannel.sendMessage(builder.build());
                     }
                     if (api.getServers().contains(server)) {
                         builder = new MessageBuilder();
@@ -135,7 +135,7 @@ public class AdminCommands implements MessageCreateListener {
 
                             builder = new MessageBuilder();
                             builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
-                            Main.GattBotChannel.sendMessage(builder.build());
+                            Main.adminLogChannel.sendMessage(builder.build());
                         }
                         return;
 
@@ -154,7 +154,7 @@ public class AdminCommands implements MessageCreateListener {
 
                         builder = new MessageBuilder();
                         builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
-                        Main.GattBotChannel.sendMessage(builder.build());
+                        Main.adminLogChannel.sendMessage(builder.build());
                     }
                     if (args.length > 1) {
                         if (args[1].equalsIgnoreCase("-silent")) {
@@ -228,7 +228,7 @@ public class AdminCommands implements MessageCreateListener {
                         } catch (InterruptedException | ExecutionException e) {
                             builder = new MessageBuilder();
                             builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
-                            Main.GattBotChannel.sendMessage(builder.build());
+                            Main.adminLogChannel.sendMessage(builder.build());
                             return;
                         }
                     } else {
@@ -291,7 +291,7 @@ public class AdminCommands implements MessageCreateListener {
                                 e.printStackTrace();
                                 builder = new MessageBuilder();
                                 builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
-                                Main.GattBotChannel.sendMessage(builder.build());
+                                Main.adminLogChannel.sendMessage(builder.build());
                             }
                         } else if (args[3].equalsIgnoreCase("file")) {
                             System.out.println("Image is Attachment");
@@ -304,7 +304,7 @@ public class AdminCommands implements MessageCreateListener {
                                     e.printStackTrace();
                                     builder = new MessageBuilder();
                                     builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
-                                    Main.GattBotChannel.sendMessage(builder.build());
+                                    Main.adminLogChannel.sendMessage(builder.build());
                                 }
                             } else {
                                 System.out.println("Could not find image from attachement.");
@@ -326,7 +326,7 @@ public class AdminCommands implements MessageCreateListener {
                                     e.printStackTrace();
                                     builder = new MessageBuilder();
                                     builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getLocalizedMessage() + "```");
-                                    Main.GattBotChannel.sendMessage(builder.build());
+                                    Main.adminLogChannel.sendMessage(builder.build());
                                 }
                             }
 
@@ -512,7 +512,7 @@ public class AdminCommands implements MessageCreateListener {
                     } catch (Exception e) {
                         builder = new MessageBuilder();
                         builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getLocalizedMessage() + "```");
-                        Main.GattBotChannel.sendMessage(builder.build());
+                        Main.adminLogChannel.sendMessage(builder.build());
                     }
                 } else {
                     builder = new MessageBuilder();
@@ -546,15 +546,15 @@ public class AdminCommands implements MessageCreateListener {
         botWriter = new BufferedWriter(new OutputStreamWriter(botProcess.getOutputStream()));
         switch (botProcess.exitValue()) {
             case NORMAL_EXIT_CODE:
-                Main.GattBotChannel.sendMessage("```SYSTEM > ```The Bot requested to shutdown and not relaunch.\nShutting down...");
+                Main.adminLogChannel.sendMessage("```SYSTEM > ```The Bot requested to shutdown and not relaunch.\nShutting down...");
                 System.exit(0);
                 break;
             case RESTART_CODE:
-                Main.GattBotChannel.sendMessage("```SYSTEM > ```Restarting");
+                Main.adminLogChannel.sendMessage("```SYSTEM > ```Restarting");
                 break;
             default:
-                Main.GattBotChannel.sendMessage("```SYSTEM > ```The Bot's Exit code was unrecognized. ExitCode: " + botProcess.exitValue());
-                Main.GattBotChannel.sendMessage("```SYSTEM > ```Stopping");
+                Main.adminLogChannel.sendMessage("```SYSTEM > ```The Bot's Exit code was unrecognized. ExitCode: " + botProcess.exitValue());
+                Main.adminLogChannel.sendMessage("```SYSTEM > ```Stopping");
                 System.exit(0);
         }
     }
