@@ -510,7 +510,9 @@ public class AdminCommands implements MessageCreateListener {
                             System.exit(0);
                         }
                     } catch (Exception e) {
-
+                        builder = new MessageBuilder();
+                        builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getLocalizedMessage() + "```");
+                        Main.GattBotChannel.sendMessage(builder.build());
                     }
                 } else {
                     builder = new MessageBuilder();
@@ -530,10 +532,6 @@ public class AdminCommands implements MessageCreateListener {
         }
     }
 
-    String[] START_BOT_COMMAND = new String[]{
-        "nohup java -jar /var/lib/jenkins/workspace/GattBot/target/GattBot-1.0-SNAPSHOT.jar " + Main.getEmail()+" " + Main.getPassword()+ " reboot &\n"
-    };
-
     private static BufferedWriter botWriter;
     private static final int UPDATE_EXIT_CODE = 20;
     private static final int NORMAL_EXIT_CODE = 21;
@@ -541,26 +539,23 @@ public class AdminCommands implements MessageCreateListener {
     private static final int REVERT_CODE = 23;
 
     private void reboot() throws Exception{
-        while(true) {
-            ProcessBuilder builder = new ProcessBuilder();
-            builder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
-            builder.command(START_BOT_COMMAND);
-            Process botProcess = builder.start();
-            botWriter = new BufferedWriter(new OutputStreamWriter(botProcess.getOutputStream()));
-            botProcess.waitFor();
-            switch (botProcess.exitValue()) {
-                case NORMAL_EXIT_CODE:
-                    Main.GattBotChannel.sendMessage("```SYSTEM > ```The Bot requested to shutdown and not relaunch.\nShutting down...");
-                    System.exit(0);
-                    break;
-                case RESTART_CODE:
-                    Main.GattBotChannel.sendMessage("```SYSTEM > ```Restarting");
-                    break;
-                default:
-                    Main.GattBotChannel.sendMessage("```SYSTEM > ```The Bot's Exit code was unrecognized. ExitCode: " + botProcess.exitValue());
-                    Main.GattBotChannel.sendMessage("```SYSTEM > ```Stopping");
-                    System.exit(0);
-            }
+        ProcessBuilder builder = new ProcessBuilder();
+        builder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
+        builder.command("nohup java -jar /var/lib/jenkins/workspace/GattBot/target/GattBot-1.0-SNAPSHOT.jar " + Main.getEmail()+" " + Main.getPassword()+ " reboot &\n");
+        Process botProcess = builder.start();
+        botWriter = new BufferedWriter(new OutputStreamWriter(botProcess.getOutputStream()));
+        switch (botProcess.exitValue()) {
+            case NORMAL_EXIT_CODE:
+                Main.GattBotChannel.sendMessage("```SYSTEM > ```The Bot requested to shutdown and not relaunch.\nShutting down...");
+                System.exit(0);
+                break;
+            case RESTART_CODE:
+                Main.GattBotChannel.sendMessage("```SYSTEM > ```Restarting");
+                break;
+            default:
+                Main.GattBotChannel.sendMessage("```SYSTEM > ```The Bot's Exit code was unrecognized. ExitCode: " + botProcess.exitValue());
+                Main.GattBotChannel.sendMessage("```SYSTEM > ```Stopping");
+                System.exit(0);
         }
     }
 
