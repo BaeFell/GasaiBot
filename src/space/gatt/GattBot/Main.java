@@ -186,7 +186,9 @@ public class Main {
 
             }
         });
-        new Thread(new ConsoleLogger()).run();
+        ConsoleLogger logger = new ConsoleLogger();
+        new Thread(logger).start();
+        logger.run();
         //api.getEventManager().registerListener(new GattBotListener(api));
     }
 
