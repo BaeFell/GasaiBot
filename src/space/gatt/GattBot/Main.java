@@ -105,9 +105,8 @@ public class Main {
                     }
                 }
 
-                ConsoleLogger logger = new ConsoleLogger();
-                new Thread(logger).start();
-                logger.run();
+               //ConsoleLogger logger = new ConsoleLogger();
+               //new Thread(logger).start();
                 DatabaseUpdater dbu = new DatabaseUpdater();
                 dbu.run();
                 dbu.update();
