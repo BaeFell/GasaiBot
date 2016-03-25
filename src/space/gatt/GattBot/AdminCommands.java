@@ -13,9 +13,7 @@ import de.btobastian.javacord.listener.message.MessageCreateListener;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
@@ -489,8 +487,12 @@ public class AdminCommands implements MessageCreateListener {
                     builder = new MessageBuilder();
                     if (args.length > 0) {
                     }
+                    boolean reboot = false;
                     if (args[1].equalsIgnoreCase("-shutdown")) {
                         builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai");
+                    }else if (args[1].equalsIgnoreCase("-r")||args[1].equalsIgnoreCase("-restart")){
+                        builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Rebooting in process!");
+                        reboot = true;
                     } else {
                         builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai (Unknown Argument!)");
                     }
@@ -499,9 +501,15 @@ public class AdminCommands implements MessageCreateListener {
                     }
                     message.delete();
                     try {
-                        TimeUnit.SECONDS.sleep(2);
-                        System.exit(0);
-                    } catch (InterruptedException e) {
+                        if (!reboot) {
+                            TimeUnit.SECONDS.sleep(1);
+                            System.exit(0);
+                        }else{
+                            reboot();
+                            TimeUnit.SECONDS.sleep(1);
+                            System.exit(0);
+                        }
+                    } catch (Exception e) {
 
                     }
                 } else {
@@ -521,6 +529,41 @@ public class AdminCommands implements MessageCreateListener {
             }
         }
     }
+
+    String[] START_BOT_COMMAND = new String[]{
+        "nohup java -jar /var/lib/jenkins/workspace/GattBot/target/GattBot-1.0-SNAPSHOT.jar " + Main.getEmail()+" " + Main.getPassword()+ " reboot &\n"
+    };
+
+    private static BufferedWriter botWriter;
+    private static final int UPDATE_EXIT_CODE = 20;
+    private static final int NORMAL_EXIT_CODE = 21;
+    private static final int RESTART_CODE = 22;
+    private static final int REVERT_CODE = 23;
+
+    private void reboot() throws Exception{
+        while(true) {
+            ProcessBuilder builder = new ProcessBuilder();
+            builder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
+            builder.command(START_BOT_COMMAND);
+            Process botProcess = builder.start();
+            botWriter = new BufferedWriter(new OutputStreamWriter(botProcess.getOutputStream()));
+            botProcess.waitFor();
+            switch (botProcess.exitValue()) {
+                case NORMAL_EXIT_CODE:
+                    Main.GattBotChannel.sendMessage("```SYSTEM > ```The Bot requested to shutdown and not relaunch.\nShutting down...");
+                    System.exit(0);
+                    break;
+                case RESTART_CODE:
+                    Main.GattBotChannel.sendMessage("```SYSTEM > ```Restarting");
+                    break;
+                default:
+                    Main.GattBotChannel.sendMessage("```SYSTEM > ```The Bot's Exit code was unrecognized. ExitCode: " + botProcess.exitValue());
+                    Main.GattBotChannel.sendMessage("```SYSTEM > ```Stopping");
+                    System.exit(0);
+            }
+        }
+    }
+
 }
 
 

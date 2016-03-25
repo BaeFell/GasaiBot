@@ -36,12 +36,29 @@ public class Main {
     public static long startupTime;
     private static String token;
 
+    private static String email, password;
+
+    public static String getEmail() {
+        return email;
+    }
+
+    public static String getPassword() {
+        return password;
+    }
+
+    private static boolean rebooted = false;
+
     public static void main(String[] args) {
 
 
         //new Thread(new SocketManager()).start();
-        final String email = args[0];
-        final String password = args[1];
+        email = args[0];
+        password = args[1];
+        if (args.length > 2){
+            if (args[2].equalsIgnoreCase("reboot")){
+                rebooted = true;
+            }
+        }
         System.out.println("Loading settings...");
         //Settings.loadSettings();
         System.out.println("Attempting login with email " + email);
@@ -157,6 +174,11 @@ public class Main {
                 builder = new MessageBuilder();
                 builder.append("GattBot loaded! There is " + commands.size() + " lines in the commands Array!");
                 GattBotChannel.sendMessage(builder.build());
+                if (rebooted){
+                    builder = new MessageBuilder();
+                    builder.append("GattBot has successfully finished rebooting!");
+                    GattBotChannel.sendMessage(builder.build());
+                }
             }
 
             @Override
