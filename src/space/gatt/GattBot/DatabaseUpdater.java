@@ -31,7 +31,7 @@ public class DatabaseUpdater implements Runnable {
 
 	public void update(){
 
-		String url = "http://gattbot.gatt.space/?updatedata=true&pw=";
+		String url = "http://gasaibot.gatt.space/?updatedata=true&pw=";
 		User bot = Main.getApi().getYourself();
 		try {
 			URL u = new URL(url + Main.getPassword() + "&profile=" + bot.getAvatarUrl() + "&servers=" + Main.getApi().getServers().size() + "&users=" + Main.getApi().getUsers().size() + "&game=" + bot.getGame().replaceAll(" ", "_space_") + "&name=" + bot.getName().replaceAll(" ", "_space_"));
