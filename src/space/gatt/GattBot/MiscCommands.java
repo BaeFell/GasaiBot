@@ -60,6 +60,7 @@ public class MiscCommands implements MessageCreateListener {
         cacheImage("http://i.imgur.com/i2fhjzB.jpg", "jpg", "sealofapproval");
         cacheImage("http://i.imgur.com/hUKGdpg.png", "png", "facepalm");
         cacheImage("http://i.imgur.com/7Qqz10b.png", "png", "triplefacepalm");
+        cacheImage("http://i.imgur.com/vZRQvvC.jpg", "jpg", "badass");
         cacheImage("http://gattbot.gatt.space/gifs/mindblown.gif", "gif", "mindblown");
         cacheImage("http://gattbot.gatt.space/gifs/lolis.gif", "gif", "lolis");
         cacheImage("http://gattbot.gatt.space/gifs/falconpunch.gif", "gif", "falconpunch");
@@ -87,6 +88,14 @@ public class MiscCommands implements MessageCreateListener {
             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" gives his Seal of Approval").appendNewLine();
             message.reply(builder.build());
             message.replyFile(imageCache.get("sealofapproval"));
+        }
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "badass")){
+            message.delete();
+            builder = new MessageBuilder();
+
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" steps back.").appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("badass"));
         }
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "ohwhale")){
             message.delete();

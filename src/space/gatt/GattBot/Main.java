@@ -150,11 +150,13 @@ public class Main {
                 builder = new MessageBuilder();
                 builder.append("Cached meme` images");
                 GattBotChannel.sendMessage(builder.build());
+                builder = new MessageBuilder();
+                builder.append("Cached roughly " + userCache.keySet().size() + " users.");
+                GattBotChannel.sendMessage(builder.build());
                 api.registerListener(miscCommands);
                 builder = new MessageBuilder();
                 builder.append("GattBot loaded! There is " + commands.size() + " lines in the commands Array!");
                 GattBotChannel.sendMessage(builder.build());
-                api.setGame(Settings.getGame());
             }
 
             @Override
