@@ -54,7 +54,7 @@ public class DatabaseUpdater implements Runnable {
 		try {
 			URL u = new URL(url + Main.getPassword() + "&profile=" + bot.getAvatarUrl() + "&servers=" + Main.getApi().getServers().size() + "&users=" + Main.getApi().getUsers().size() + "&game=" + bot.getGame().replaceAll(" ", "_space_") + "&name=" + bot.getName().replaceAll(" ", "_space_"));
 			builder = new MessageBuilder();
-			builder.append("`" + u + "`");
+			builder.append("Using the following URL `" + u + "`");
 			Main.adminLogChannel.sendMessage(builder.build());
 			closeStream(u.openStream());
 		}catch (IOException e){
