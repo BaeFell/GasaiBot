@@ -46,17 +46,16 @@ public class DatabaseUpdater implements Runnable {
 	}
 
 	public void update(){
-
 		String url = "http://gasaibot.gatt.space/?updatedata=true&pw=";
 		User bot = Main.getApi().getYourself();
+		MessageBuilder builder = new MessageBuilder();
+		builder.append("`Attempting to update Database`");
+		Main.adminLogChannel.sendMessage(builder.build());
 		try {
 			URL u = new URL(url + Main.getPassword() + "&profile=" + bot.getAvatarUrl() + "&servers=" + Main.getApi().getServers().size() + "&users=" + Main.getApi().getUsers().size() + "&game=" + bot.getGame().replaceAll(" ", "_space_") + "&name=" + bot.getName().replaceAll(" ", "_space_"));
 			closeStream(u.openStream());
-			MessageBuilder builder = new MessageBuilder();
-			builder.append("`Attempting to update Database`");
-			Main.adminLogChannel.sendMessage(builder.build());
 		}catch (IOException e){
-			MessageBuilder builder = new MessageBuilder();
+			builder = new MessageBuilder();
 			builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getMessage() + "```");
 			Main.adminLogChannel.sendMessage(builder.build());
 		}
