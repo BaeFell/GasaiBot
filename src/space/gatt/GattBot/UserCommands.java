@@ -123,21 +123,23 @@ public class UserCommands implements MessageCreateListener {
                 message.delete();
                 builder = new MessageBuilder();
 
-                builder.append(Settings.getMsgStarter() + " My current name: " + discordAPI.getYourself().getName()).appendNewLine();
-                builder.append(Settings.getMsgStarter() + " My current game: " + discordAPI.getYourself().getGame()).appendNewLine();
-                builder.append(Settings.getMsgStarter() + " My current profile picture: " + discordAPI.getYourself().getAvatarUrl()).appendNewLine();
-                builder.append(Settings.getMsgStarter() + " Admin Rank Name: Bot Commander").appendNewLine();
-                builder.append(Settings.getMsgStarter() + " Servers joined: " + discordAPI.getServers().size()).appendNewLine();
-                builder.append(Settings.getMsgStarter() + " Names of servers joined: ").appendNewLine();
+                builder.append(Settings.getMsgStarter() + " My current name: `" + discordAPI.getYourself().getName() + "`").appendNewLine();
+                builder.append(Settings.getMsgStarter() + " My current game: `" + discordAPI.getYourself().getGame() + "`").appendNewLine();
+                builder.append(Settings.getMsgStarter() + " My current profile picture: `" + discordAPI.getYourself().getAvatarUrl()+"`").appendNewLine();
+                builder.append(Settings.getMsgStarter() + " Admin Rank Name: `Bot Commander`").appendNewLine();
+                builder.append(Settings.getMsgStarter() + " Servers joined: `" + discordAPI.getServers().size()+"`").appendNewLine();
+                builder.append(Settings.getMsgStarter() + " Names of servers joined: `").appendNewLine();
                 for (Server s : discordAPI.getServers()){
                     builder.appendDecoration(MessageDecoration.BOLD, Settings.getMsgStarter() + Settings.getMsgStarter() + " Name: " + s.getName()).appendNewLine();
                     builder.append(Settings.getMsgStarter() + Settings.getMsgStarter() + " Member Count: " + s.getMemberCount()).appendNewLine();
                 }
-                builder.append( Settings.getMsgStarter() + " Users in Cache: " + Main.userCache.keySet().size()).appendNewLine();
+
+                builder.append("`");
+                builder.append( Settings.getMsgStarter() + " Users in Cache: `" + Main.userCache.keySet().size() + "`").appendNewLine();
                 try {
-                    builder.append(Settings.getMsgStarter() + " My current IP (may not be exact): " + InetAddress.getLocalHost().getHostAddress()).appendNewLine();
+                    builder.append(Settings.getMsgStarter() + " My current IP (may not be exact): `" + InetAddress.getLocalHost().getHostAddress() + "`").appendNewLine();
                 }catch (UnknownHostException e){
-                    builder.append(Settings.getMsgStarter() + " My current IP (may not be exact): Oops! Couldn't get it").appendNewLine();
+                    builder.append(Settings.getMsgStarter() + " My current IP (may not be exact): `Oops! Couldn't get it`").appendNewLine();
                 }
                 message.getAuthor().sendMessage(builder.build());
                 builder = new MessageBuilder();
@@ -151,17 +153,17 @@ public class UserCommands implements MessageCreateListener {
                 message.delete();
                 User u = message.getMentions().get(0);
                 builder = new MessageBuilder();
-                builder.append(Settings.getMsgStarter()).appendDecoration(MessageDecoration.BOLD, " Info for " + u.getName()).appendNewLine()
-                        .append(Settings.getMsgStarter() + "Discord ID: " + u.getId()).appendNewLine()
+                builder.append(Settings.getMsgStarter()).appendDecoration(MessageDecoration.BOLD, " Info for `" + u.getName() +"`").appendNewLine()
+                        .append(Settings.getMsgStarter() + "Discord ID: `" + u.getId() + "`").appendNewLine()
                         .append(Settings.getMsgStarter() + "Roles for this server: ").appendNewLine();
                 for (Role r : u.getRoles(message.getChannelReceiver().getServer())) {
-                    builder.appendDecoration(MessageDecoration.BOLD_ITALICS, Settings.getMsgStarter() + "Rank Name: " + r.getName()).appendNewLine();
-                    builder.append(Settings.getMsgStarter() + " " + Settings.getMsgStarter() + " Rank ID: " + r.getId()).appendNewLine();
-                    builder.append(Settings.getMsgStarter() + " " + Settings.getMsgStarter() + " Rank Color: " + r.getColor()).appendNewLine();
-                    builder.append(Settings.getMsgStarter() + " " + Settings.getMsgStarter() + " Rank User Amount: " + r.getUsers().size()).appendNewLine().appendNewLine();
+                    builder.appendDecoration(MessageDecoration.BOLD_ITALICS, Settings.getMsgStarter() + "Rank Name: `" + r.getName() + "`").appendNewLine();
+                    builder.append(Settings.getMsgStarter() + " " + Settings.getMsgStarter() + " Rank ID: `" + r.getId() + "`").appendNewLine();
+                    builder.append(Settings.getMsgStarter() + " " + Settings.getMsgStarter() + " Rank Color: `" + r.getColor() + "`").appendNewLine();
+                    builder.append(Settings.getMsgStarter() + " " + Settings.getMsgStarter() + " Rank User Amount: `" + r.getUsers().size() + "`").appendNewLine().appendNewLine();
                 }
-                builder.append(Settings.getMsgStarter() + "Avatar URL: " + u.getAvatarUrl()).appendNewLine()
-                        .append(Settings.getMsgStarter() + "Current Game: " + u.getGame()).appendNewLine();
+                builder.append(Settings.getMsgStarter() + "Avatar URL: `" + u.getAvatarUrl() + "`").appendNewLine()
+                        .append(Settings.getMsgStarter() + "Current Game: `" + u.getGame() + "`").appendNewLine();
                 message.getAuthor().sendMessage(builder.build());
                 builder = new MessageBuilder();
                 builder.append(Settings.getMsgStarter() + "I've PM'd you that user's information, ").appendUser(message.getAuthor());
