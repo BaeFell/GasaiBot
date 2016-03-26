@@ -176,6 +176,9 @@ public class Main {
                 api.registerListener(new UserCommands());
                 MiscCommands miscCommands = new MiscCommands();
                 MessageBuilder builder = new MessageBuilder();
+                builder.append("`__________________________________________________`");
+                GattBotChannel.sendMessage(builder.build());
+                builder = new MessageBuilder();
                 builder.append("Caching meme images");
                 GattBotChannel.sendMessage(builder.build());
                 miscCommands.cacheImages();

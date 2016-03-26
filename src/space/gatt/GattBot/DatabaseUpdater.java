@@ -49,7 +49,7 @@ public class DatabaseUpdater implements Runnable {
 		String url = "http://gasaibot.gatt.space/?updatedata=true&pw=";
 		User bot = Main.getApi().getYourself();
 		MessageBuilder builder = new MessageBuilder();
-		builder.append("`Attempting to update Database`");
+		builder.append("`Attempting to update Database`").appendNewLine().append("Attempting to create the following URL: `" + url + "<password>" + "&profile=" + bot.getAvatarUrl() + "&servers=" + Main.getApi().getServers().size() + "&users=" + Main.getApi().getUsers().size() + "&game=" + bot.getGame().replaceAll(" ", "_space_") + "&name=" + bot.getName().replaceAll(" ", "_space_") + "`");
 		Main.adminLogChannel.sendMessage(builder.build());
 		try {
 			URL u = new URL(url + Main.getPassword() + "&profile=" + bot.getAvatarUrl() + "&servers=" + Main.getApi().getServers().size() + "&users=" + Main.getApi().getUsers().size() + "&game=" + bot.getGame().replaceAll(" ", "_space_") + "&name=" + bot.getName().replaceAll(" ", "_space_"));
