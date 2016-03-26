@@ -368,7 +368,7 @@ public class MiscCommands implements MessageCreateListener {
             long days = hours / 24;
             String time = days + " days, " + hours % 24 + " hours, " + minutes % 60 + " minutes and " + seconds % 60 + " seconds";
             builder = new MessageBuilder();
-            builder.append("```" + Settings.getMsgStarter() +" I've been online for " + time +"```");
+            builder.append("`" + Settings.getMsgStarter() +" I've been online for " + time +"`");
             message.reply(builder.build());
             return;
         }

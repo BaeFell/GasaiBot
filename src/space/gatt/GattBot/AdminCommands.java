@@ -171,7 +171,7 @@ public class AdminCommands implements MessageCreateListener {
                     return;
                 } else {
                     builder = new MessageBuilder();
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You do not have the ```Bot Commander``` rank!");
+                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You do not have the `Bot Commander` rank!");
                     message.reply(builder.build());
                 }
             }
@@ -554,15 +554,16 @@ public class AdminCommands implements MessageCreateListener {
         botWriter = new BufferedWriter(new OutputStreamWriter(botProcess.getOutputStream()));
         switch (botProcess.exitValue()) {
             case NORMAL_EXIT_CODE:
-                Main.adminLogChannel.sendMessage("```SYSTEM > ```The Bot requested to shutdown and not relaunch.\nShutting down...");
+                Main.adminLogChannel.sendMessage("`SYSTEM > `The Bot requested to shutdown and not relaunch.\nShutting down...");
                 System.exit(0);
                 break;
             case RESTART_CODE:
-                Main.adminLogChannel.sendMessage("```SYSTEM > ```Restarting");
+                Main.adminLogChannel.sendMessage("`SYSTEM > `Restarting");
                 break;
             default:
-                Main.adminLogChannel.sendMessage("```SYSTEM > ```The Bot's Exit code was unrecognized. ExitCode: " + botProcess.exitValue());
-                Main.adminLogChannel.sendMessage("```SYSTEM > ```Stopping");
+                Main.adminLogChannel.sendMessage("`SYSTEM > `The Bot's Exit code was unrecognized. ExitCode: " + botProcess.exitValue());
+                Main.adminLogChannel.sendMessage("`SYSTEM > `Stopping");
+                Main.adminLogChannel.sendMessage("`SYSTEM > `Stopping");
                 System.exit(0);
         }
     }
