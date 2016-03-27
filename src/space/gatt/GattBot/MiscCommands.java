@@ -185,6 +185,13 @@ public class MiscCommands implements MessageCreateListener {
             message.reply(builder.build());
         }
 
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "sponsor")){
+            message.delete();
+            builder = new MessageBuilder();
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Gasai Bot is sponsored and hosted thanks to Shockbyte!").appendNewLine().append("https://www.shockbyte.com/").appendNewLine().append("Use the coupon code 'DISCORD' to get a Dedicated IP for 3$ a month (instead of the usual 5$ a month!)");
+            message.reply(builder.build());
+        }
+
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "1v1")){
             message.delete();
             if (message.getMentions().size() > 1) {

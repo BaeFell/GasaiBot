@@ -148,6 +148,8 @@ public class Main {
                 commands.add("time - Good Heavens! Look at the time!");
                 commands.add("uptime - Sends the Uptime for GattBot.");
 
+                commands.add("sponsor");
+
                 commands.add("**~ ~ ~ Misc ~ ~ ~**");
 
                 commands.add("1v1 [@User1] [@User2] - 1v1 me, scrub");
