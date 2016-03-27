@@ -549,7 +549,7 @@ public class AdminCommands implements MessageCreateListener {
     private void reboot() throws Exception{
         ProcessBuilder builder = new ProcessBuilder();
         builder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
-        builder.command("startgattbot.sh\n");
+        builder.command("nohup java -jar /var/lib/jenkins/workspace/GattBot/target/GattBot-1.0-SNAPSHOT.jar " + Main.getEmail()+" " + Main.getPassword()+ " reboot &");
         Process botProcess = builder.start();
         botWriter = new BufferedWriter(new OutputStreamWriter(botProcess.getOutputStream()));
         switch (botProcess.exitValue()) {
