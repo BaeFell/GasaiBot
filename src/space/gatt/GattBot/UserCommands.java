@@ -124,17 +124,16 @@ public class UserCommands implements MessageCreateListener {
                 builder = new MessageBuilder();
 
                 builder.append(Settings.getMsgStarter() + " My current name: `" + discordAPI.getYourself().getName() + "`").appendNewLine();
-                builder.append(Settings.getMsgStarter() + " My current game: `" + discordAPI.getYourself().getGame() + "`").appendNewLine();
+                builder.append(Settings.getMsgStarter() + " My current game: `" + discordAPI.getGame() + "`").appendNewLine();
                 builder.append(Settings.getMsgStarter() + " My current profile picture: `" + discordAPI.getYourself().getAvatarUrl()+"`").appendNewLine();
                 builder.append(Settings.getMsgStarter() + " Admin Rank Name: `Bot Commander`").appendNewLine();
                 builder.append(Settings.getMsgStarter() + " Servers joined: `" + discordAPI.getServers().size()+"`").appendNewLine();
-                builder.append(Settings.getMsgStarter() + " Names of servers joined: `").appendNewLine();
+                builder.append(Settings.getMsgStarter() + " Names of servers joined: ").appendNewLine();
                 for (Server s : discordAPI.getServers()){
-                    builder.appendDecoration(MessageDecoration.BOLD, Settings.getMsgStarter() + Settings.getMsgStarter() + " Name: " + s.getName()).appendNewLine();
-                    builder.append(Settings.getMsgStarter() + Settings.getMsgStarter() + " Member Count: " + s.getMemberCount()).appendNewLine();
+                    builder.appendDecoration(MessageDecoration.BOLD, Settings.getMsgStarter() + Settings.getMsgStarter() + " Name: `" + s.getName() + "`").appendNewLine();
+                    builder.append(Settings.getMsgStarter() + Settings.getMsgStarter() + " Member Count: `" + s.getMemberCount() + "`").appendNewLine();
                 }
 
-                builder.append("`");
                 builder.append( Settings.getMsgStarter() + " Users in Cache: `" + Main.userCache.keySet().size() + "`").appendNewLine();
                 try {
                     builder.append(Settings.getMsgStarter() + " My current IP (may not be exact): `" + InetAddress.getLocalHost().getHostAddress() + "`").appendNewLine();

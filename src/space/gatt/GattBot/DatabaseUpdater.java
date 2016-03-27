@@ -55,8 +55,8 @@ public class DatabaseUpdater implements Runnable {
 		try {
 			User bot = Main.getApi().getYourself();
 			String game = "Cannot get game";
-			if (bot.getGame() != null) {
-				game = bot.getGame();
+			if (Main.getApi().getGame() != null) {
+				game = Main.getApi().getGame();
 			}
 			builder.append("DEBUG: `Game:" + bot.getGame() + "`").appendNewLine().append("Attempting to update Database");
 			Main.adminLogChannel.sendMessage(builder.build());
