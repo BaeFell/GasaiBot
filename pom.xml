@@ -96,6 +96,16 @@
             <version>2.6.2</version>
         </dependency>
         <dependency>
+            <groupId>de.btobastian.sdcf4j</groupId>
+            <artifactId>sdcf4j-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>de.btobastian.sdcf4j</groupId>
+            <artifactId>sdcf4j-javacord</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>19.0</version>
