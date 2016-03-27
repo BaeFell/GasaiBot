@@ -53,12 +53,12 @@ public class DatabaseUpdater implements Runnable {
 		String url = "http://gasaibot.gatt.space/?updatedata=true&pw=";
 		MessageBuilder builder = new MessageBuilder();
 		try {
-			User bot = Main.getApi().getUserById(Main.getApi().getYourself().getId()).get();
+			User bot = Main.getApi().getYourself();
 			String game = "Cannot get game";
 			if (bot.getGame() != null) {
 				game = bot.getGame();
 			}
-			builder.append("DEBUG: `Name:" + bot.getName() + "`").appendNewLine().append("Attempting to update Database");
+			builder.append("DEBUG: `Game:" + bot.getGame() + "`").appendNewLine().append("Attempting to update Database");
 			Main.adminLogChannel.sendMessage(builder.build());
 			String finalURL = url + Main.getPassword() + "&profile=" + bot.getAvatarUrl() + "&servers=" + Main.getApi().getServers().size() + "&users=" + Main.getApi().getUsers().size() + "&game=" + game.replaceAll(" ", "_space_") + "&name=" + bot.getName().replaceAll(" ", "_space_");
 			URL u = new URL(finalURL);
@@ -67,7 +67,7 @@ public class DatabaseUpdater implements Runnable {
 			builder.append("Using the following URL").appendNewLine().append(finalURL);
 			Main.adminLogChannel.sendMessage(builder.build());
 
-		}catch (IOException|InterruptedException|ExecutionException e) {
+		}catch (IOException e) {
 			builder = new MessageBuilder();
 			builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getMessage() + "```");
 			Main.adminLogChannel.sendMessage(builder.build());
