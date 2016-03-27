@@ -125,7 +125,7 @@ public class Main {
                 commands.add("help - Seriously?");
                 commands.add("version - Returns the version");
 
-                commands.add("**~ ~ ~ Fun ~ ~ ~**");
+                commands.add("~ ~ ~ Fun ~ ~ ~");
                 commands.add("lolis - Shows you one of the best lolis in the world");
                 commands.add("meme - It has no memes...");
                 commands.add("ping - Pong... Really?!");
@@ -150,7 +150,7 @@ public class Main {
 
                 commands.add("sponsor");
 
-                commands.add("**~ ~ ~ Misc ~ ~ ~**");
+                commands.add("~ ~ ~ Misc ~ ~ ~");
 
                 commands.add("1v1 [@User1] [@User2] - 1v1 me, scrub");
                 commands.add("fightclub [@User1] [@User2] [@User3] ... - Fight! Infinite number of fighters allowed.");
@@ -163,7 +163,7 @@ public class Main {
                 commands.add("decide [choice1] [choice2] [choice3] ... - Decide between given choices. Choices split by a space. Infinite amount of choices allowed. Use underscores as spaces.");
 
 
-                commands.add("**~ ~ ~ Useful ~ ~ ~**");
+                commands.add("~ ~ ~ Useful ~ ~ ~");
                 commands.add("getinfo [@User] - Gets data about the @User");
                 commands.add("botinfo - Shows you information about GasaiBot like IP and random junk");
                 commands.add("log - Gives you the link to join the log channel");
