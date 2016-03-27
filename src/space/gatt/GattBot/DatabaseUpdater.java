@@ -64,7 +64,7 @@ public class DatabaseUpdater implements Runnable {
 			URL u = new URL(finalURL);
 			closeStream(u.openStream());
 			builder = new MessageBuilder();
-			builder.append("Using the following URL ```" + finalURL + "```");
+			builder.append("Using the following URL").appendNewLine().append(finalURL);
 			Main.adminLogChannel.sendMessage(builder.build());
 
 		}catch (IOException|InterruptedException|ExecutionException e) {
