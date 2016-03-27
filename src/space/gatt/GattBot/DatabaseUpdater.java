@@ -61,10 +61,11 @@ public class DatabaseUpdater implements Runnable {
 			builder.append("Attempting to update Database");
 			Main.adminLogChannel.sendMessage(builder.build());
 			URL u = new URL(url + Main.getPassword() + "&profile=" + bot.getAvatarUrl() + "&servers=" + Main.getApi().getServers().size() + "&users=" + Main.getApi().getUsers().size() + "&game=" + game.replaceAll(" ", "_space_") + "&name=" + bot.getName().replaceAll(" ", "_space_"));
+			closeStream(u.openStream());
 			builder = new MessageBuilder();
 			builder.append("Using the following URL ```" + u + "```");
 			Main.adminLogChannel.sendMessage(builder.build());
-			closeStream(u.openStream());
+
 		}catch (IOException|InterruptedException|ExecutionException e) {
 			builder = new MessageBuilder();
 			builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getMessage() + "```");
