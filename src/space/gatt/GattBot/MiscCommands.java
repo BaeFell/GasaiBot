@@ -54,16 +54,16 @@ public class MiscCommands implements MessageCreateListener {
         cacheImage("http://pre14.deviantart.net/7397/th/pre/i/2013/153/5/5/yukki__i_ll_protect_you__by_saihina4ever-d67lec1.jpg", "jpg", "noticeme");
         cacheImage("https://i.ytimg.com/vi/fGl4LOAgW50/maxresdefault.jpg", "jpg", "awwyeah");
         cacheImage("http://i.imgur.com/Vu0WycI.png", "png", "internetgod");
-        cacheImage("http://gattbot.gatt.space/gifs/time.jpg", "jpg", "time");
+        cacheImage("http://gasaibot.gatt.space/gifs/time.jpg", "jpg", "time");
         cacheImage("http://i.imgur.com/urSk0Ki.jpg", "jpg", "ohwhale");
         cacheImage("https://cdn.shopify.com/s/files/1/0358/2273/products/dogewow_grande.jpg", "jpg", "wow");
         cacheImage("http://i.imgur.com/i2fhjzB.jpg", "jpg", "sealofapproval");
         cacheImage("http://i.imgur.com/hUKGdpg.png", "png", "facepalm");
         cacheImage("http://i.imgur.com/7Qqz10b.png", "png", "triplefacepalm");
         cacheImage("http://i.imgur.com/vZRQvvC.jpg", "jpg", "badass");
-        cacheImage("http://gattbot.gatt.space/gifs/mindblown.gif", "gif", "mindblown");
-        cacheImage("http://gattbot.gatt.space/gifs/lolis.gif", "gif", "lolis");
-        cacheImage("http://gattbot.gatt.space/gifs/falconpunch.gif", "gif", "falconpunch");
+        cacheImage("http://gasaibot.gatt.space/gifs/mindblown.gif", "gif", "mindblown");
+        cacheImage("http://gasaibot.gatt.space/gifs/lolis.gif", "gif", "lolis");
+        cacheImage("http://gasaibot.gatt.space/gifs/falconpunch.gif", "gif", "falconpunch");
         cacheImage("https://media.giphy.com/media/amaS2ywWuJsXe/giphy.gif", "gif", "konga");
     }
 
@@ -401,7 +401,7 @@ public class MiscCommands implements MessageCreateListener {
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "site")){
             message.delete();
             builder = new MessageBuilder();
-            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Here you go!").appendNewLine().append("http://gattbot.gatt.space/");
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Here you go!").appendNewLine().append("http://gasaibot.gatt.space/");
             message.getAuthor().sendMessage(builder.build());
         }
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "git")){

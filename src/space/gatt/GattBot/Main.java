@@ -146,7 +146,7 @@ public class Main {
                 commands.add("wow - Wow.");
                 commands.add("git - Sends you the Git Repo");
                 commands.add("time - Good Heavens! Look at the time!");
-                commands.add("uptime - Sends the Uptime for GattBot.");
+                commands.add("uptime - Sends the Uptime for GasaiBot.");
 
                 commands.add("sponsor");
 
@@ -165,7 +165,7 @@ public class Main {
 
                 commands.add("**~ ~ ~ Useful ~ ~ ~**");
                 commands.add("getinfo [@User] - Gets data about the @User");
-                commands.add("botinfo - Shows you information about GattBot like IP and random junk");
+                commands.add("botinfo - Shows you information about GasaiBot like IP and random junk");
                 commands.add("log - Gives you the link to join the log channel");
                 commands.add("setafk [True/False] - Sets your AFK Status");
                 commands.add("isafk [@User] - Is @User afk?");
@@ -177,27 +177,15 @@ public class Main {
                 api.registerListener(new AdminCommands());
                 api.registerListener(new UserCommands());
                 MiscCommands miscCommands = new MiscCommands();
-                MessageBuilder builder = new MessageBuilder();
-                builder.append("`__________________________________________________`");
-                GattBotChannel.sendMessage(builder.build());
-                builder = new MessageBuilder();
-                builder.append("Caching meme images");
-                GattBotChannel.sendMessage(builder.build());
+                GattBotChannel.sendMessage("`__________________________________________________`");
+                GattBotChannel.sendMessage("Caching meme images");
                 miscCommands.cacheImages();
-                builder = new MessageBuilder();
-                builder.append("Cached meme` images");
-                GattBotChannel.sendMessage(builder.build());
-                builder = new MessageBuilder();
-                builder.append("Cached roughly " + userCache.keySet().size() + " users.");
-                GattBotChannel.sendMessage(builder.build());
+                GattBotChannel.sendMessage("Cached meme` images");
+                GattBotChannel.sendMessage("Cached roughly " + userCache.keySet().size() + " users.");
                 api.registerListener(miscCommands);
-                builder = new MessageBuilder();
-                builder.append("GattBot loaded! There is " + commands.size() + " lines in the commands Array!");
-                GattBotChannel.sendMessage(builder.build());
+                GattBotChannel.sendMessage("GasaiBot loaded! There is " + commands.size() + " lines in the commands Array!");
                 if (rebooted){
-                    builder = new MessageBuilder();
-                    builder.append("GattBot has successfully finished rebooting!");
-                    GattBotChannel.sendMessage(builder.build());
+                    GattBotChannel.sendMessage("GasaiBot has successfully finished rebooting!");
                 }
             }
 

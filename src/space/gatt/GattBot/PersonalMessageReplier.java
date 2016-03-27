@@ -86,8 +86,8 @@ public class PersonalMessageReplier implements MessageCreateListener {
 		if (message.isPrivateMessage() && (message.getAuthor() != discordAPI.getYourself())){
 
 			List<String> replies = new ArrayList<>();
-			replies.add("I'm GattBot!");
-			replies.add("I'm GattBot! Use " + Settings.getCommandStarter() + "help for my command list!");
+			replies.add("I'm GasaiBot!");
+			replies.add("I'm GasaiBot! Use " + Settings.getCommandStarter() + "help for my command list!");
 			replies.add("Hmmmm... I don't know...");
 			replies.add("Maybe?");
 			replies.add("わっと?");

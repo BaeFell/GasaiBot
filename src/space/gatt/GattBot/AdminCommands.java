@@ -108,14 +108,14 @@ public class AdminCommands implements MessageCreateListener {
                 if (message.isPrivateMessage()) {
                     if (Main.adminUsers.contains(message.getAuthor().getId())) {
                         builder = new MessageBuilder();
-                        builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" GattBot is initiating...");
+                        builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" GasaiBot is initiating...");
                         for (Channel c : Settings.getJoinMsgChannels()) {
                             c.sendMessage(builder.build());
                         }
                         try {
                             TimeUnit.SECONDS.sleep(1);
                             builder = new MessageBuilder();
-                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" GattBot has started!");
+                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" GasaiBot has started!");
                             for (Channel c : Settings.getJoinMsgChannels()) {
                                 c.sendMessage(builder.build());
                             }
@@ -127,7 +127,7 @@ public class AdminCommands implements MessageCreateListener {
                             }
                             TimeUnit.SECONDS.sleep(3);
                             builder = new MessageBuilder();
-                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" GattBot has loaded!");
+                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" GasaiBot has loaded!");
                             for (Channel c : Settings.getJoinMsgChannels()) {
                                 c.sendMessage(builder.build());
                             }
