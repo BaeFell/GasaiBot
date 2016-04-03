@@ -61,6 +61,8 @@ public class MiscCommands implements MessageCreateListener {
         cacheImage("http://i.imgur.com/hUKGdpg.png", "png", "facepalm");
         cacheImage("http://i.imgur.com/7Qqz10b.png", "png", "triplefacepalm");
         cacheImage("http://i.imgur.com/vZRQvvC.jpg", "jpg", "badass");
+        cacheImage("https://s-media-cache-ak0.pinimg.com/236x/f0/aa/82/f0aa8247510f29b5d66aa4c5ec78319d.jpg", "jpg", "illya");
+        cacheImage("https://lh3.googleusercontent.com/-YPthLd7n9Uk/VGG1poxPbII/AAAAAAAAE0U/L2MfcQscBUQ/w600-h337-no/fsn5p1.png", "png", "waifu");
         cacheImage("http://gasaibot.gatt.space/gifs/mindblown.gif", "gif", "mindblown");
         cacheImage("http://gasaibot.gatt.space/gifs/lolis.gif", "gif", "lolis");
         cacheImage("http://gasaibot.gatt.space/gifs/falconpunch.gif", "gif", "falconpunch");
@@ -80,6 +82,20 @@ public class MiscCommands implements MessageCreateListener {
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "konga")){
             message.delete();
             message.reply(gifCache.get("konga"));
+        }
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "illya")){
+            message.delete();
+            builder = new MessageBuilder();
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Illya :heart:").appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("illya"));
+        }
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "waifu")){
+            message.delete();
+            builder = new MessageBuilder();
+            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Your waifu has arrived. :heart:").appendNewLine();
+            message.reply(builder.build());
+            message.replyFile(imageCache.get("waifu"));
         }
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "sealofapproval")){
             message.delete();
