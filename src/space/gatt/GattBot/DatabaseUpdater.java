@@ -22,7 +22,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class DatabaseUpdater implements Runnable {
 
-
+	private long getTimeRunning(){
+		Date date = new Date();
+		return (date.getTime() - Main.startupTime);
+	}
 
 	@Override
 	public void run() {
@@ -60,7 +63,7 @@ public class DatabaseUpdater implements Runnable {
 			}
 			builder.append("DEBUG: `Game:" + bot.getGame() + "`").appendNewLine().append("Attempting to update Database");
 			Main.adminLogChannel.sendMessage(builder.build());
-			String finalURL = url + Main.getPassword() + "&profile=" + bot.getAvatarUrl() + "&servers=" + Main.getApi().getServers().size() + "&users=" + Main.getApi().getUsers().size() + "&game=" + game.replaceAll(" ", "_space_") + "&name=" + bot.getName().replaceAll(" ", "_space_");
+			String finalURL = url + Main.getPassword() + "&profile=" + bot.getAvatarUrl() + "&servers=" + Main.getApi().getServers().size() + "&users=" + Main.getApi().getUsers().size() + "&game=" + game.replaceAll(" ", "_space_") + "&name=" + bot.getName().replaceAll(" ", "_space_") + "&online=" + getTimeRunning();
 			URL u = new URL(finalURL);
 			closeStream(u.openStream());
 			builder = new MessageBuilder();
