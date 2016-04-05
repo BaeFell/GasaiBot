@@ -75,5 +75,9 @@ public class DatabaseUpdater implements Runnable {
 			builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + e.getMessage() + "```");
 			Main.adminLogChannel.sendMessage(builder.build());
 		}
+		builder = new MessageBuilder();
+		builder.append("Clearing user cache");
+		Main.adminLogChannel.sendMessage(builder.build());
+		Main.getApi().getUsers().clear();
 	}
 }
