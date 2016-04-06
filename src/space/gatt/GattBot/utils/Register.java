@@ -59,15 +59,10 @@ public class Register {
 						for (Method method : methods) {
 							if (method.isAnnotationPresent(IMethod.class)) {
 								if (Modifier.isPublic(method.getModifiers())) {
-									if (method.getReturnType() == Void.TYPE) {
-										listeners.add(method.getDeclaringClass());
-										listeningMethods.add(method);
-										commandRegistrar.put(cmd, method.getDeclaringClass());
-										methodRegistrar.put(cmd, method);
-									} else {
-										throw new IllegalArgumentException(method.getName() + " in " + c.getSimpleName()
-												+ " is not void!");
-									}
+									listeners.add(method.getDeclaringClass());
+									listeningMethods.add(method);
+									commandRegistrar.put(cmd, method.getDeclaringClass());
+									methodRegistrar.put(cmd, method);
 								} else {
 									throw new IllegalArgumentException(method.getName() + " in " + c.getSimpleName()
 											+ " is not public!");
