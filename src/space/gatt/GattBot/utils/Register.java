@@ -1,5 +1,6 @@
 package space.gatt.GattBot.utils;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.reflections.Reflections;
 
 import java.lang.annotation.Annotation;
@@ -46,7 +47,7 @@ public class Register {
 
 	public static void enableSnooper(){
 		Reflections reflections = new Reflections("space.gatt.GattBot");
-		Set<Class<? extends ICommand>> classes = reflections.getSubTypesOf(ICommand.class);
+		Set<Class<?>> classes = reflections.getTypesAnnotatedWith(Command.class);
 		main: for (final Class c : classes){
 			Annotation[] annotations = c.getAnnotations();
 
@@ -59,7 +60,7 @@ public class Register {
 						Method[] methods = c.getDeclaredMethods();
 						for (Method method : methods) {
 							if (method.isAnnotationPresent(IMethod.class)) {
-								if (Modifier.isPublic(method.getModifiers())) {
+								if (Modifier.isStatic(method.getModifiers()) && Modifier.isPublic(method.getModifiers())) {
 									listeners.add(method.getDeclaringClass());
 									listeningMethods.add(method);
 									commandRegistrar.put(cmd, method.getDeclaringClass());
@@ -67,7 +68,7 @@ public class Register {
 									System.out.println("Registered method " + method.getName() + " for command " + cmd);
 								} else {
 									throw new IllegalArgumentException(method.getName() + " in " + c.getSimpleName()
-											+ " is not public!");
+											+ " is not public static!");
 								}
 							}
 						}

@@ -17,10 +17,9 @@ import space.gatt.GattBot.utils.*;
 @Usage("systeminfo")
 @Permissions(gattOnly = true)
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
-public class SystemInfo implements ICommand{
-
+public class SystemInfo{
 	@IMethod
-	public String command(DiscordAPI api, Message message, User user, String[] args) {
+	public static String command(DiscordAPI api, Message message, User user, String[] args) {
 		MessageBuilder builder = new MessageBuilder();
 		String osname = System.getProperty("os.name");
 		String osarch = System.getProperty("os.arch");

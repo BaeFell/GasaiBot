@@ -85,6 +85,7 @@ public class CommandListener implements MessageCreateListener {
 						}
 					}
 					Method method;
+
 					Class<?> clz = Register.getCommandRegistrar().get(cmd);
 					String methodName = Register.getMethodRegistrar().get(cmd).getName();
 					try {
