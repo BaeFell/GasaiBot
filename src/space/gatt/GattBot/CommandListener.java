@@ -88,7 +88,7 @@ public class CommandListener implements MessageCreateListener {
 					Class<?> clz = Register.getCommandRegistrar().get(cmd);
 					String methodName = Register.getMethodRegistrar().get(cmd).getName();
 					try {
-						method = clz.getDeclaredMethod(methodName, DiscordAPI.class, Message.class, User.class, String.class);
+						method = clz.getDeclaredMethod(methodName, DiscordAPI.class, Message.class, User.class, String[].class);
 						Object value = method.invoke(this, api, message, message.getAuthor(), args);
 						msg = (String) value;
 					} catch (Exception e) {
