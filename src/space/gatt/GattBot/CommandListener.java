@@ -45,12 +45,14 @@ public class CommandListener implements MessageCreateListener {
 	public void onMessageCreate(DiscordAPI api, Message message) {
 		if (message.getContent().startsWith(Settings.getCommandStarter())) {
 			String[] args = message.getContent().split(" ");
-
+			Main.adminLogChannel.sendMessage("Got command " + args[0]);
 			if (Register.getCommandList().contains(args[0])) {
+				Main.adminLogChannel.sendMessage("Command exists");
 				String msg = "Error. No response given by command.";
 				Class<?> enclosingClass = Register.getCommandRegistrar().get(args[0]);
 				args[0] = "";
 				if (enclosingClass != null) {
+					Main.adminLogChannel.sendMessage("enclosingClass is not null");
 
 					boolean gattOnly = false;
 					boolean deleteMsg = false;
@@ -97,6 +99,8 @@ public class CommandListener implements MessageCreateListener {
 					}else{
 						message.reply(msg);
 					}
+				}else{
+					Main.adminLogChannel.sendMessage("enclosingClass is null!");
 				}
 			}
 		}
