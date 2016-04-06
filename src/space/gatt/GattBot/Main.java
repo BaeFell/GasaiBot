@@ -94,7 +94,6 @@ public class Main {
         //};
         //Javacord.getApi(email, password).connect(futureAPI);
         api = Javacord.getApi(email, password);
-
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {

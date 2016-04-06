@@ -15,7 +15,7 @@ import space.gatt.GattBot.utils.*;
 @Syntax("ranktest")
 @Usage("ranktest")
 @Permissions(ranks = "Bot Commander")
-@CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
+@CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class RankTest {
 	@IMethod
 	public static String command(DiscordAPI api, Message message, User user, String[] args) {

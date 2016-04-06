@@ -83,7 +83,12 @@ public class CommandListener implements MessageCreateListener {
 
 					if (adminOnly){
 						if (!(Main.adminUsers.contains(message.getAuthor().getId()))){
-							message.reply(Settings.getCommandStarter() + " You are not one of my `Senpai's` :heart:");
+							String reply = Settings.getMsgStarter() + " You are not one of my `Senpai's` :heart:";
+							if (sendPM){
+								message.getAuthor().sendMessage(reply);
+							}else{
+								message.reply(reply);
+							}
 							return;
 						}
 					}
@@ -95,12 +100,16 @@ public class CommandListener implements MessageCreateListener {
 							}
 						}
 						if (!hasRank){
-							String reply = Settings.getCommandStarter() + " You do not have one of the following ranks: `";
+							String reply = Settings.getMsgStarter() + " You do not have one of the following ranks: `";
 							for (String r : ranks){
 								reply = reply + " " + r;
 							}
 							reply = reply + "`";
-							message.reply(reply);
+							if (sendPM){
+								message.getAuthor().sendMessage(reply);
+							}else{
+								message.reply(reply);
+							}
 							return;
 						}
 					}
