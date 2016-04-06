@@ -9,6 +9,9 @@ import de.btobastian.javacord.entities.message.Message;
  */
 public interface ICommand {
 
-	public String command(DiscordAPI api, Message responseMessage, User user, String[] args);
+	@IMethod
+	public static String command(DiscordAPI api, Message responseMessage, User user, String[] args){
+		return "Default";
+	}
 
 }

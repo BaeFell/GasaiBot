@@ -19,9 +19,8 @@ import space.gatt.GattBot.utils.*;
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class SystemInfo implements ICommand{
 
-	@Override
 	@IMethod
-	public String command(DiscordAPI api,Message message, User user, String[] args) {
+	public static String command(DiscordAPI api,Message message, User user, String[] args) {
 		MessageBuilder builder = new MessageBuilder();
 		String osname = System.getProperty("os.name");
 		String osarch = System.getProperty("os.arch");
@@ -35,4 +34,5 @@ public class SystemInfo implements ICommand{
 				.append("```");
 		return builder.build();
 	}
+
 }
