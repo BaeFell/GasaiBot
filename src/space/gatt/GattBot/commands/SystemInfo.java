@@ -20,7 +20,7 @@ import space.gatt.GattBot.utils.*;
 public class SystemInfo implements ICommand{
 
 	@IMethod
-	public static String command(DiscordAPI api,Message message, User user, String[] args) {
+	public String command(DiscordAPI api, Message message, User user, String[] args) {
 		MessageBuilder builder = new MessageBuilder();
 		String osname = System.getProperty("os.name");
 		String osarch = System.getProperty("os.arch");

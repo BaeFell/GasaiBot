@@ -58,7 +58,7 @@ public class Register {
 						Method[] methods = c.getDeclaredMethods();
 						for (Method method : methods) {
 							if (method.isAnnotationPresent(IMethod.class)) {
-								if (Modifier.isStatic(method.getModifiers()) && Modifier.isPublic(method.getModifiers())) {
+								if (Modifier.isPublic(method.getModifiers())) {
 									if (method.getReturnType() == Void.TYPE) {
 										listeners.add(method.getDeclaringClass());
 										listeningMethods.add(method);
@@ -70,7 +70,7 @@ public class Register {
 									}
 								} else {
 									throw new IllegalArgumentException(method.getName() + " in " + c.getSimpleName()
-											+ " is not public static!");
+											+ " is not public!");
 								}
 							}
 						}
