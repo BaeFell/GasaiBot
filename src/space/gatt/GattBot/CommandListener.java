@@ -86,10 +86,10 @@ public class CommandListener implements MessageCreateListener {
 							return;
 						}
 					}
-
+					Method method;
 					try {
-						Register.getCommandRegistrar().get(args[0]).getDeclaredMethod(Register.getMethodRegistrar().get(args[0]).getName(), String.class);
-						Object value = Register.getMethodRegistrar().get(args[0]).invoke(this, api, message, message.getAuthor(), args);
+						method = Register.getCommandRegistrar().get(args[0]).getDeclaredMethod(Register.getMethodRegistrar().get(args[0]).getName(), String.class);
+						Object value = method.invoke(this, api, message, message.getAuthor(), args);
 						msg = (String) value;
 					} catch (Exception e) {
 						e.printStackTrace();
