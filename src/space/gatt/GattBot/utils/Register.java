@@ -55,6 +55,7 @@ public class Register {
 					String cmd = ((Command)a).value();
 					if (!commandList.contains(cmd)) {
 						commandList.add(cmd);
+						System.out.println("Registered command " + cmd + " for class " + c.getName());
 						Method[] methods = c.getDeclaredMethods();
 						for (Method method : methods) {
 							if (method.isAnnotationPresent(IMethod.class)) {
