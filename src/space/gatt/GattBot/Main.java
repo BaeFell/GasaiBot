@@ -181,6 +181,7 @@ public class Main {
                 api.registerListener(new MessageReplier());
                 api.registerListener(new AdminCommands());
                 api.registerListener(new UserCommands());
+                api.registerListener(new CommandListener());
                 MiscCommands miscCommands = new MiscCommands();
                 GattBotChannel.sendMessage("`__________________________________________________`");
                 GattBotChannel.sendMessage("Caching meme images");
