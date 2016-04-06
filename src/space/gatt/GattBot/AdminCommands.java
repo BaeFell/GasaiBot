@@ -24,28 +24,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class AdminCommands implements MessageCreateListener {
 
-    private boolean hasRole(User user, Server server, String roleName, boolean caseSensitive){
-        if (caseSensitive) {
-            for (Role r : user.getRoles(server)) {
-                if (r.getName().equalsIgnoreCase(roleName)) {
-                    return true;
-                }
-            }
-            return false;
-        }else{
-            return hasRole(user, server, roleName);
-        }
-    }
-
-    private boolean hasRole(User user, Server server, String roleName){
-        for (Role r : user.getRoles(server)){
-            if (r.getName().equals(roleName)){
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public void onMessageCreate(DiscordAPI api, Message message) {
         if (message.getContent().startsWith(Settings.getCommandStarter())) {
@@ -140,39 +118,6 @@ public class AdminCommands implements MessageCreateListener {
                         return;
 
                     }
-                }
-            }
-
-            if (args[0].equalsIgnoreCase("clearchat")) {
-                message.delete();
-                if (hasRole(message.getAuthor(), message.getChannelReceiver().getServer(), "Bot Commander")) {
-                    try {
-                        for (Message m : message.getChannelReceiver().getMessageHistory(1000).get().getMessagesSorted()) {
-                            m.delete();
-                        }
-                    } catch (ExecutionException | InterruptedException e) {
-
-                        builder = new MessageBuilder();
-                        builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").append(e.getStackTrace().toString());
-                        Main.adminLogChannel.sendMessage(builder.build());
-                    }
-                    if (args.length > 1) {
-                        if (args[1].equalsIgnoreCase("-silent")) {
-                        } else {
-                            builder = new MessageBuilder();
-                            builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Attempted to clear up to 1000 messages in this channel! (That's all the API will allow at the one time)").appendNewLine().appendDecoration(MessageDecoration.BOLD, "If no messages were removed, that means I don't have the right permissions!");
-                            message.reply(builder.build());
-                        }
-                    } else {
-                        builder = new MessageBuilder();
-                        builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Attempted to clear up to 1000 messages in this channel! (That's all the API will allow at the one time)").appendNewLine().appendDecoration(MessageDecoration.BOLD, "If no messages were removed, that means I don't have the right permissions!");
-                        message.reply(builder.build());
-                    }
-                    return;
-                } else {
-                    builder = new MessageBuilder();
-                    builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" You do not have the `Bot Commander` rank!");
-                    message.reply(builder.build());
                 }
             }
 
