@@ -86,14 +86,9 @@
     </repositories>
     <dependencies>
         <dependency>
-            <groupId>commons.codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.6.2</version>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.10</version>
         </dependency>
         <dependency>
             <groupId>de.btobastian.sdcf4j</groupId>

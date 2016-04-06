@@ -7,6 +7,7 @@ import de.btobastian.javacord.entities.Channel;
 import de.btobastian.javacord.entities.Server;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.MessageBuilder;
+import space.gatt.GattBot.utils.Register;
 
 import java.awt.image.BufferedImage;
 import java.io.OutputStream;
@@ -75,6 +76,9 @@ public class Main {
         senpais.add("138481382794985472");
         adminUsers.add("113462564217683968");
         adminUsers.add("117785797985435652");
+
+        Register.enableSnooper();
+
         Date date = new Date();
         startupTime = date.getTime();
         //FutureCallback<DiscordAPI> futureAPI = new FutureCallback<DiscordAPI>() {
@@ -95,6 +99,7 @@ public class Main {
             @Override
             public void onSuccess(DiscordAPI api) {
                 api.setGame("(∩｀-´)⊃━☆ﾟ.*･｡ﾟ with a wezurd");
+
 
                 for (Server s : api.getServers()){
                     System.out.println("Server = " + s.getName());
