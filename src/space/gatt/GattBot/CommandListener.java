@@ -53,14 +53,16 @@ public class CommandListener implements MessageCreateListener {
 				args[0] = "";
 				if (enclosingClass != null) {
 
-					boolean gattOnly = false;
+					boolean adminOnly = false;
 					boolean deleteMsg = false;
 					boolean sendPM = false;
 					boolean requiresPM = false;
+					String[] ranks = new String[]{};
 
 					for (Annotation a : enclosingClass.getAnnotations()){
 						if (a instanceof Permissions){
-							gattOnly = ((Permissions)a).gattOnly();
+							ranks = ((Permissions)a).ranks();
+							adminOnly = ((Permissions)a).adminOnly();
 						}
 						if (a instanceof CommandSettings){
 							deleteMsg = ((CommandSettings)a).deleteInitatingMsg();
@@ -79,11 +81,30 @@ public class CommandListener implements MessageCreateListener {
 						message.delete();
 					}
 
-					if (gattOnly){
+					if (adminOnly){
 						if (!(Main.adminUsers.contains(message.getAuthor().getId()))){
+							message.reply(Settings.getCommandStarter() + " You are not one of my `Senpai's` :heart:");
 							return;
 						}
 					}
+					if (ranks.length > 0){
+						boolean hasRank = false;
+						for (String rank : ranks){
+							if (hasRole(message.getAuthor(), message.getChannelReceiver().getServer(), rank, false)){
+								hasRank = true;
+							}
+						}
+						if (!hasRank){
+							String reply = Settings.getCommandStarter() + " You do not have one of the following ranks: `";
+							for (String r : ranks){
+								reply = reply + " " + r;
+							}
+							reply = reply + "`";
+							message.reply(reply);
+							return;
+						}
+					}
+
 					Method method;
 
 					Class<?> clz = Register.getCommandRegistrar().get(cmd);
