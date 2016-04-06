@@ -64,6 +64,7 @@ public class Register {
 									listeningMethods.add(method);
 									commandRegistrar.put(cmd, method.getDeclaringClass());
 									methodRegistrar.put(cmd, method);
+									System.out.println("Registered method " + method.getName() + " for command " + cmd);
 								} else {
 									throw new IllegalArgumentException(method.getName() + " in " + c.getSimpleName()
 											+ " is not public!");
