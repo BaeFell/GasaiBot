@@ -45,6 +45,7 @@ public class CommandListener implements MessageCreateListener {
 	public void onMessageCreate(DiscordAPI api, Message message) {
 		if (message.getContent().startsWith(Settings.getCommandStarter())) {
 			String[] args = message.getContent().split(" ");
+			args[0] = args[0].replaceFirst(Settings.getCommandStarter(), "");
 			Main.adminLogChannel.sendMessage("Got command " + args[0]);
 			if (Register.getCommandList().contains(args[0])) {
 				Main.adminLogChannel.sendMessage("Command exists");
