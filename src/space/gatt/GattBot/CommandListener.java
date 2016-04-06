@@ -92,7 +92,7 @@ public class CommandListener implements MessageCreateListener {
 							return;
 						}
 					}
-					if (ranks.length > 0){
+					if (ranks.length > 0 && !ranks[0].equals("null")){
 						boolean hasRank = false;
 						for (String rank : ranks){
 							if (hasRole(message.getAuthor(), message.getChannelReceiver().getServer(), rank, false)){
