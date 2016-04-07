@@ -27,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 */
 public class MiscCommands implements MessageCreateListener {
 
+
     private HashMap<String, File> imageCache = new HashMap<>();
     private HashMap<String, String> gifCache = new HashMap<>();
 
@@ -100,7 +101,6 @@ public class MiscCommands implements MessageCreateListener {
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "sealofapproval")){
             message.delete();
             builder = new MessageBuilder();
-
             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" gives his Seal of Approval").appendNewLine();
             message.reply(builder.build());
             message.replyFile(imageCache.get("sealofapproval"));
@@ -108,7 +108,6 @@ public class MiscCommands implements MessageCreateListener {
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "badass")){
             message.delete();
             builder = new MessageBuilder();
-
             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" steps back.").appendNewLine();
             message.reply(builder.build());
             message.replyFile(imageCache.get("badass"));
@@ -173,7 +172,7 @@ public class MiscCommands implements MessageCreateListener {
             message.reply(builder.build());
             message.replyFile(imageCache.get("wat"));
         }
-        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "kappa") || args[0].equalsIgnoreCase(":kappa:")){
+        if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "kappa")){
             message.delete();
             builder = new MessageBuilder();
             builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).appendDecoration(MessageDecoration.BOLD, " Kappa!").appendNewLine();

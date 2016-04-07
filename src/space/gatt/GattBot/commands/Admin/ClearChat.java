@@ -1,4 +1,4 @@
-package space.gatt.GattBot.commands;
+package space.gatt.GattBot.commands.Admin;
 
 import de.btobastian.javacord.DiscordAPI;
 import de.btobastian.javacord.entities.User;

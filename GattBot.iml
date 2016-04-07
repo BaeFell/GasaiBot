@@ -8,7 +8,9 @@
       <sourceFolder url="file://$MODULE_DIR$/libs" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/repo" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
-      <excludeFolder url="file://$MODULE_DIR$/target" />
+      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/annotations" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/target/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target/maven-status" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -19,10 +21,9 @@
     <orderEntry type="library" name="Maven: com.google.code.findbugs:annotations:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: de.btobastian.sdcf4j:sdcf4j-core:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: de.btobastian.sdcf4j:sdcf4j-javacord:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: de.btobastian.javacord:javacord:2.0.9" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:19.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.16.8" level="project" />
-    <orderEntry type="library" name="Maven: de.btobastian.javacord:javacord:shaded:2.0.10" level="project" />
+    <orderEntry type="library" name="Maven: de.btobastian.javacord:javacord:2.0.10" level="project" />
     <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20140107" level="project" />
     <orderEntry type="library" name="Maven: com.mashape.unirest:unirest-java:1.4.8" level="project" />
