@@ -16,7 +16,7 @@ import space.gatt.GattBot.utils.*;
 @Syntax("log")
 @Usage("log")
 @Permissions()
-@CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
+@CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class Log {
 	@IMethod
 	public static String command(DiscordAPI api, Message message, User user, String[] args) {

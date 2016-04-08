@@ -21,7 +21,7 @@ import java.net.UnknownHostException;
 @Syntax("botinfo")
 @Usage("botinfo")
 @Permissions()
-@CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
+@CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class BotInfo {
 	@IMethod
 	public static String command(DiscordAPI discordAPI, Message message, User user, String[] args) {

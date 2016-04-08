@@ -11,11 +11,11 @@ import space.gatt.GattBot.utils.*;
 /**
  * Created by Zach G on 07-Apr-16.
  */
-@Command("ranktest")
-@Syntax("ranktest")
-@Usage("ranktest")
-@Permissions(ranks = {"Bot Commander", "This is a fake rank", "Seriously, if you make this rank; you're crazy."})
-@CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
+@Command("help")
+@Syntax("help")
+@Usage("help")
+@Permissions()
+@CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class Help {
 
 	@IMethod

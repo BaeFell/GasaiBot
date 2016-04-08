@@ -22,7 +22,7 @@ import java.net.UnknownHostException;
 @Syntax("getinfo @user")
 @Usage("getinfo @user")
 @Permissions()
-@CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
+@CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class GetInfo {
 	@IMethod
 	public static String command(DiscordAPI discordAPI, Message message, User user, String[] args) {
