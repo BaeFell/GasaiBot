@@ -21,7 +21,7 @@ public class Help {
 	@IMethod
 	public static String command(DiscordAPI api, Message message, User user, String[] args) {
 		MessageBuilder builder = new MessageBuilder();
-		builder.append("```xml");
+		builder.append("```xml").appendNewLine();
 		for (String command : Main.commands) {
 			builder.append(Settings.getMsgStarter() + command).appendNewLine();
 		}
