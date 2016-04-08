@@ -32,18 +32,8 @@ public class BotInfo {
 		builder.append(Settings.getMsgStarter() + " My current profile picture: `" + discordAPI.getYourself().getAvatarUrl()+"`").appendNewLine();
 		builder.append(Settings.getMsgStarter() + " Admin Rank Name: `Bot Commander`").appendNewLine();
 		builder.append(Settings.getMsgStarter() + " Servers joined: `" + discordAPI.getServers().size()+"`").appendNewLine();
-		builder.append(Settings.getMsgStarter() + " Names of servers joined: ").appendNewLine();
-		for (Server s : discordAPI.getServers()){
-			builder.appendDecoration(MessageDecoration.BOLD, Settings.getMsgStarter() + Settings.getMsgStarter() + " Name: `" + s.getName() + "`").appendNewLine();
-			builder.append(Settings.getMsgStarter() + Settings.getMsgStarter() + " Member Count: `" + s.getMemberCount() + "`").appendNewLine();
-		}
 
 		builder.append( Settings.getMsgStarter() + " Users in Cache: `" + Main.userCache.keySet().size() + "`").appendNewLine();
-		try {
-			builder.append(Settings.getMsgStarter() + " My current IP (may not be exact): `" + InetAddress.getLocalHost().getHostAddress() + "`").appendNewLine();
-		}catch (UnknownHostException e){
-			builder.append(Settings.getMsgStarter() + " My current IP (may not be exact): `Oops! Couldn't get it`").appendNewLine();
-		}
 		message.getAuthor().sendMessage(builder.build());
 		builder = new MessageBuilder();
 		builder.append(Settings.getMsgStarter() + "I've PM'd you my information, ").appendUser(message.getAuthor());
