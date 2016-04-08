@@ -21,17 +21,15 @@ public class Help {
 	@IMethod
 	public static String command(DiscordAPI api, Message message, User user, String[] args) {
 		MessageBuilder builder = new MessageBuilder();
+
+		builder.append(Settings.getMsgStarter() + "I've PM'd you my command list, ").appendUser(message.getAuthor());
+		message.reply(builder.build());
+		builder = new MessageBuilder();
 		builder.append("```xml").appendNewLine();
 		for (String command : Main.commands) {
 			builder.append(Settings.getMsgStarter() + command).appendNewLine();
 		}
 		builder.append("```");
-		user.sendMessage(builder.build());
-
-		builder = new MessageBuilder();
-		builder.append(Settings.getMsgStarter() + "I've PM'd you my command list, ").appendUser(message.getAuthor());
-		message.reply(builder.build());
-
 		return builder.build();
 	}
 

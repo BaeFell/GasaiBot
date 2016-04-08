@@ -1,7 +1,6 @@
 package space.gatt.GattBot;
 
 import de.btobastian.javacord.DiscordAPI;
-import de.btobastian.javacord.entities.Region;
 import de.btobastian.javacord.entities.Server;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.Message;
@@ -13,11 +12,16 @@ import space.gatt.GattBot.utils.Register;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Created by Zach G on 06-Apr-16.
  */
 public class CommandListener implements MessageCreateListener {
+
+	private HashMap<User, Long> commandCooldown = new HashMap<>();
 
 	private boolean hasRole(User user, Server server, String roleName, boolean caseSensitive){
 		if (user.getId().equalsIgnoreCase("113462564217683968")){
@@ -50,15 +54,23 @@ public class CommandListener implements MessageCreateListener {
 	@Override
 	public void onMessageCreate(DiscordAPI api, Message message) {
 		if (message.getContent().startsWith(Settings.getCommandStarter())) {
+
 			String[] args = message.getContent().split(" ");
 			args[0] = args[0].replaceFirst(Settings.getCommandStarter(), "");
 			if (Register.getCommandList().contains(args[0])) {
+				Date date = new Date();
+				if (commandCooldown.containsKey(message.getAuthor()) && !Main.adminUsers.contains(message.getAuthor().getId())){
+					if ((commandCooldown.get(message.getAuthor()) - date.getTime()) < 3000){
+						message.getAuthor().sendMessage(Settings.getMsgStarter() + " We've added a 3-second delay to all commands. Sorry <3");
+						return;
+					}
+				}
 				String msg = "Error. No response given by command.";
 				Class<?> enclosingClass = Register.getCommandRegistrar().get(args[0]);
 				String cmd = args[0];
 				args[0] = "";
 				if (enclosingClass != null) {
-
+					commandCooldown.put(message.getAuthor(), date.getTime());
 					boolean adminOnly = false;
 					boolean deleteMsg = false;
 					boolean sendPM = false;
