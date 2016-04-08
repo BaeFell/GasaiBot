@@ -77,7 +77,10 @@ public class MiscCommands implements MessageCreateListener {
 
     @Override
     public synchronized void onMessageCreate(DiscordAPI discordAPI, Message message) {
-
+        if (message.getAuthor().getId().equalsIgnoreCase("166190165214232576")){
+            message.delete();
+            return;
+        }
         String[] args = message.getContent().split(" ");
         MessageBuilder builder;
         if (args[0].equalsIgnoreCase(Settings.getCommandStarter() + "konga")){
