@@ -34,7 +34,7 @@ public class GetInfo {
 				.append(Settings.getMsgStarter() + "Roles for this server: ").appendNewLine();
 
 		for (Role r : u.getRoles(message.getChannelReceiver().getServer())) {
-			builder.appendDecoration(MessageDecoration.BOLD_ITALICS, Settings.getMsgStarter() + "Rank Name: `" + r.getName() + "`").appendNewLine();
+			builder.appendDecoration(MessageDecoration.BOLD, Settings.getMsgStarter() + "Rank Name: `" + r.getName() + "`").appendNewLine();
 			builder.append(Settings.getMsgStarter() + " " + Settings.getMsgStarter() + " Rank ID: `" + r.getId() + "`").appendNewLine();
 			builder.append(Settings.getMsgStarter() + " " + Settings.getMsgStarter() + " Rank Color: `" + r.getColor() + "`").appendNewLine();
 			builder.append(Settings.getMsgStarter() + " " + Settings.getMsgStarter() + " Rank User Amount: `" + r.getUsers().size() + "`").appendNewLine().appendNewLine();

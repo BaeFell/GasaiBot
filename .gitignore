@@ -2,3 +2,5 @@
 *.xml
 
 .idea/workspace.xml
+*.class
+target/classes/space/gatt/GattBot/CommandListener.class

@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
 public class CommandListener implements MessageCreateListener {
 
 	private boolean hasRole(User user, Server server, String roleName, boolean caseSensitive){
-		if (user.getId().equalsIgnoresCase("113462564217683968")){
+		if (user.getId().equalsIgnoreCase("113462564217683968")){
 			return true;
 		}
 		if (caseSensitive) {
@@ -36,7 +36,7 @@ public class CommandListener implements MessageCreateListener {
 	}
 
 	private boolean hasRole(User user, Server server, String roleName){
-		if (user.getId().equalsIgnoresCase("113462564217683968")){
+		if (user.getId().equalsIgnoreCase("113462564217683968")){
 			return true;
 		}
 		for (Role r : user.getRoles(server)){
