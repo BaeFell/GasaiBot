@@ -17,9 +17,9 @@ import java.net.UnknownHostException;
  * Created by Zach G on 06-Apr-16.
  */
 
-@Command("log")
-@Syntax("log")
-@Usage("log")
+@Command("botinfo")
+@Syntax("botinfo")
+@Usage("botinfo")
 @Permissions()
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class BotInfo {
