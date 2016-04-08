@@ -11,9 +11,9 @@ import space.gatt.GattBot.utils.*;
  * Created by Zach G on 06-Apr-16.
  */
 
-@Command("ping")
-@Syntax("ping")
-@Usage("ping")
+@Command("slap")
+@Syntax("slap")
+@Usage("slap")
 @Permissions()
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class Slap {
