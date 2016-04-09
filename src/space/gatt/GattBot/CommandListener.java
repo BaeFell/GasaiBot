@@ -59,18 +59,11 @@ public class CommandListener implements MessageCreateListener {
 			args[0] = args[0].replaceFirst(Settings.getCommandStarter(), "");
 			if (Register.getCommandList().contains(args[0])) {
 				Date date = new Date();
-				if (commandCooldown.containsKey(message.getAuthor()) && !Main.adminUsers.contains(message.getAuthor().getId())){
-					if ((commandCooldown.get(message.getAuthor()) - date.getTime()) < 3000){
-						message.getAuthor().sendMessage(Settings.getMsgStarter() + " We've added a 3-second delay to all commands. Sorry <3");
-						return;
-					}
-				}
 				String msg = "Error. No response given by command.";
 				Class<?> enclosingClass = Register.getCommandRegistrar().get(args[0]);
 				String cmd = args[0];
 				args[0] = "";
 				if (enclosingClass != null) {
-					commandCooldown.put(message.getAuthor(), date.getTime());
 					boolean adminOnly = false;
 					boolean deleteMsg = false;
 					boolean sendPM = false;
@@ -99,6 +92,15 @@ public class CommandListener implements MessageCreateListener {
 						message.delete();
 					}
 
+					if (commandCooldown.containsKey(message.getAuthor()) && !Main.adminUsers.contains(message.getAuthor().getId())){
+						if ((date.getTime() - commandCooldown.get(message.getAuthor()) ) <= 3000){
+							message.getAuthor().sendMessage(Settings.getMsgStarter() + " We've added a 3-second delay to all commands. You've waited " + (date.getTime() - commandCooldown.get(message.getAuthor()) ) / 1000 + " seconds.");
+							return;
+						}else{
+							commandCooldown.put(message.getAuthor(), date.getTime());
+						}
+					}
+
 					if (adminOnly){
 						if (!(Main.adminUsers.contains(message.getAuthor().getId()))){
 							String reply = Settings.getMsgStarter() + " You are not one of my `Senpai's` :heart:";
@@ -118,9 +120,9 @@ public class CommandListener implements MessageCreateListener {
 							}
 						}
 						if (!hasRank){
-							String reply = Settings.getMsgStarter() + " You do not have one of the following ranks: `";
+							String reply = Settings.getMsgStarter() + " You do not have one of the following ranks:";
 							for (String r : ranks){
-								reply = reply + " " + r;
+								reply = reply + " `" + r + "`";
 							}
 							reply = reply + "`";
 							if (sendPM){

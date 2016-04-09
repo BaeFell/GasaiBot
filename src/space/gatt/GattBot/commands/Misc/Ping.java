@@ -16,6 +16,7 @@ import space.gatt.GattBot.utils.*;
 @Syntax("ping")
 @Usage("ping")
 @Permissions()
+@Group("Fun")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class Ping {
 	@IMethod

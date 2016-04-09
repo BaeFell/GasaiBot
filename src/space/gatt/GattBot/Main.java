@@ -75,7 +75,6 @@ public class Main {
         senpais.add("117785797985435652");
         senpais.add("138481382794985472");
         adminUsers.add("113462564217683968");
-        adminUsers.add("117785797985435652");
 
         Register.enableSnooper();
 

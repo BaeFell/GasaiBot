@@ -16,6 +16,7 @@ import space.gatt.GattBot.utils.*;
 @Syntax("setafk [true/false]")
 @Usage("setafk [true/false]")
 @Permissions()
+@Group("Moderation")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class SetAFK {
 	@IMethod

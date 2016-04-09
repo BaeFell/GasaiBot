@@ -19,6 +19,7 @@ import java.util.concurrent.ExecutionException;
 @Syntax("clearchat [-silent]")
 @Usage("clearchat [-silent]")
 @Permissions(ranks = "Bot Commander")
+@Group("Moderation")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class ClearChat {
 	@IMethod

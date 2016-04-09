@@ -1,4 +1,4 @@
-package space.gatt.GattBot.commands.Misc;
+package space.gatt.GattBot.commands.Admin;
 
 import de.btobastian.javacord.DiscordAPI;
 import de.btobastian.javacord.entities.User;
@@ -16,6 +16,7 @@ import space.gatt.GattBot.utils.*;
 @Syntax("systeminfo")
 @Usage("systeminfo")
 @Permissions(adminOnly = true)
+@Group("Creator")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class SystemInfo{
 	@IMethod

@@ -16,6 +16,7 @@ import space.gatt.GattBot.utils.*;
 @Syntax("isafk @user")
 @Usage("isafk @user")
 @Permissions()
+@Group("Moderation")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class IsAFK {
 	@IMethod

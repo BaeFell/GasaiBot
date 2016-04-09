@@ -1,4 +1,4 @@
-package space.gatt.GattBot.commands.Misc;
+package space.gatt.GattBot.commands.Debug;
 
 import de.btobastian.javacord.DiscordAPI;
 import de.btobastian.javacord.entities.User;
@@ -15,6 +15,7 @@ import space.gatt.GattBot.utils.*;
 @Syntax("ranktest")
 @Usage("ranktest")
 @Permissions(ranks = {"Bot Commander", "This is a fake rank", "Seriously, if you make this rank; you're crazy."})
+@Group("Debug")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class RankTest {
 	@IMethod

@@ -1,4 +1,4 @@
-package space.gatt.GattBot.commands.Misc;
+package space.gatt.GattBot.commands.Admin;
 
 import de.btobastian.javacord.DiscordAPI;
 import de.btobastian.javacord.entities.User;
@@ -15,6 +15,7 @@ import space.gatt.GattBot.utils.*;
 @Syntax("help")
 @Usage("help")
 @Permissions()
+@Group("Admin")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class Help {
 
