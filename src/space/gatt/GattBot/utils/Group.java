@@ -15,5 +15,5 @@ import java.lang.annotation.Target;
 // The command group, for later use so I can easily generate the help command
 
 public @interface Group {
-	public String value();
+	String value();
 }

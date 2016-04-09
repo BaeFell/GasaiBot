@@ -12,8 +12,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE) //can use in method only.
 public @interface CommandSettings {
-	public String[] value() default "";
-	public boolean deleteInitatingMsg() default false;
-	public boolean sendResponseViaPM() default false;
-	public boolean requiresPM() default false;
+	String[] value() default "";
+	boolean deleteInitatingMsg() default false;
+	boolean sendResponseViaPM() default false;
+	boolean requiresPM() default false;
 }

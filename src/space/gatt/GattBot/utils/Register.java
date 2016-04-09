@@ -48,9 +48,8 @@ public class Register {
 	public static void enableSnooper(){
 		Reflections reflections = new Reflections("space.gatt.GattBot");
 		Set<Class<?>> classes = reflections.getTypesAnnotatedWith(Command.class);
-		main: for (final Class c : classes){
+		for (final Class c : classes){
 			Annotation[] annotations = c.getAnnotations();
-
 			for (Annotation a : annotations) {
 				if (a instanceof Command) {
 					String cmd = ((Command)a).value();
