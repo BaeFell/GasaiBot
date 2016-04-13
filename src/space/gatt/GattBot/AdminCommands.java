@@ -1,6 +1,7 @@
 package space.gatt.GattBot;
 
 import de.btobastian.javacord.DiscordAPI;
+import de.btobastian.javacord.ImplDiscordAPI;
 import de.btobastian.javacord.entities.Channel;
 import de.btobastian.javacord.entities.Server;
 import de.btobastian.javacord.entities.User;
@@ -455,11 +456,13 @@ public class AdminCommands implements MessageCreateListener {
                     message.delete();
                     try {
                         if (!reboot) {
+                            ((ImplDiscordAPI) api).getSocketAdapter().getWebSocket().sendClose(1000);
                             TimeUnit.SECONDS.sleep(1);
                             System.exit(0);
                         } else {
                             IOException ex = reboot();
                             if (ex != null) {
+                                ((ImplDiscordAPI) api).getSocketAdapter().getWebSocket().sendClose(1000);
                                 TimeUnit.SECONDS.sleep(1);
                                 System.exit(0);
                             }else{
@@ -490,12 +493,6 @@ public class AdminCommands implements MessageCreateListener {
             }
         }
     }
-
-    private static BufferedWriter botWriter;
-    private static final int UPDATE_EXIT_CODE = 20;
-    private static final int NORMAL_EXIT_CODE = 21;
-    private static final int RESTART_CODE = 22;
-    private static final int REVERT_CODE = 23;
 
     private IOException reboot() {
         String[] command = {"sh", "restartgattbot.sh"};
