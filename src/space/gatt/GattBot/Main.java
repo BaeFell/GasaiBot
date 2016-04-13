@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.OutputStream;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
+import java.util.logging.Logger;
 
 /**
  * Created by Zach on 5/03/2016.
@@ -67,6 +68,7 @@ public class Main {
                 rebooted = true;
             }
         }
+
         //Settings.loadSettings();
         senpais.add("80972065296887808");
         senpais.add("113462564217683968");
@@ -82,6 +84,7 @@ public class Main {
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
+                System.setOut(new ConsoleIntercept(System.out));
                 api.setGame("(∩｀-´)⊃━☆ﾟ.*･｡ﾟ with a wezurd");
 
 

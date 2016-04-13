@@ -467,7 +467,11 @@ public class AdminCommands implements MessageCreateListener {
                                 System.exit(0);
                             }else{
                                 builder = new MessageBuilder();
-                                builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + ex.getLocalizedMessage() + "```");
+                                builder.append("`System > ` Could not restart. Printing stack trace:").appendNewLine().append("```").appendNewLine();
+                                for (StackTraceElement ste : ex.getStackTrace()){
+                                    builder.append(ste.toString()).appendNewLine();
+                                }
+                                builder.append("```");
                                 Main.adminLogChannel.sendMessage(builder.build());
                             }
                         }
