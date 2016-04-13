@@ -67,9 +67,7 @@ public class Main {
                 rebooted = true;
             }
         }
-        System.out.println("Loading settings...");
         //Settings.loadSettings();
-        System.out.println("Attempting login with email " + email);
         senpais.add("80972065296887808");
         senpais.add("113462564217683968");
         senpais.add("117785797985435652");
@@ -101,8 +99,6 @@ public class Main {
                     }
                 }
 
-               //ConsoleLogger logger = new ConsoleLogger();
-               //new Thread(logger).start();
                 dbu = new DatabaseUpdater();
                 Timer time = new Timer();
                 time.schedule(dbu, 0, 300000); // Create Repetitively task for every 1 secs
@@ -162,20 +158,22 @@ public class Main {
                 commands.add("< math > [Expression] - Does Math. May not work with all mathematical expressions [disabled for now]");
 
                 // register listener
+
+                GattBotChannel.sendMessage("**~~`===================================================`~~**");
+
+                GattBotChannel.sendMessage("GasaiBot loaded! There is " + commands.size() + " lines in the commands help Array!");
+                GattBotChannel.sendMessage("Cached roughly " + userCache.keySet().size() + " users.");
                 api.registerListener(new PersonalMessageReplier());
                 api.registerListener(new MessageReplier());
                 api.registerListener(new AdminCommands());
                 api.registerListener(new CommandListener());
                 MiscCommands miscCommands = new MiscCommands();
-                GattBotChannel.sendMessage("`__________________________________________________`");
                 GattBotChannel.sendMessage("Caching meme images");
                 miscCommands.cacheImages();
-                GattBotChannel.sendMessage("Cached meme` images");
-                GattBotChannel.sendMessage("Cached roughly " + userCache.keySet().size() + " users.");
+                GattBotChannel.sendMessage("Cached meme images");
                 api.registerListener(miscCommands);
-                GattBotChannel.sendMessage("GasaiBot loaded! There is " + commands.size() + " lines in the commands Array!");
                 if (rebooted){
-                    GattBotChannel.sendMessage("GasaiBot has successfully finished rebooting!");
+                    GattBotChannel.sendMessage("**GasaiBot has successfully finished rebooting!**");
                 }
             }
 
