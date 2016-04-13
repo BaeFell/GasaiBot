@@ -17,6 +17,7 @@ import space.gatt.GattBot.utils.*;
 @Usage("setafk [true/false]")
 @Permissions()
 @Group("Moderation")
+@Description("Set your AFK Status")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class SetAFK {
 	@IMethod

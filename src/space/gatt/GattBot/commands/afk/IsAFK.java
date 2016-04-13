@@ -17,6 +17,7 @@ import space.gatt.GattBot.utils.*;
 @Usage("isafk @user")
 @Permissions()
 @Group("Moderation")
+@Description("Check if a user is AFK.")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class IsAFK {
 	@IMethod

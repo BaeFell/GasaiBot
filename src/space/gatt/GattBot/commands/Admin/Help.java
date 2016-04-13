@@ -16,6 +16,7 @@ import space.gatt.GattBot.utils.*;
 @Usage("help")
 @Permissions()
 @Group("Admin")
+@Description("The help command!")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class Help {
 

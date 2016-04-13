@@ -22,6 +22,7 @@ import java.net.UnknownHostException;
 @Syntax("getinfo @user")
 @Usage("getinfo @user")
 @Permissions()
+@Description("Get's info about a specified user.")
 @Group("Admin")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class GetInfo {

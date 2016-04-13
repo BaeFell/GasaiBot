@@ -16,6 +16,7 @@ import space.gatt.GattBot.utils.*;
 @Usage("slap")
 @Permissions()
 @Group("Fun")
+@Description("Slap that fool, fool!")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class Slap {
 	@IMethod

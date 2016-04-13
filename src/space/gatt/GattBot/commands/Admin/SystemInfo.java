@@ -17,6 +17,7 @@ import space.gatt.GattBot.utils.*;
 @Usage("systeminfo")
 @Permissions(adminOnly = true)
 @Group("Creator")
+@Description("Shows you system information")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class SystemInfo{
 	@IMethod

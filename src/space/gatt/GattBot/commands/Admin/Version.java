@@ -16,6 +16,7 @@ import space.gatt.GattBot.utils.*;
 @Usage("version")
 @Permissions()
 @Group("Admin")
+@Description("Returns Gasai Bots' current version.")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class Version {
 	@IMethod

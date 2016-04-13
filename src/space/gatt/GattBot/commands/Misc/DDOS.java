@@ -16,6 +16,7 @@ import space.gatt.GattBot.utils.*;
 @Usage("ddos")
 @Permissions()
 @Group("Fun")
+@Description("DDoS all the haters!")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class DDOS {
 	@IMethod

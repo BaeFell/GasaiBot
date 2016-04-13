@@ -16,7 +16,7 @@ import space.gatt.GattBot.utils.*;
 @Syntax("notlog")
 @Usage("notlog")
 @Permissions()
-@Group("Admin")
+@Group("Hidden")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class Log {
 	@IMethod

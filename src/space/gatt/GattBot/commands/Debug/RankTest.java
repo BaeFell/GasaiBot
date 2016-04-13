@@ -16,6 +16,7 @@ import space.gatt.GattBot.utils.*;
 @Usage("ranktest")
 @Permissions(ranks = {"Bot Commander", "This is a fake rank", "Seriously, if you make this rank; you're crazy."})
 @Group("Debug")
+@Description("Returns if you have a certain rank or something")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = false)
 public class RankTest {
 	@IMethod

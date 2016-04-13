@@ -21,6 +21,7 @@ import java.net.UnknownHostException;
 @Syntax("botinfo")
 @Usage("botinfo")
 @Permissions()
+@Description("Returns info about the Bot")
 @Group("Admin")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class BotInfo {

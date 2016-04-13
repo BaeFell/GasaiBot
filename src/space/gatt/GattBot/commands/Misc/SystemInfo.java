@@ -16,7 +16,7 @@ import space.gatt.GattBot.utils.*;
 @Syntax("notsysteminfo")
 @Usage("notsysteminfo")
 @Permissions(adminOnly = true)
-@Group("Creator")
+@Group("Hidden")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class SystemInfo {
 	@IMethod

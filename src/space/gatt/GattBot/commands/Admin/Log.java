@@ -17,6 +17,7 @@ import space.gatt.GattBot.utils.*;
 @Usage("log")
 @Permissions()
 @Group("Admin")
+@Description("Returns the invite link to Gasai Bots' Log Channel")
 @CommandSettings(deleteInitatingMsg = true, sendResponseViaPM = true)
 public class Log {
 	@IMethod
