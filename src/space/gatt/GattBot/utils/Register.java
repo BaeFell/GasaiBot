@@ -1,6 +1,5 @@
 package space.gatt.GattBot.utils;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.reflections.Reflections;
 
 import java.lang.annotation.Annotation;
@@ -24,6 +23,8 @@ public class Register {
 
 	private static List<String> commandList = new ArrayList<>();
 
+	private static HashMap<String, List<String>> helpLines = new HashMap<>();
+
 
 	public static List<Class> getListeners() {
 		return listeners;
@@ -45,8 +46,14 @@ public class Register {
 		return commandList;
 	}
 
-	public static void enableSnooper(){
-		Reflections reflections = new Reflections("space.gatt.GattBot");
+
+
+	/*
+	@dir The folder where all your classes is located
+	 */
+
+	public static void enableSnooper(String dir){
+		Reflections reflections = new Reflections(dir);
 		Set<Class<?>> classes = reflections.getTypesAnnotatedWith(Command.class);
 		for (final Class c : classes){
 			Annotation[] annotations = c.getAnnotations();
@@ -65,6 +72,7 @@ public class Register {
 									commandRegistrar.put(cmd, method.getDeclaringClass());
 									methodRegistrar.put(cmd, method);
 									System.out.println("Registered method " + method.getName() + " for command " + cmd);
+									loadData(c);
 								} else {
 									throw new IllegalArgumentException(method.getName() + " in " + c.getSimpleName()
 											+ " is not public static!");
@@ -77,6 +85,32 @@ public class Register {
 				}
 			}
 		}
+	}
+
+	private static void loadData(Class c){
+		Annotation[] annotations = c.getAnnotations();
+		String group = "null";
+		String description = "nul";
+		String syntax = "null";
+		String[] aliases = new String[]{"null"};
+		for (Annotation a : annotations) {
+			if (a instanceof Group){
+				group = ((Group)a).value();
+			}
+			if (a instanceof Description){
+				description = ((Description)a).value();
+			}
+			if (a instanceof Syntax){
+				syntax = ((Syntax)a).value();
+			}
+			if (a instanceof Aliases){
+				aliases = ((Aliases)a).value();
+			}
+		}
+		if (group != "null" && !group.equalsIgnoreCase("hidden")){
+
+		}
+
 	}
 
 
