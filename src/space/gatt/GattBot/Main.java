@@ -105,7 +105,8 @@ public class Main {
                //ConsoleLogger logger = new ConsoleLogger();
                //new Thread(logger).start();
                 dbu = new DatabaseUpdater();
-                dbu.run();
+                Timer time = new Timer();
+                time.schedule(dbu, 0, 300000); // Create Repetitively task for every 1 secs
                 api.setAutoReconnect(true);
                 System.out.println("Updating user cache");
                 for (Server s : api.getServers()){

@@ -1,18 +1,13 @@
 package space.gatt.GattBot;
 
-import de.btobastian.javacord.DiscordAPI;
-import de.btobastian.javacord.ImplDiscordAPI;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.MessageBuilder;
-import de.btobastian.javacord.utils.ThreadPool;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.Date;
-import java.util.concurrent.ExecutionException;
+import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -20,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Zach G on 25-Mar-16.
  */
-public class DatabaseUpdater implements Runnable {
+public class DatabaseUpdater extends TimerTask{
 
 	private long getTimeRunning(){
 		Date date = new Date();
@@ -29,13 +24,7 @@ public class DatabaseUpdater implements Runnable {
 
 	@Override
 	public void run() {
-		ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-		scheduler.scheduleAtFixedRate(new Runnable() {
-			@Override
-			public void run() {
-				update();
-			}
-		}, 10, 10, TimeUnit.MINUTES);
+		update();
 	}
 
 	private synchronized void closeStream(final InputStream stream){
