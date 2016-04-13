@@ -76,7 +76,7 @@ public class Main {
         senpais.add("138481382794985472");
         adminUsers.add("113462564217683968");
 
-        Register.enableSnooper();
+        Register.enableSnooper("space.gatt.GattBot");
 
         Date date = new Date();
         startupTime = date.getTime();
@@ -104,7 +104,7 @@ public class Main {
 
                 dbu = new DatabaseUpdater();
                 Timer time = new Timer();
-                time.schedule(dbu, 0, 300000); // Create Repetitively task for every 1 secs
+                time.schedule(dbu, 0, 300000);
                 api.setAutoReconnect(true);
                 for (Server s : api.getServers()){
                     for (User m : s.getMembers()) {
