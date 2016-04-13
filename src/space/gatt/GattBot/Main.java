@@ -88,7 +88,6 @@ public class Main {
 
 
                 for (Server s : api.getServers()){
-                    System.out.println("Server = " + s.getName());
                     if (s.getName().equalsIgnoreCase("GattBotServer")){
                         for (Channel c : s.getChannels()){
                             if (c.getName().equalsIgnoreCase("logchannel")){
@@ -108,7 +107,6 @@ public class Main {
                 Timer time = new Timer();
                 time.schedule(dbu, 0, 300000); // Create Repetitively task for every 1 secs
                 api.setAutoReconnect(true);
-                System.out.println("Updating user cache");
                 for (Server s : api.getServers()){
                     for (User m : s.getMembers()) {
                         userCache.put(m.getName(), m.getId());
