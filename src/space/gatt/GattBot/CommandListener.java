@@ -12,6 +12,7 @@ import space.gatt.GattBot.utils.Register;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
@@ -62,7 +63,7 @@ public class CommandListener implements MessageCreateListener {
 				String msg = "Error. No response given by command.";
 				Class<?> enclosingClass = Register.getCommandRegistrar().get(args[0]);
 				String cmd = args[0];
-				args[0] = "";
+				args = Arrays.copyOfRange(args, 1, args.length);
 				if (enclosingClass != null) {
 					boolean adminOnly = false;
 					boolean deleteMsg = false;
