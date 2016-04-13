@@ -443,7 +443,7 @@ public class AdminCommands implements MessageCreateListener {
                     boolean reboot = false;
                     if (args[1].equalsIgnoreCase("-shutdown")) {
                         builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Shutting down, Senpai");
-                    }else if (args[1].equalsIgnoreCase("-r")||args[1].equalsIgnoreCase("-restart")){
+                    } else if (args[1].equalsIgnoreCase("-r") || args[1].equalsIgnoreCase("-restart")) {
                         builder.append(Settings.getMsgStarter()).appendUser(message.getAuthor()).append(" Rebooting in process!");
                         reboot = true;
                     } else {
@@ -457,10 +457,16 @@ public class AdminCommands implements MessageCreateListener {
                         if (!reboot) {
                             TimeUnit.SECONDS.sleep(1);
                             System.exit(0);
-                        }else{
-                            reboot();
-                            TimeUnit.SECONDS.sleep(1);
-                            System.exit(0);
+                        } else {
+                            IOException ex = reboot();
+                            if (ex != null) {
+                                TimeUnit.SECONDS.sleep(1);
+                                System.exit(0);
+                            }else{
+                                builder = new MessageBuilder();
+                                builder.append("(OH NO! SOMETHING HAPPENED. PRINTING STACK TRACE!)").appendNewLine().append("```" + ex.getLocalizedMessage() + "```");
+                                Main.adminLogChannel.sendMessage(builder.build());
+                            }
                         }
                     } catch (Exception e) {
                         builder = new MessageBuilder();
@@ -491,28 +497,15 @@ public class AdminCommands implements MessageCreateListener {
     private static final int RESTART_CODE = 22;
     private static final int REVERT_CODE = 23;
 
-    private void reboot() throws Exception{
-        ProcessBuilder builder = new ProcessBuilder();
-        builder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
-        builder.command("startgattbot.sh");
-        Process botProcess = builder.start();
-        botWriter = new BufferedWriter(new OutputStreamWriter(botProcess.getOutputStream()));
-        switch (botProcess.exitValue()) {
-            case NORMAL_EXIT_CODE:
-                Main.adminLogChannel.sendMessage("`SYSTEM > `The Bot requested to shutdown and not relaunch.\nShutting down...");
-                System.exit(0);
-                break;
-            case RESTART_CODE:
-                Main.adminLogChannel.sendMessage("`SYSTEM > `Restarting");
-                break;
-            default:
-                Main.adminLogChannel.sendMessage("`SYSTEM > `The Bot's Exit code was unrecognized. ExitCode: " + botProcess.exitValue());
-                Main.adminLogChannel.sendMessage("`SYSTEM > `Stopping");
-                Main.adminLogChannel.sendMessage("`SYSTEM > `Stopping");
-                System.exit(0);
+    private IOException reboot() {
+        String[] command = {"sh", "restartgattbot.sh"};
+        try {
+            Runtime.getRuntime().exec(command);
+            return null;
+        }catch (IOException e){
+            return e;
         }
     }
-
 }
 
 
