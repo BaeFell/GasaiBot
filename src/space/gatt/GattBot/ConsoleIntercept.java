@@ -11,8 +11,6 @@ import java.util.Locale;
  */
 public class ConsoleIntercept extends PrintStream {
 
-	private DiscordAPI api = Main.getApi();
-
 	public ConsoleIntercept(OutputStream out) {
 		super(out);
 	}
