@@ -79,15 +79,7 @@ public class Main {
         Date date = new Date();
         startupTime = date.getTime();
 
-        DiscordAPI botOwner = Javacord.getApi(email, password);
-        botOwner.connectBlocking();
         api = Javacord.getApi(gasaiemail, gasaipassword);
-        api.connectBlocking();
-        try {
-            api.convertToBotAccount(botOwner.getToken()).get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
