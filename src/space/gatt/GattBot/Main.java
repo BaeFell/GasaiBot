@@ -81,7 +81,7 @@ public class Main {
 
         DiscordAPI botOwner = Javacord.getApi(email, password);
         botOwner.connectBlocking();
-        api = Javacord.getApi(token, true);
+        api = Javacord.getApi(gasaiemail, gasaipassword);
         api.connectBlocking();
         api.convertToBotAccount(botOwner.getToken());
 
