@@ -59,7 +59,7 @@ public class Register {
 			Annotation[] annotations = c.getAnnotations();
 			for (Annotation a : annotations) {
 				if (a instanceof Command) {
-					String cmd = ((Command)a).value();
+					String cmd = ((Command)a).value().toLowerCase();
 					if (!commandList.contains(cmd)) {
 						commandList.add(cmd);
 						System.out.println("Registered command " + cmd + " for class " + c.getName());
