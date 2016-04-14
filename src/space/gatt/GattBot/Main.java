@@ -35,7 +35,7 @@ public class Main {
 
     public static long startupTime;
 
-    private static String email, password;
+    private static String email, password, token;
 
     public static String getEmail() {
         return email;
@@ -63,8 +63,9 @@ public class Main {
         //new Thread(new SocketManager()).start();
         email = args[0];
         password = args[1];
-        if (args.length > 2){
-            if (args[2].equalsIgnoreCase("reboot")){
+        token = args[2];
+        if (args.length > 3){
+            if (args[3].equalsIgnoreCase("reboot")){
                 rebooted = true;
             }
         }
@@ -81,6 +82,9 @@ public class Main {
         Date date = new Date();
         startupTime = date.getTime();
         api = Javacord.getApi(email, password);
+
+        api.convertToBotAccount(token);
+
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
             public void onSuccess(DiscordAPI api) {
