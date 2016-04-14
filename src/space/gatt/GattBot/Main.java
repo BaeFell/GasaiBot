@@ -83,7 +83,7 @@ public class Main {
         startupTime = date.getTime();
         api = Javacord.getApi(email, password);
 
-        api.convertToBotAccount(token);
+        api.convertToBotAccount(token, "170060825179062272");
 
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
