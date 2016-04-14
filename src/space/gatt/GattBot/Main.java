@@ -35,7 +35,7 @@ public class Main {
 
     public static long startupTime;
 
-    private static String email, password, token;
+    private static String email, password, gasaiemail, gasaipassword, token;
 
     public static String getEmail() {
         return email;
@@ -61,11 +61,13 @@ public class Main {
 
 
         //new Thread(new SocketManager()).start();
-        email = args[0];
-        password = args[1];
-        token = args[2];
-        if (args.length > 3){
-            if (args[3].equalsIgnoreCase("reboot")){
+        gasaiemail = args[0];
+        gasaipassword = args[1];
+        email = args[2];
+        password = args[3];
+        token = args[4];
+        if (args.length > 4){
+            if (args[5].equalsIgnoreCase("reboot")){
                 rebooted = true;
             }
         }
@@ -81,9 +83,12 @@ public class Main {
 
         Date date = new Date();
         startupTime = date.getTime();
-        api = Javacord.getApi(email, password);
 
-        api.convertToBotAccount(token, "170060825179062272");
+        DiscordAPI botOwner = Javacord.getApi(email, password);
+        botOwner.connectBlocking();
+        api = Javacord.getApi(gasaiemail, gasaipassword);
+        api.connectBlocking();
+        api.convertToBotAccount(botOwner.getToken());
 
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
