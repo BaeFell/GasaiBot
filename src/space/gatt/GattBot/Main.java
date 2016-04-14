@@ -83,7 +83,7 @@ public class Main {
         botOwner.connectBlocking();
         api = Javacord.getApi(gasaiemail, gasaipassword);
         api.connectBlocking();
-        api.convertToBotAccount(botOwner.getToken());
+        api.convertToBotAccount("170060825179062272", token);
 
         api.connect(new FutureCallback<DiscordAPI>() {
             @Override
