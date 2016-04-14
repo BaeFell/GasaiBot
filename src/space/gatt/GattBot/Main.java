@@ -66,11 +66,6 @@ public class Main {
         email = args[2];
         password = args[3];
         token = args[4];
-        if (args.length > 4){
-            if (args[5].equalsIgnoreCase("reboot")){
-                rebooted = true;
-            }
-        }
 
         //Settings.loadSettings();
         senpais.add("80972065296887808");
