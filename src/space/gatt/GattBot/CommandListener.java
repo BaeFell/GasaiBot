@@ -58,11 +58,11 @@ public class CommandListener implements MessageCreateListener {
 
 			String[] args = message.getContent().split(" ");
 			args[0] = args[0].replaceFirst(Settings.getCommandStarter(), "");
-			if (Register.getCommandList().contains(args[0])) {
+			String cmd = args[0].toLowerCase();
+			if (Register.getCommandList().contains(cmd)) {
 				Date date = new Date();
 				String msg = "Error. No response given by command.";
-				Class<?> enclosingClass = Register.getCommandRegistrar().get(args[0]);
-				String cmd = args[0];
+				Class<?> enclosingClass = Register.getCommandRegistrar().get(cmd);
 				args = Arrays.copyOfRange(args, 1, args.length);
 				if (enclosingClass != null) {
 					boolean adminOnly = false;
